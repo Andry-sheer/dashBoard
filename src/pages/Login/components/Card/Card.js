@@ -7,8 +7,8 @@ const Card = ( ) => {
   return (
     <div className='Card'>
       <img className='loginLogo' src={ loginLogo }  alt='loginLogo' ></img>
-      <Input />
       <Input PassIcon />
+      <Input  />
       <Button/>
     </div>
   )
