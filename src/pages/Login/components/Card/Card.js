@@ -1,11 +1,15 @@
 import './Card.css';
-import img from '../../../../assets/loginLogo.svg';
+import loginLogo from '../../../../assets/loginLogo.svg';
+import Input from '../Input/Input';
+import Button from '../Button/Button';
 
-
-const Card = ( { showImg } ) => {
+const Card = ( ) => {
   return (
-    <div className={'Card'}>
-      { showImg && img }
+    <div className='Card'>
+      <img className='loginLogo' src={ loginLogo }  alt='loginLogo' ></img>
+      <Input />
+      <Input PassIcon />
+      <Button/>
     </div>
   )
 }

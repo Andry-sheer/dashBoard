@@ -1,0 +1,13 @@
+.Button {
+  color: white;
+  background: #44B26F;
+  height: 56px;
+  font-size: 24px;
+  border: none;
+  font-weight: 600;
+  font-family: 'Inter';
+}
+
+.Button:active {
+  background: #469b66
+}
