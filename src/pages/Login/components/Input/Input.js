@@ -1,15 +1,19 @@
 
 import './Input.css'
 import { IoMdEye } from 'react-icons/io';
+import { IoMdEyeOff } from "react-icons/io"; 
 
-const Input = ( {  PasswordInput, PassIcon } ) => {
+
+const Input = ( {  PasswordInput } ) => {
   return (
     <label className={'loginLabel'}>
       <input className='loginInput' type='text' placeholder='User Name' />
       { PasswordInput && <input className='loginInput pass' type='password' placeholder='Password'/> } 
-      { PassIcon && <IoMdEye className='loginEye' size='30px' color='green' /> }
+      <button className='buttonEye' id='buttonEyeId'> <IoMdEye className='loginEyeIcon' size='30px' color='green' /> <IoMdEyeOff className='loginEyeIcon loginEyeHideIcon' size='30px' color='green' /> </button>
     </label>
   );
 };
+
+
 
 export default Input;

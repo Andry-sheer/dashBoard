@@ -15,12 +15,6 @@
   padding-right: 65px;
 }
 
-.loginEye{
-  position: absolute;
-  right: 20px;
-  top: 112px;
-}
-
 .loginInput::placeholder {
   color: #44B26F;
 }
@@ -29,4 +23,20 @@
   position: relative;
   display: flex;
   flex-flow: column;
+}
+
+.buttonEye {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 20px;
+  top: 112px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.loginEyeHideIcon {
+  display: none;
 }
