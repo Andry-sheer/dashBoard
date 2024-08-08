@@ -6,7 +6,7 @@ import Card from './components/Card/Card';
 const login = () => {
   return (
     <div className='Login-page'>
-      <Card />
+      <Card mobile />
       </div>
   )
 }

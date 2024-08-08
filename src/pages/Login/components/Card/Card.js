@@ -3,12 +3,11 @@ import loginLogo from '../../../../assets/loginLogo.svg';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 
-const Card = ( ) => {
+const Card = () => {
   return (
-    <div className='Card'>
-      <img className='loginLogo' src={ loginLogo }  alt='loginLogo' ></img>
-      <Input PassIcon />
-      <Input  />
+    <div className={'Card'}>
+      <img className='loginLogo' src={ loginLogo }  alt='loginLogo' />
+      <Input PasswordInput PassIcon />
       <Button/>
     </div>
   )
