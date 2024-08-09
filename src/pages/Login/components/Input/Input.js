@@ -4,7 +4,7 @@ import { IoMdEye } from 'react-icons/io';
 import { IoMdEyeOff } from "react-icons/io"; 
 
 
-const Input = ( {  PasswordInput } ) => {
+const Input = ({  PasswordInput }) => {
   return (
     <label className={'loginLabel'}>
       <input className='loginInput' type='text' placeholder='User Name' />
