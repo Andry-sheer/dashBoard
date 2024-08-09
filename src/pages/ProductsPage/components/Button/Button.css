@@ -1,0 +1,32 @@
+.Button {
+  color: #05BC52;
+  background: white;
+  font-size: 16px;
+  border: none;
+  font-weight: 600;
+  font-family: 'Inter';
+  padding: 16px 35px 16px 50px ;
+  border-radius: 12px;
+  position: relative;
+}
+
+.Button:active {
+  background: #d8d8d8;
+}
+
+.butonContainerOne {
+  position: absolute;
+  left: 70px;
+}
+
+.butonContainerTwo {
+  position: absolute;
+  right: 70px;
+}
+
+.iconPreview {
+  position: absolute;
+  top: 11px;
+  left: 10px;
+  color: black;
+}
