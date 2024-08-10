@@ -10,13 +10,13 @@ const textButtonThree = '';
 
   return (
     <div>
-      <div className='butonContainerOne'>
+      <div className='buttonContainerOne'>
         <button type='button' className='Button'> {textButtonOne}
           {iconPreview && <CgProfile className='iconPreview' size="30px" /> }
         </button>
       </div>
 
-      <div className='butonContainerTwo'>
+      <div className='buttonContainerTwo'>
         <button type='button' className='Button'> {textButtonTwo}
           {iconAdd && <IoMdAdd className='iconPreview' size="30px" /> }
         </button>
