@@ -26,47 +26,30 @@ class ProductsTable extends Component {
     console.log(productsData);
   }
 
+  
+
   render(){
     return ( 
       <div className='ProductsTableContainer'>
         <div className='productTableTitle'>
-          <div className='slotName'>ID{sortIcon}</div>
-          <div className='slotName'>Category{sortIcon}</div>
-          <div className='slotName'>Name{sortIcon}</div>
-          <div className='slotName'>Quantity{sortIcon}</div>
-          <div className='slotName'>Price($){sortIcon}</div>
-          <div className='slotName'></div>
+          <p className='slotName'>ID{sortIcon}</p>
+          <p className='slotName'>Category{sortIcon}</p>
+          <p className='slotName'>Name{sortIcon}</p>
+          <p className='slotName'>Quantity{sortIcon}</p>
+          <p className='slotName'>Price($){sortIcon}</p>
+          <p className='slotName'></p>
         </div>
 
-        <div className='productTable'>
-          <div className='slotOne'>
-            { this.state.products.map(product => <div style={{margin:'10px 0'}} key={product.id}>{product.id}</div>)}
+        <div className='productTableField'>
+          <div className='productTableSelect'> { this.state.products.map(product => <div className='productItem'  key={product.id}> 
+            <div className='productItem'>{product.id}</div> <div className='productItem'>{product.category}</div> 
+              <div className='productItem' >{product.name}</div>  <div className='productItem' >{product.quantity}</div> 
+              <div className='productItem' >{product.price}</div>
+                <div className='buttonContainerProductTable'>
+                  <button className='buttonEdit'>{editIcon}</button>
+                  <button className='buttonDelete'>{deleteIcon}</button></div> </div>)}
+              </div>
           </div>
-
-          <div className='slotTwo'>
-            { this.state.products.map(product => <div style={{margin:'10px 0'}} key={product.id}>{product.category}</div>)}
-          </div>
-
-          <div className='slotThree'>
-            { this.state.products.map(product => <div style={{margin:'10px 0'}} key={product.id}>{product.name}</div>)}
-          </div>    
-          
-          <div className='slotFour'>
-            { this.state.products.map(product => <div style={{margin:'10px 0'}} key={product.id}>{product.quantity}</div>)}
-          </div>
-
-          <div className='slotFive'>
-            { this.state.products.map(product => <div style={{margin:'10px 0'}} key={product.id}>{product.price}</div>)}
-          </div>
-
-          <div className='slotSix'>
-            { this.state.products.map(product => <div style={{margin:'8px 0'}} key={product.id}>
-              <button className='buttonEdit'>{editIcon}</button>
-              <button className='buttonDelete'>{deleteIcon}</button></div>)}
-          </div>
-            
-        </div>
-
       </div>
     );
   }

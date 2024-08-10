@@ -3,21 +3,18 @@
   max-width: 1200px;
   margin: 0 auto;
   border-radius: 12px;
+  background: silver;
 }
 
 .productTableTitle {
   display: flex;
-  background: #05BC52;
-  padding: 15px;
+  background: #0EC86F;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
 
-.productTable {
-  display: flex;
-  /* align-items: center; */
+.productTableField {
   background: silver;
-  padding: 15px 25px;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }
@@ -34,26 +31,31 @@
   font-size: 18px;
 }
 
-.slotOne,
-.slotTwo,
-.slotThree,
-.slotFour,
-.slotFive {
+.productTableSelect {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
   font-weight: 600;
   font-family: 'Inter';
+  padding-right: 3px;
 }
 
-.slotSix {
-  display: flex;
+.productItem {
   width: 100%;
-  flex-direction: column;
+  padding: 5px 0;
+  padding-left: 3px;
+  display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+.productItem:hover {
+  background: #3CD78C;
+  color: #A58F8F;
+  border-radius: 12px;
+}
+
+.buttonContainerProductTable {
+  width: 100%;
 }
 
 .buttonEdit {
@@ -63,16 +65,17 @@
 }
 
 .buttonEdit:active > .editIcon{
-    fill: #108842;
+  fill: blue;
 }
 
 .buttonDelete {
   cursor: pointer;
   background: transparent;
   border: none;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .buttonDelete:active > .deleteIcon{
-    fill: #108842;
+  fill: red;
+  transition: linear .1s;
 }
