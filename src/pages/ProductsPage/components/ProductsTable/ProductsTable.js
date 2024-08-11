@@ -26,8 +26,6 @@ class ProductsTable extends Component {
     console.log(productsData);
   }
 
-  
-
   render(){
     return ( 
       <div className='ProductsTableContainer'>
