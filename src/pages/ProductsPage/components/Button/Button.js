@@ -12,17 +12,17 @@ const textButtonThree = '';
     <div>
       <div className='buttonContainerOne'>
         <button type='button' className='Button'> {textButtonOne}
-          {iconPreview && <CgProfile className='iconPreview' size="30px" /> }
+          {iconPreview && <CgProfile className='iconButton' size="30px" /> }
         </button>
       </div>
 
       <div className='buttonContainerTwo'>
         <button type='button' className='Button'> {textButtonTwo}
-          {iconAdd && <IoMdAdd className='iconPreview' size="30px" /> }
+          {iconAdd && <IoMdAdd className='iconButton' size="30px" /> }
         </button>
       </div>
     </div>
   )
 }
-//
+
 export default Button; 
