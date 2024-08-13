@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 
 const Card = () => {
   return (
-    <div className={'Card'}>
+    <div className='Card'>
       <img className='loginLogo' src={ loginLogo }  alt='loginLogo' />
       <Input PasswordInput PassIcon />
       <Button/>
