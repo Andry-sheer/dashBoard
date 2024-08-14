@@ -61,9 +61,6 @@ class ProductsTable extends Component {
           </div>
 
 
-
-
-
         )
       }
     }

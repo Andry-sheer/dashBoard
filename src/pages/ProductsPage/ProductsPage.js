@@ -3,8 +3,10 @@ import { Component } from 'react';
 import './ProductsPage.css';
 import ProductsTable from './components/ProductsTable/ProductsTable';
 import ProductsPageLogo from '../../assets/productsPageLogo.svg';
-import Button from './components/Button/Button';
 import { API_URL } from '../.././constants';
+import Button from '../../components/Button/Button';
+
+
 
 // const product = "products";
 
@@ -25,7 +27,7 @@ class ProductsPage extends Component {
   
   async getProducts() {
     try {
-      const response = await fetch( API_URL + 'products' );
+      const response = await fetch( API_URL + 'products1' );
 
     if (!response.ok) {
       throw new Error("Something went wrong");
@@ -54,7 +56,7 @@ class ProductsPage extends Component {
     return (
     <div className='ProductsPage'>
       <img className='ProductsLogo' alt='ProductsLogo' src={ProductsPageLogo} />
-      <Button iconPreview iconAdd />
+      <Button iconAdd iconPreview/>
       <h1 className='productTitle'>Products</h1>
       <ProductsTable products={products} isLoading={isLoading} isError={isError} />
     </div>

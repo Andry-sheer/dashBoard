@@ -8,6 +8,7 @@
   font-family: 'Inter';
   width: 100%;
   border-radius: 12px;
+  padding: 0;
 }
 
 .Button:active {
@@ -15,7 +16,9 @@
 }
 
 
-/* .Button {
+
+
+.two {
   color: #05BC52;
   background: white;
   font-size: 16px;
@@ -27,16 +30,16 @@
   position: relative;
 }
 
-.Button:active {
+.two:active {
   background: #d8d8d8;
 }
 
-.buttonContainerOne {
+.buttonContainerPreview {
   position: absolute;
   left: 70px;
 }
 
-.buttonContainerTwo {
+.buttonContainerAdd {
   position: absolute;
   right: 70px;
 }
@@ -46,4 +49,4 @@
   top: 11px;
   left: 10px;
   color: black;
-} */
+}
