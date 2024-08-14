@@ -6,6 +6,8 @@ import ProductsPageLogo from '../../assets/productsPageLogo.svg';
 import Button from './components/Button/Button';
 import { API_URL } from '../.././constants';
 
+// const product = "products";
+
 class ProductsPage extends Component {
 
   constructor(props) {
