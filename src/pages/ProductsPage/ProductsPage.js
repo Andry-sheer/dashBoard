@@ -4,8 +4,7 @@ import './ProductsPage.css';
 import ProductsTable from './components/ProductsTable/ProductsTable';
 import ProductsPageLogo from '../../assets/productsPageLogo.svg';
 import Button from './components/Button/Button';
-
-
+import { API_URL } from '../.././constants';
 
 class ProductsPage extends Component {
 
@@ -24,7 +23,7 @@ class ProductsPage extends Component {
   
   async getProducts() {
     try {
-      const response = await fetch('https://66401c9ca7500fcf1a9d1857.mockapi.io/products');
+      const response = await fetch( API_URL + 'products' );
 
     if (!response.ok) {
       throw new Error("Something went wrong");

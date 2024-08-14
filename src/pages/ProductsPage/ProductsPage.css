@@ -1,7 +1,7 @@
 .ProductsPage {
+  /* background: #44B26F; */
   min-height: 100vh;
-  height: 100%;
-  background: #44B26F;
+  background: #27302a;
   padding: 90px 70px 110px;
   position: relative;
 }
