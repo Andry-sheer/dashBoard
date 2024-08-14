@@ -1,9 +1,7 @@
 .ProductsTableContainer {
-  box-shadow: 1px 1px 5px black;
   max-width: 1200px;
   margin: 0 auto;
   border-radius: 12px;
-  background: silver;
 }
 
 .productTableTitle {
@@ -15,6 +13,16 @@
 
 .productTableField {
   background: silver;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.productTableField:hover {
+  background: #3CD78C;
+  color: #A58F8F;
+}
+
+.productTableField:last-child {
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }
@@ -48,12 +56,6 @@
   justify-content: center;
 }
 
-.productItem:hover {
-  background: #3CD78C;
-  color: #A58F8F;
-  border-radius: 12px;
-}
-
 .buttonContainerProductTable {
   width: 100%;
 }
@@ -79,3 +81,20 @@
   fill: red;
   transition: linear .1s;
 }
+
+.errorContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  background: silver;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.errorText {
+  font-size: 50px;
+  font-weight: 600;
+  color: red;
+}
+
