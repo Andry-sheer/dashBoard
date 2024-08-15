@@ -5,9 +5,6 @@ import ProductsTable from './components/ProductsTable/ProductsTable';
 import ProductsPageLogo from '../../assets/productsPageLogo.svg';
 import { API_URL } from '../.././constants';
 import Button from '../../components/Button/Button';
-
-
-
 // const product = "products";
 
 class ProductsPage extends Component {
@@ -27,17 +24,17 @@ class ProductsPage extends Component {
   
   async getProducts() {
     try {
-      const response = await fetch( API_URL + 'products1' );
+      const response = await fetch( API_URL + 'products' );
 
     if (!response.ok) {
       throw new Error("Something went wrong");
     }
     
     const productsData = await response.json();
-    
     this.setState({ products: productsData, })
     this.setState({ isLoading: false });
-    console.log(productsData);
+
+
   }
 
   catch (error) {
