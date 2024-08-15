@@ -1,20 +1,63 @@
 
+import { Component } from 'react';
 import './ProductsPage.css';
-import ProductsTable from './components/ProductsTable/ProductsTable';
+// import ProductsTable from './components/ProductsTable/ProductsTable';
 import ProductsPageLogo from '../../assets/productsPageLogo.svg';
-import Button from './components/Button/Button';
+import { API_URL } from '../.././constants';
+import Button from '../../components/Button/Button';
+import ProductsTable from './components/ProductsTable/ProductsTable';
+// const product = "products";
+
+class ProductsPage extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { 
+      products: [],
+      isLoading: true, 
+      isError: false,
+    }
+  }
+
+  componentDidMount(){
+    setTimeout(()=> ( this.getProducts()), 2000) 
+  }
+  
+  async getProducts() {
+    try {
+      const response = await fetch( API_URL + 'products' );
+
+    if (!response.ok) {
+      throw new Error("Something went wrong");
+    }
+    
+    const productsData = await response.json();
+    this.setState({ products: productsData, })
+    this.setState({ isLoading: false });
+  }
+
+  catch (error) {
+    this.setState({
+      isError: true,
+      isLoading: false,
+    });
+  }
+}
 
 
+  render() {
 
-const ProductsPage = () => {
-  return (
+    const { isLoading, isError, products } = this.state;
+
+    return (
     <div className='ProductsPage'>
       <img className='ProductsLogo' alt='ProductsLogo' src={ProductsPageLogo} />
-      <Button iconPreview iconAdd />
+      <Button iconAdd iconPreview/>
       <h1 className='productTitle'>Products</h1>
-      <ProductsTable />
+      <ProductsTable products={products} isLoading={isLoading} isError={isError} />
     </div>
-  )
-};
+    );
+  }
+}
 
 export default ProductsPage;

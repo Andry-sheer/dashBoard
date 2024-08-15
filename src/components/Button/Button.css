@@ -1,4 +1,24 @@
 .Button {
+  color: white;
+  background: #44B26F;
+  height: 56px;
+  font-size: 24px;
+  border: none;
+  font-weight: 600;
+  font-family: 'Inter';
+  width: 100%;
+  border-radius: 12px;
+  padding: 0;
+}
+
+.Button:active {
+  background: #469b66
+}
+
+
+
+
+.two {
   color: #05BC52;
   background: white;
   font-size: 16px;
@@ -10,21 +30,21 @@
   position: relative;
 }
 
-.Button:active {
+.two:active {
   background: #d8d8d8;
 }
 
-.butonContainerOne {
+.buttonContainerPreview {
   position: absolute;
   left: 70px;
 }
 
-.butonContainerTwo {
+.buttonContainerAdd {
   position: absolute;
   right: 70px;
 }
 
-.iconPreview {
+.iconButton {
   position: absolute;
   top: 11px;
   left: 10px;

@@ -7,23 +7,26 @@
   background-color: #d9d9d9;
   font-family: 'Inter';
   margin-bottom: 37px;
-}
-
-.pass {
-  display: flex;
-  text-align: left;
   padding-right: 65px;
 }
+
+.password {
+  display: flex;
+  text-align: left;
+  padding: 20px;
+  padding-right: 65px;
+}
+
+
+.InputContainer {
+  position: relative;
+}
+
 
 .loginInput::placeholder {
   color: #44B26F;
 }
 
-.loginLabel {
-  position: relative;
-  display: flex;
-  flex-flow: column;
-}
 
 .buttonEye {
   width: 30px;
@@ -35,8 +38,4 @@
   background: transparent;
   border: none;
   padding: 0;
-}
-
-.loginEyeHideIcon {
-  display: none;
 }

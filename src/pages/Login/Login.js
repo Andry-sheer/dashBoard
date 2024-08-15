@@ -1,14 +1,14 @@
 
 import './Login.css';
-import Card from './components/Card/Card';
+import Card from '../Login/components/Card/Card';
 
 
-const login = () => {
+const Login = () => {
   return (
-    <div className='Login-page'>
-      <Card />
-      </div>
+    <div className='LoginPage'>
+    <Card />
+  </div>
   )
 }
 
-export default login;
+export default Login;
