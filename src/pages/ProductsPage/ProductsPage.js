@@ -1,10 +1,11 @@
 
 import { Component } from 'react';
 import './ProductsPage.css';
-import ProductsTable from './components/ProductsTable/ProductsTable';
+// import ProductsTable from './components/ProductsTable/ProductsTable';
 import ProductsPageLogo from '../../assets/productsPageLogo.svg';
 import { API_URL } from '../.././constants';
 import Button from '../../components/Button/Button';
+import ProductsTable from './components/ProductsTable/ProductsTable';
 // const product = "products";
 
 class ProductsPage extends Component {
@@ -33,8 +34,6 @@ class ProductsPage extends Component {
     const productsData = await response.json();
     this.setState({ products: productsData, })
     this.setState({ isLoading: false });
-
-
   }
 
   catch (error) {

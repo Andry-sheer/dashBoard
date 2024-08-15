@@ -1,32 +1,26 @@
 import './ProductsTable.css';
-import { Component } from 'react';
 import { BiSortAlt2 } from "react-icons/bi";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import logo from "../../../../logo.svg";
+import spinner from "../../../../assets/spinner.svg";
 
 const sortIcon = <BiSortAlt2 className='sortIcon' size='20px'/>;
 const editIcon = <FaEdit className='editIcon' size='20px'/>;
 const deleteIcon = <MdDelete className='deleteIcon' size='20px' />
 
-class ProductsTable extends Component {
+const ProductsTable = ({ isLoading, isError, products }) => {
 
-  render(){
-
-  const { isLoading, isError, products } = this.props;
-
-  if (isError === true){
+if (isError){
     return (
       <div className='errorContainer'>
         <p className='errorText'>Oops! sorry we have a problem...</p>
         <p className='errorText'>Server: unavailable</p>
-    </div>
-  )}
-
-  else {
+      </div>
+    )
+} else {
   return ( 
   <div className='ProductContainerMain'>
-    { isLoading ? (<img src={logo} className="App-logo" alt="spinner" />)
+    { isLoading ? (<img src={spinner} className="App-logo" alt="spinner" />)
         : ( <div className='ProductsTableContainer'>
         <div className='productTableTitle'>
         <p className='slotName'>ID{sortIcon}</p>
@@ -55,7 +49,7 @@ class ProductsTable extends Component {
           </div>
       </div>))}
   </div>)
-  }}
+  }
 }
 
 export default ProductsTable;
