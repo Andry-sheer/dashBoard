@@ -83,20 +83,17 @@
 }
 
 .errorContainer {
-  max-width: 360px;
-  min-height: 400px;
-  margin: 0 auto;
+  border-radius: 14px;
   background: silver;
-  padding: 0 20px;
-  border-radius: 100%;
-  display: flex;
-  flex-flow: column;
-  gap: 10px;
-  justify-content: center;
+  padding: 50px 0;
+  border: #0EC86F 5px solid;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .errorText {
-  font-size: 35px;
+  font-size: 40px;
   font-weight: 600;
   color: red;
   margin: 0;
