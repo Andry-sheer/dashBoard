@@ -1,0 +1,68 @@
+
+.cardContainer {
+  background: whitesmoke;
+  padding: 20px;
+  flex: 1 1 25%;
+  font-weight: 500;
+  font-family: 'Inter';
+  font-size: 16px;
+  border-radius: 14px;
+  transition: transform .5s;
+  cursor: pointer;
+}
+
+.cardContainer:hover {
+  transform: scale(1.2);
+  box-shadow: 1px 1px 12px black;
+}
+
+.cardImg {
+  width: 100%;
+  border-radius: 14px;
+}
+
+.cardImg {
+  border-radius: 14px;
+}
+
+.cardName {}
+
+.cardContainerInner {
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cardPrice {
+  font-size: 29px;
+  color: #FC5B00;
+  font-weight: 600;
+}
+
+.cardQuantity {}
+
+.cardDelivery {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.cardImgDelivery {
+  width: 30px;
+  height: 30px;
+  fill: #05BC52;
+}
+
+.cardDescription {
+  font-size: 18px;
+  color: #05BC52;
+}
+
+
+
+
+
+
+

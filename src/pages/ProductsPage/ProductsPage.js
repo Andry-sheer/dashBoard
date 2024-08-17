@@ -1,6 +1,6 @@
 
 import './ProductsPage.css';
-import ProductsPageLogo from '../../assets/productsPageLogo.svg';
+import ProductsPageLogo from '../../assets/pagesLogo.svg';
 import Button from '../../components/Button/Button';
 import ProductsTable from './components/ProductsTable/ProductsTable';
 

@@ -1,9 +1,14 @@
 
 import { Component } from 'react';
-import './App.css';
-import ProductsPage from './ProductsPage/ProductsPage';
 import { API_URL } from '../constants';
+import './App.css';
+
 // import Login from './Login/Login';
+// import ProductsPage from './ProductsPage/ProductsPage';
+import ProductPreview from './ProductPreview/ProductPreview';
+
+
+
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +26,7 @@ class App extends Component {
   
   async getProducts() {
     try {
-      const response = await fetch( API_URL + 'products0' );
+      const response = await fetch( API_URL + 'products' );
 
     if (!response.ok) {
       throw new Error("Something went wrong");
@@ -46,7 +51,8 @@ class App extends Component {
     return (
     <div className="App">
       {/* <Login /> */}
-      <ProductsPage products={products} isLoading={isLoading} isError={isError} />
+      {/* <ProductsPage products={products} isLoading={isLoading} isError={isError} /> */}
+      <ProductPreview />
     </div>
     )
 
