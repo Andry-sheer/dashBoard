@@ -7,20 +7,20 @@ import { useState } from 'react';
 
 const Input = ({ PasswordInput }) => {
 
-  const [ isShowPass, setIsHidePass ] = useState(true);
+  const [ isType, setIsType] = useState(true);
 
-  const handleClick = () => {
-    setIsHidePass( prevIsShowPass => !prevIsShowPass );
+  const handleClickShowPassword = () => {
+    setIsType(prevIsType => !prevIsType);
   }
 
   return (
     <div className='InputContainer'>
       <input className='loginInput' type='text' placeholder='User Name' />
-      { PasswordInput && <input className='loginInput password' type='password' placeholder='Password'/>  }
+      { PasswordInput && <input className='loginInput password' type={isType ? "password" : "text"} placeholder='Password'/>  }
 
-      <button onClick={handleClick} className='buttonEye'>
-        {isShowPass ? <IoMdEye size='30px' color='green' /> : 
-        <IoMdEyeOff size='30px' color='green' /> }
+      <button onClick={handleClickShowPassword}  className='buttonEye'>
+        {isType ? <IoMdEye size='30px' title='Show password' color='green' /> : 
+        <IoMdEyeOff size='30px' title='Hide password' color='green' /> }
       </button>
     </div>
   );

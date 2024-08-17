@@ -1,7 +1,7 @@
 
 import './ProductPreview.css';
 import ProductPreviewLogo from '../../assets/pagesLogo.svg'
-import Card from './components/Card/Card';
+import CardPreview from './components/CardPreview/CardPreview';
 
 
 const ProductPreview = () => {
@@ -9,12 +9,12 @@ const ProductPreview = () => {
     <div className='ProductPreviewPage'>
       <img className='ProductPreviewLogo' alt='ProductsLogo' src={ProductPreviewLogo} />
       <div className='ProductPreviewContainer'>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <CardPreview />
+      <CardPreview />
+      <CardPreview />
+      <CardPreview />
+      <CardPreview />
+      <CardPreview />
       </div>
     </div>
   )

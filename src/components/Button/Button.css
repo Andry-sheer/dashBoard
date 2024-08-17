@@ -9,13 +9,13 @@
   width: 100%;
   border-radius: 12px;
   padding: 0;
+  transition: all .2s;
+  cursor: pointer;
 }
 
 .Button:active {
-  background: #469b66
+  transform: scale(.98);
 }
-
-
 
 
 .two {

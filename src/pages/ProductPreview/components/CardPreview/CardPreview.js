@@ -1,10 +1,10 @@
 
-import './Card.css';
+import './CardPreview.css';
 import pcImg from '../../../../assets/lenovo-laptop-y50-cover-6_01 1.png';
 import { BsCartCheckFill }  from "react-icons/bs";
 
 
-const Card = () => {
+const CardPreview = () => {
   return (
     <div className='cardContainer'>
       <img className='cardImg' src={pcImg} alt='cardImage'/>
@@ -21,4 +21,4 @@ const Card = () => {
   )
 }
 
-export default Card;
+export default CardPreview;

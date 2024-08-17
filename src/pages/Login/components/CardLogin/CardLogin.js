@@ -1,12 +1,12 @@
 
-import './Card.css';
+import './CardLogin.css';
 import loginLogo from '../../../../assets/loginLogo.svg';
 import Input from '../../../../components/Input/Input';
 import Button from '../../../../components/Button/Button';
 
-const Card = () => {
+const CardLogin = () => {
   return (
-    <div className='Card'>
+    <div className='CardLogin'>
       <img className='loginLogo' src={ loginLogo }  alt='loginLogo' />
       <Input PasswordInput PassIcon />
       <Button Login/>
@@ -14,4 +14,4 @@ const Card = () => {
   )
 }
 
-export default Card;
+export default CardLogin;
