@@ -17,7 +17,6 @@
 }
 
 .cardImg {
-  width: 100%;
   border-radius: 14px;
 }
 
@@ -25,7 +24,9 @@
   border-radius: 14px;
 }
 
-.cardName {}
+.cardName {
+  margin: 10px 0;
+}
 
 .cardContainerInner {
   display: flex;
@@ -35,9 +36,10 @@
 }
 
 .cardPrice {
-  font-size: 29px;
+  font-size: 20px;
   color: #FC5B00;
   font-weight: 600;
+  margin: 15px 0;
 }
 
 .cardQuantity {}
@@ -50,14 +52,15 @@
 }
 
 .cardImgDelivery {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   fill: #05BC52;
 }
 
 .cardDescription {
-  font-size: 18px;
+  font-size: 16px;
   color: #05BC52;
+  margin: 5px 0;
 }
 
 
