@@ -4,14 +4,16 @@ import pcImg from '../../../../assets/lenovo-laptop-y50-cover-6_01 1.png';
 import { BsCartCheckFill }  from "react-icons/bs";
 
 
-const CardPreview = () => {
+const CardPreview = ({ product }) => {
   return (
-    <div className='cardContainer'>
+    <div className='cardContainer' key={product.id} > 
+      <p className='cardName'>for test INDEX: {product.index}</p>
+      <p className='cardName'>for test ID: {product.id}</p>
       <img className='cardImg' src={pcImg} alt='cardImage'/>
-      <p className='cardName'>notebook Lenovo Y50-70 Aluminum Black</p>
+      <p className='cardName'>{product.name}</p>
       <div className='cardContainerInner'>
-        <p className='cardPrice'>25.000$</p>
-        <p className='cardQuantity'>Quantity: 5</p>
+        <p className='cardPrice'>{product.price}$</p>
+        <p className='cardQuantity'>Quantity: {product.quantity}</p>
       </div>
         <div className='cardDelivery'>
           <BsCartCheckFill className='cardImgDelivery'/>
