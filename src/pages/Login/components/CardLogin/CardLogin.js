@@ -8,7 +8,7 @@ const CardLogin = () => {
   return (
     <div className='CardLogin'>
       <img className='loginLogo' src={ loginLogo }  alt='loginLogo' />
-      <Input PasswordInput PassIcon />
+      <Input passwordInput />
       <Button Login/>
     </div>
   )
