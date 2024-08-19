@@ -1,5 +1,5 @@
 
-import { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { API_URL } from '../constants';
 import './App.css';
 
@@ -7,56 +7,44 @@ import Login from './Login/Login';
 // import ProductsPage from './ProductsPage/ProductsPage';
 // import ProductPreview from './ProductPreview/ProductPreview';
 
+function App() {
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => {
+      getProducts();
+    }, 2000);
+  }, []);
 
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      products: [],
-      isLoading: true, 
-      isError: false,
-    }
-  }
-
-  componentDidMount(){
-    setTimeout(()=> ( this.getProducts()), 2000) 
-  }
-  
-  async getProducts() {
+  const getProducts = async () => {
     try {
-      const response = await fetch( API_URL + 'products' );
+      const response = await fetch(API_URL + 'products');
 
-    if (!response.ok) {
-      throw new Error("Something went wrong");
+      if (!response.ok) {
+        throw new Error("Something Error");
+      }
+
+      const productsData = await response.json();
+      setProducts(productsData);
+      setIsLoading(false);
+    } catch (error) {
+      setIsError(true);
+      setIsLoading(false);
     }
-    
-    const productsData = await response.json();
-    this.setState({ products: productsData, })
-    this.setState({ isLoading: false });
-  }
+  };
 
-  catch (error) {
-    this.setState({
-      isError: true,
-      isLoading: false,
-    });
-  }
-}
-
-  render() {
-    const { isLoading, isError, products } = this.state;
-
-    return (
+  return (
     <div className="App">
       <Login />
       {/* <ProductsPage products={products} isLoading={isLoading} isError={isError} /> */}
       {/* <ProductPreview /> */}
     </div>
-    )
-
-  }
+  );
 }
 
 export default App;
+
+
+
