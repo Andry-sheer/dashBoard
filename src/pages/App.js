@@ -13,10 +13,8 @@ function App() {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
       getProducts();
-    }, 2000);
-  }, []);
+    });
 
   const getProducts = async () => {
     try {

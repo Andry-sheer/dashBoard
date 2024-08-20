@@ -11,31 +11,40 @@ const ProductPreview = () => {
 
   const products = [{
 
-      category: "PC",
-      name: "Lenovo Y50-70 Aluminum Black",
-      quantity: 5,
-      price: 25000,
-      id:[Id++],
-      index:[Index++]
-  },
-  {
     category: "PC",
     name: "Lenovo Y50-70 Aluminum Black",
     quantity: 5,
     price: 25000,
     id:[Id++],
     index:[Index++]
+  },
+  {
+    category: "PC",
+    name: "Lenovo Y50-70 Aluminum Black",
+    quantity: 10,
+    price: 50000,
+    id:[Id++],
+    index:[Index++]
 },
 {
   category: "PC",
   name: "Lenovo Y50-70 Aluminum Black",
-  quantity: 5,
-  price: 25000,
+  quantity: 15,
+  price: 75000,
   id:[Id++],
   index:[Index++]
-}]
+},
+{
+category: "PC",
+  name: "Lenovo Y50-70 Aluminum Black",
+  quantity: 20,
+  price: 100000,
+  id:[Id++],
+  index:[Index++]
+}];
 
-  console.log(products);
+
+console.log(products);
 
   return (
     
