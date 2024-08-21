@@ -9,8 +9,6 @@ import ProductPreview from './ProductPreview/ProductPreview';
 
 function App() {
 
-{/*
-
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -35,8 +33,6 @@ function App() {
       setIsLoading(false);
     }
   };
-
-*/}
 
   return (
     <div className="App">
