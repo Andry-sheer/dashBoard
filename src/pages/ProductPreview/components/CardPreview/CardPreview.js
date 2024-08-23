@@ -7,7 +7,6 @@ import { BsCartCheckFill }  from "react-icons/bs";
 const CardPreview = ({ product }) => {
   return (
     <div className='cardContainer' key={product.id} > 
-      <p className='cardName'>for test INDEX: {product.index}</p>
       <p className='cardName'>for test ID: {product.id}</p>
       <img className='cardImg' src={pcImg} alt='cardImage'/>
       <p className='cardName'>{product.name}</p>
