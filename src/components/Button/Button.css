@@ -30,10 +30,6 @@
   position: relative;
 }
 
-.two:active {
-  background: #d8d8d8;
-}
-
 .buttonContainerPreview {
   position: absolute;
   left: 70px;
