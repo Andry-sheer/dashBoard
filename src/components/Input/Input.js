@@ -15,48 +15,68 @@ const Input = ({ passwordInput }) => {
   const emptyLogPass = 'Login & Password is Empty';
 
   const [ isShowPassword, setIsShowPassword] = useState(true);
+
   const [ isPasswordEmpty, setIsPasswordEmpty] = useState(false);
   const [ isLoginEmpty, setIsLoginEmpty] = useState(false);
+  const [ logPass, setLogPass ] = useState(false);
 
   const [ login, setLogin ] = useState("");
   const [ password, setPassword ] = useState("");
 
-  const [ logPass, setLogPass ] = useState(false);
 
   const handleClickShowPassword = () => {
     setIsShowPassword(prevIsShowPassword=> !prevIsShowPassword);
   }
 
 
-  const handleChange = (event, setState) => {
+  const handleChange = (event) => {
 
-    if(event.target.name === 'name'){
+    const {name, value} = event.target;
+
+    if(name === "login"){
+      setLogin(value);
+      setIsLoginEmpty(false);
+      setLogPass(false)
+
       // isLoginEmpty(false);
-      setIsLoginEmpty({ isLoginEmpty: false})
+      // setState({ isLoginEmpty: false})
     }
 
-    setState(event.target.value);
-    console.log(event.target.value)
+
+
+    if(name === "password"){
+      setPassword(value);
+      setIsPasswordEmpty(false);
+      setLogPass(false);
+    }
+
+    // console.log(event.target.value);
+    
   };
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log({ login, password });
-    if(!login && !password){
-      setLogPass({ logPass: true })
+    
+    if(login.trim() === "" && password.trim() === ""){
+      setLogPass(true);
+      setIsLoginEmpty(false);
+      setIsPasswordEmpty(false);
     }
 
-    if(login.trim() === ""){
-      setIsLoginEmpty({ isLoginEmpty: true})
+    else if(login.trim() === ""){ setIsLoginEmpty(true); }
 
-    }
+    else if(password.trim() === ""){ setIsPasswordEmpty(true) }
 
-    if(password.trim() === ""){
-      setIsPasswordEmpty({ isPasswordEmpty: true})
+    // console.log({ login, password });
+    
+    // const tokenTest = { login, password }
 
-    }
+    // console.log(tokenTest)
   }
+
+
+  console.log();
 
 
   return (
@@ -64,13 +84,13 @@ const Input = ({ passwordInput }) => {
       <form onSubmit={handleSubmit}>
 
       <label>
-        <input className='loginInput' value={login} onChange={(event) => handleChange(event, setLogin)} name='login'  type='text' placeholder='User Name' />
+        <input className='loginInput' value={login} onChange={handleChange} name='login'  type='text' placeholder='User Name' />
         {isLoginEmpty && <p className='ErrorValid'>{emptyLogin}</p> }
       </label>
       
 
       <label>
-        { passwordInput && <input className='loginInput password' value={password} onChange={(event) => handleChange(event, setPassword)} name='password'  type={isShowPassword ? "password" : "text"} placeholder='Password'/>  }
+        { passwordInput && <input className='loginInput password' value={password} onChange={handleChange} name='password'  type={isShowPassword ? "password" : "text"} placeholder='Password'/>  }
         {isPasswordEmpty && <p className='ErrorValid'>{emptyPassword}</p> }
       </label>
 
