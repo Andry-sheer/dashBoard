@@ -49,8 +49,6 @@ const Input = ({ passwordInput }) => {
       setIsPasswordEmpty(false);
       setLogPass(false);
     }
-
-    // console.log(event.target.value);
     
   };
 
@@ -68,15 +66,12 @@ const Input = ({ passwordInput }) => {
 
     else if(password.trim() === ""){ setIsPasswordEmpty(true) }
 
-    // console.log({ login, password });
+
     
-    // const tokenTest = { login, password }
+    const user = { login, password }
 
-    // console.log(tokenTest)
+    console.log(user)
   }
-
-
-  console.log();
 
 
   return (
