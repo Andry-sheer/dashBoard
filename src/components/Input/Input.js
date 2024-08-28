@@ -16,10 +16,10 @@ const Input = ({ loginInput, passwordInput }) => {
 
   return (
     <div className='InputContainer'>
-        {loginInput && <input className='loginInput' name='login' value={login} type='text' placeholder='User Name' />}
+        {loginInput && <input className='loginInput' type='text' placeholder='User Name' />}
 
       <div className='passwordAndButtonEye'>
-        {passwordInput && <input className='loginInput password' name='password' value={password} type={isShowPassword ? "password" : "text"} placeholder='Password'/> }
+        { passwordInput && <input className='loginInput password' type={isShowPassword ? "password" : "text"} placeholder='Password'/> }
           <button onClick={handleClickShowPassword} type='button' className='buttonEye'>
             {isShowPassword ? <IoMdEye size='30px' title='Show password' color='green' /> : 
             <IoMdEyeOff size='30px' title='Hide password' color='green' /> }

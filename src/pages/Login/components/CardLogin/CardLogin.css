@@ -4,6 +4,7 @@
   padding: 80px 105px;
   padding-bottom: 200px;
   border-radius: 12px;
+  position: relative;
 }
 
 .loginLogo {

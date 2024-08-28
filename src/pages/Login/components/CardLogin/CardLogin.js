@@ -38,6 +38,8 @@ const CardLogin = () => {
       setIsPasswordEmpty(false);
       setLogPass(false);
     }
+
+    console.log(setLogin(value))
     
   };
 
@@ -54,31 +56,32 @@ const CardLogin = () => {
     else if(login.trim() === ""){ setIsLoginEmpty(true); }
 
     else if(password.trim() === ""){ setIsPasswordEmpty(true) }
+
+    // console.log({ login, password });
     
     const user = { login, password }
+
+    console.log(user)
 
     if(user.login === 'admin' && user.password === '12345678'){
       localStorage.setItem('jwt' , '3cwn4u9do92jsb0cg6v82e1');
       console.log("test for welcome back - Admin");
     }
-
-    console.log(user)
   }
-
 
   return (
     <div className='CardLogin'>
       <img className='loginLogo' src={ loginLogo }  alt='loginLogo' />
-
       <form onSubmit={handleSubmit}>
-        <Input loginInput  value={login} onChange={handleChange} name='login' />
+
+        <Input loginInput value={login} onChange={handleChange} name='login' />
           {isLoginEmpty && <p className='ErrorValid'>{emptyLogin}</p> }
-        <Input passwordInput  value={password} onChange={handleChange} name='password'  />
+        <Input passwordInput value={password} onChange={handleChange} name='password' />
           {isPasswordEmpty && <p className='ErrorValid'>{emptyPassword}</p> }
         <Button Login/>
           {logPass && <p className='ErrorValid'>{emptyLogPass}</p>}
-      </form>
 
+      </form>
     </div>
   )
 }
