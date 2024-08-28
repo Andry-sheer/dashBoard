@@ -26,21 +26,13 @@ const CardLogin = () => {
       setLogin(value);
       setIsLoginEmpty(false);
       setLogPass(false)
-
-      // isLoginEmpty(false);
-      // setState({ isLoginEmpty: false})
     }
-
-
 
     if(name === "password"){
       setPassword(value);
       setIsPasswordEmpty(false);
       setLogPass(false);
     }
-
-    console.log(setLogin(value))
-    
   };
 
 
@@ -57,7 +49,7 @@ const CardLogin = () => {
 
     else if(password.trim() === ""){ setIsPasswordEmpty(true) }
 
-    // console.log({ login, password });
+    console.log({ login, password });
     
     const user = { login, password }
 
@@ -74,9 +66,9 @@ const CardLogin = () => {
       <img className='loginLogo' src={ loginLogo }  alt='loginLogo' />
       <form onSubmit={handleSubmit}>
 
-        <Input loginInput value={login} onChange={handleChange} name='login' />
+        <Input loginInput onChange={handleChange}  value={login} name='login' />
           {isLoginEmpty && <p className='ErrorValid'>{emptyLogin}</p> }
-        <Input passwordInput value={password} onChange={handleChange} name='password' />
+        <Input passwordInput onChange={handleChange} value={password} name='password' />
           {isPasswordEmpty && <p className='ErrorValid'>{emptyPassword}</p> }
         <Button Login/>
           {logPass && <p className='ErrorValid'>{emptyLogPass}</p>}
