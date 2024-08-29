@@ -48,8 +48,6 @@ const CardLogin = () => {
     else if(login.trim() === ""){ setIsLoginEmpty(true); }
 
     else if(password.trim() === ""){ setIsPasswordEmpty(true) }
-
-    console.log({ login, password });
     
     const user = { login, password }
 
@@ -66,9 +64,9 @@ const CardLogin = () => {
       <img className='loginLogo' src={ loginLogo }  alt='loginLogo' />
       <form onSubmit={handleSubmit}>
 
-        <Input loginInput onChange={handleChange} value={login} name='login' />
+        <Input loginInput onChange={handleChange} value={login} />
           {isLoginEmpty && <p className='ErrorValid'>{emptyLogin}</p> }
-        <Input passwordInput onChange={handleChange} value={password} name='password' />
+        <Input passwordInput onChange={handleChange} value={password} />
           {isPasswordEmpty && <p className='ErrorValid'>{emptyPassword}</p> }
         <Button Login/>
           {logPass && <p className='ErrorValid'>{emptyLogPass}</p>}
