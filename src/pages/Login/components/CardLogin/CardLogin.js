@@ -66,7 +66,7 @@ const CardLogin = () => {
       <img className='loginLogo' src={ loginLogo }  alt='loginLogo' />
       <form onSubmit={handleSubmit}>
 
-        <Input loginInput onChange={handleChange}  value={login} name='login' />
+        <Input loginInput onChange={handleChange} value={login} name='login' />
           {isLoginEmpty && <p className='ErrorValid'>{emptyLogin}</p> }
         <Input passwordInput onChange={handleChange} value={password} name='password' />
           {isPasswordEmpty && <p className='ErrorValid'>{emptyPassword}</p> }
