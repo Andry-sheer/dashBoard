@@ -17,11 +17,14 @@
   padding-right: 65px;
 }
 
-
 .passwordAndButtonEye {
   position: relative;
 }
 
+.passwordAndButtonEye:focus {
+  outline: none;
+  box-shadow: none;
+}
 
 .loginInput::placeholder {
   color: #44B26F;
@@ -31,7 +34,6 @@
   outline: none; 
   box-shadow: #44B26F 1px 0 10px;
 }
-
 
 .buttonEye {
   width: 30px;
@@ -43,5 +45,10 @@
   background: transparent;
   border: none;
   padding: 0;
+}
+
+.buttonEye:focus {
+  outline: none;
+  box-shadow: none;
 }
 

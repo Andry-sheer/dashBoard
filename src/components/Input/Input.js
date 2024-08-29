@@ -5,7 +5,7 @@ import { IoMdEyeOff } from "react-icons/io";
 import { useState } from 'react';
 
 
-const Input = ({ loginInput, onChange, passwordInput }) => {
+const Input = ({ loginInput, name, onChange, passwordInput }) => {
 
   const [ isShowPassword, setIsShowPassword] = useState(true);
 
@@ -16,10 +16,10 @@ const Input = ({ loginInput, onChange, passwordInput }) => {
 
   return (
     <div className='InputContainer'>
-        {loginInput && <input className='loginInput' onChange={onChange} name='login' type='text' placeholder='User Name' />}
+        {loginInput && <input className='loginInput' onChange={onChange} name={name} type='text' placeholder='User Name' />}
 
       <div className='passwordAndButtonEye'>
-        { passwordInput && <input className='loginInput password' onChange={onChange} name='password' type={isShowPassword ? "password" : "text"} placeholder='Password'/> }
+        { passwordInput && <input className='loginInput password' onChange={onChange} name={name} type={isShowPassword ? "password" : "text"} placeholder='Password'/> }
           <button onClick={handleClickShowPassword} type='button' className='buttonEye'>
             {isShowPassword ? <IoMdEye size='30px' title='Show password' color='green' /> : 
             <IoMdEyeOff size='30px' title='Hide password' color='green' /> }

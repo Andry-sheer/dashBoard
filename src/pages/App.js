@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
       getProducts();
-    });
+    }, []);
 
   const getProducts = async () => {
     try {
