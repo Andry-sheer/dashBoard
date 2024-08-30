@@ -25,24 +25,34 @@
   border: none;
   font-weight: 600;
   font-family: 'Inter';
-  padding: 16px 35px 16px 50px;
+  padding: 16px 30px;
   border-radius: 12px;
-  position: relative;
+  position: absolute;
+  left: 200px;
+  top: 90px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.buttonContainerPreview {
+.three {
+  color: #05BC52;
+  background: white;
+  font-size: 16px;
+  border: none;
+  font-weight: 600;
+  font-family: 'Inter';
+  padding: 16px 30px;
+  border-radius: 12px;
   position: absolute;
-  left: 70px;
+  right: 200px;
+  top: 90px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.buttonContainerAdd {
-  position: absolute;
-  right: 70px;
+.two:active, .three:active {
+  transform: scale(.98);
 }
 
-.iconButton {
-  position: absolute;
-  top: 11px;
-  left: 10px;
-  color: black;
-}

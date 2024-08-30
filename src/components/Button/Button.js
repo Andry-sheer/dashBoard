@@ -1,10 +1,7 @@
 import "./Button.css";
 
-
-
-
-const Button = ({  iconAdd, iconPreview, textButton, onClick }) => (
-  <button type='button' className='Button' onClick={onClick} textButton={textButton}></button> );
+const Button = ({ className, type, icon, textButton, onClick }) => (
+  <button type={type} className={className} onClick={onClick}>{icon}{textButton}</button> );
 
 
 

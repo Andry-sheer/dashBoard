@@ -86,7 +86,7 @@ const CardLogin = () => {
           name={"password"}
         />
         {isPasswordEmpty && <p className="ErrorValid">{emptyPassword}</p>}
-        <Button Login />
+        <Button type={'submit'} textButton={'Login'} className={'Button'}/>
         {logPass && <p className="ErrorValid">{emptyLogPass}</p>}
         {isUserInvalid && <p className="ErrorValid">{userInvalid}</p>}
       </form>

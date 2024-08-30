@@ -3,7 +3,7 @@ import { API_URL } from "../constants";
 import "./App.css";
 
 import Login from "./Login/Login";
-// import ProductsPage from './ProductsPage/ProductsPage';
+import ProductsPage from './ProductsPage/ProductsPage';
 // import ProductPreview from './ProductPreview/ProductPreview';
 
 function App() {
@@ -34,8 +34,8 @@ function App() {
 
   return (
     <div className="App">
-      <Login />
-      {/* <ProductsPage products={products} isLoading={isLoading} isError={isError} /> */}
+      {/* <Login /> */}
+      <ProductsPage products={products} isLoading={isLoading} isError={isError} />
       {/* <ProductPreview /> */}
     </div>
   );
