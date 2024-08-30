@@ -70,8 +70,6 @@ const CardLogin = () => {
 
   else {
     localStorage.setItem('jwt' , '3cwn4u9do92jsb0cg6v82e1');
-    console.log(user);
-    console.log("created JWT token");
   }
 };
 
