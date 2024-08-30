@@ -3,8 +3,12 @@ import { useState } from "react";
 import loginLogo from "../../../../assets/loginLogo.svg";
 import Input from "../../../../components/Input/Input";
 import Button from "../../../../components/Button/Button";
+// import { CgProfile } from "react-icons/cg";
+// import { IoMdAdd } from "react-icons/io";
 
 const CardLogin = () => {
+  const textButton = 'Login';
+
   const emptyLogin = "Login is Empty";
   const emptyPassword = "Password is Empty";
   const emptyLogPass = "Login & Password is Empty";
