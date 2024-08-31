@@ -12,13 +12,15 @@
 
 .password {
   display: flex;
-  text-align: left;
   padding: 20px;
   padding-right: 65px;
-}
-
-.passwordAndButtonEye {
-  position: relative;
+  font-size: 15px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  background-color: #d9d9d9;
+  font-family: 'Inter';
+  padding-right: 65px;
 }
 
 .passwordAndButtonEye:focus {
@@ -31,6 +33,15 @@
 }
 
 .loginInput:focus {
+  outline: none; 
+  box-shadow: #44B26F 1px 0 10px;
+}
+
+.password::placeholder {
+  color: #44B26F;
+}
+
+.password:focus {
   outline: none; 
   box-shadow: #44B26F 1px 0 10px;
 }
@@ -50,5 +61,10 @@
 .buttonEye:focus {
   outline: none;
   box-shadow: none;
+}
+
+.passwordContainer {
+  position: relative;
+  margin-bottom: 37px;
 }
 

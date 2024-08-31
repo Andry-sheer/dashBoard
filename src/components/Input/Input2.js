@@ -10,6 +10,8 @@ const Input = ({ loginInput, name, onChange, passwordInput }) => {
     setIsShowPassword((prevIsShowPassword) => !prevIsShowPassword);
   };
 
+  
+
   return (
     <div className="InputContainer">
       {loginInput && (

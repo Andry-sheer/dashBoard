@@ -1,18 +1,21 @@
 import "./CardLogin.css";
 import { useState } from "react";
 import loginLogo from "../../../../assets/loginLogo.svg";
-import Input from "../../../../components/Input/Input";
+// import Input from "../../../../components/Input/Input";
+import Input from "../../../../components/Input/InputTwo";
 import Button from "../../../../components/Button/Button";
-// import { CgProfile } from "react-icons/cg";
-// import { IoMdAdd } from "react-icons/io";
+
+import { IoMdEye } from "react-icons/io";
+import { IoMdEyeOff } from "react-icons/io";
 
 const CardLogin = () => {
-  const textButton = 'Login';
 
   const emptyLogin = "Login is Empty";
   const emptyPassword = "Password is Empty";
   const emptyLogPass = "Login & Password is Empty";
   const userInvalid = "user invalid!";
+
+  const [isShowPassword, setIsShowPassword] = useState(true);
 
   const [isPasswordEmpty, setIsPasswordEmpty] = useState(false);
   const [isLoginEmpty, setIsLoginEmpty] = useState(false);
@@ -21,6 +24,10 @@ const CardLogin = () => {
 
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleClickShowPassword = () => {
+    setIsShowPassword((prevIsShowPassword) => !prevIsShowPassword);
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -73,18 +80,29 @@ const CardLogin = () => {
       <img className="loginLogo" src={loginLogo} alt="loginLogo" />
       <form onSubmit={handleSubmit}>
         <Input
-          loginInput
+          className={"loginInput"}
           onChange={handleChange}
           value={login}
           name={"login"}
+          type={"text"}
+          placeholder={"User"}
         />
         {isLoginEmpty && <p className="ErrorValid">{emptyLogin}</p>}
-        <Input
-          passwordInput
-          onChange={handleChange}
-          value={password}
-          name={"password"}
-        />
+        <div className="passwordContainer">
+          <Input
+            className={"password"}
+            onChange={handleChange}
+            value={password}
+            name={"password"}
+            placeholder={"Password"}
+            type={isShowPassword ? "password" : "text"}
+          />
+            <button type={'button'} className={'buttonEye'} onClick={handleClickShowPassword}>
+              {isShowPassword ? (<IoMdEye size="30px" title="Show password" color="green" />)
+                : ( <IoMdEyeOff size="30px" title="Hide password" color="green" /> )}
+            </button>
+        </div>
+        
         {isPasswordEmpty && <p className="ErrorValid">{emptyPassword}</p>}
         <Button type={'submit'} textButton={'Login'} className={'Button'}/>
         {logPass && <p className="ErrorValid">{emptyLogPass}</p>}
