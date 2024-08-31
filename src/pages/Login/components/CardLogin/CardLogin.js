@@ -86,25 +86,25 @@ const CardLogin = () => {
           type={"text"}
           placeholder={"User"}
         />
-        {isLoginEmpty && <p className="ErrorValid">{emptyLogin}</p>}
-          <Input
-            className={"password"}
-            onChange={handleChange}
-            value={password}
-            name={"password"}
-            placeholder={"Password"}
-            type={isShowPassword ? "password" : "text"}
-          />
-            <button type={'button'} className={'buttonEye'} onClick={handleClickShowPassword}>
-              {isShowPassword ? (<IoMdEye size="30px" title="Show password" color="green" />)
-                : ( <IoMdEyeOff size="30px" title="Hide password" color="green" /> )}
-            </button>
-        
-        {isPasswordEmpty && <p className="ErrorValid">{emptyPassword}</p>}
+
+        <Input
+          className={"password"}
+          onChange={handleChange}
+          value={password}
+          name={"password"}
+          placeholder={"Password"}
+          type={isShowPassword ? "password" : "text"}
+        />
+          <button type={'button'} className={'buttonEye'} onClick={handleClickShowPassword}>
+            {isShowPassword ? (<IoMdEye size="30px" title="Show password" color="green" />)
+              : ( <IoMdEyeOff size="30px" title="Hide password" color="green" /> )}
+          </button>
         <Button type={'submit'} textButton={'Login'} className={'Button'}/>
+      </form>
+        {isLoginEmpty && <p className="ErrorValid">{emptyLogin}</p>}
+        {isPasswordEmpty && <p className="ErrorValid">{emptyPassword}</p>}
         {logPass && <p className="ErrorValid">{emptyLogPass}</p>}
         {isUserInvalid && <p className="ErrorValid">{userInvalid}</p>}
-      </form>
     </div>
   );
 };
