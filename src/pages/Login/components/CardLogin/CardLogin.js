@@ -87,7 +87,6 @@ const CardLogin = () => {
           placeholder={"User"}
         />
         {isLoginEmpty && <p className="ErrorValid">{emptyLogin}</p>}
-        <div className="passwordContainer">
           <Input
             className={"password"}
             onChange={handleChange}
@@ -100,7 +99,6 @@ const CardLogin = () => {
               {isShowPassword ? (<IoMdEye size="30px" title="Show password" color="green" />)
                 : ( <IoMdEyeOff size="30px" title="Hide password" color="green" /> )}
             </button>
-        </div>
         
         {isPasswordEmpty && <p className="ErrorValid">{emptyPassword}</p>}
         <Button type={'submit'} textButton={'Login'} className={'Button'}/>
