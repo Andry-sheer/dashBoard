@@ -1,8 +1,7 @@
 import "./CardLogin.css";
 import { useState } from "react";
 import loginLogo from "../../../../assets/loginLogo.svg";
-// import Input from "../../../../components/Input/Input";
-import Input from "../../../../components/Input/InputTwo";
+import Input from "../../../../components/Input/Input";
 import Button from "../../../../components/Button/Button";
 
 import { IoMdEye } from "react-icons/io";
