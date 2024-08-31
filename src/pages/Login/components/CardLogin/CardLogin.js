@@ -77,7 +77,7 @@ const CardLogin = () => {
   return (
     <div className="CardLogin">
       <img className="loginLogo" src={loginLogo} alt="loginLogo" />
-      <form onSubmit={handleSubmit}>
+      <form className="formLoginPage" onSubmit={handleSubmit}>
         <Input
           className={"loginInput"}
           onChange={handleChange}
