@@ -84,7 +84,7 @@ const CardLogin = () => {
           value={login}
           name={"login"}
           type={"text"}
-          placeholder={"User"}
+          placeholder={"User Name"}
         />
 
         <Input
