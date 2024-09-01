@@ -79,20 +79,20 @@ const CardLogin = () => {
       <img className="loginLogo" src={loginLogo} alt="loginLogo" />
       <form className="formLoginPage" onSubmit={handleSubmit}>
         <Input
-          className={"loginInput"}
+          className="loginInput"
           onChange={handleChange}
           value={login}
-          name={"login"}
-          type={"text"}
-          placeholder={"User Name"}
+          name="login"
+          type="text"
+          placeholder="User Name"
         />
 
         <Input
-          className={"password"}
+          className="password"
           onChange={handleChange}
           value={password}
-          name={"password"}
-          placeholder={"Password"}
+          name="password"
+          placeholder="Password"
           type={isShowPassword ? "password" : "text"}
         />
           <button type={'button'} className={'buttonEye'} onClick={handleClickShowPassword}>
