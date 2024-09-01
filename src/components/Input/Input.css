@@ -6,36 +6,51 @@
   border: none;
   background-color: #d9d9d9;
   font-family: 'Inter';
-  margin-bottom: 37px;
-  padding-right: 65px;
 }
 
 .password {
-  display: flex;
-  text-align: left;
   padding: 20px;
   padding-right: 65px;
+  font-size: 15px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  background-color: #d9d9d9;
+  font-family: 'Inter';
 }
-
-
-.InputContainer {
-  position: relative;
-}
-
 
 .loginInput::placeholder {
   color: #44B26F;
 }
 
+.loginInput:focus {
+  outline: none; 
+  box-shadow: #44B26F 1px 0 10px;
+}
+
+.password::placeholder {
+  color: #44B26F;
+}
+
+.password:focus {
+  outline: none; 
+  box-shadow: #44B26F 1px 0 10px;
+}
 
 .buttonEye {
   width: 30px;
   height: 30px;
   position: absolute;
   right: 20px;
-  top: 112px;
+  bottom: 108px;
   cursor: pointer;
   background: transparent;
   border: none;
   padding: 0;
 }
+
+.buttonEye:focus {
+  outline: none;
+  box-shadow: none;
+}
+

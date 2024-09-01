@@ -1,11 +1,10 @@
+import React, { useState, useEffect } from "react";
+import { API_URL } from "../constants";
+import "./App.css";
 
-import React, { useState, useEffect } from 'react';
-import { API_URL } from '../constants';
-import './App.css';
-
-// import Login from './Login/Login';
+import Login from "./Login/Login";
 // import ProductsPage from './ProductsPage/ProductsPage';
-import ProductPreview from './ProductPreview/ProductPreview';
+// import ProductPreview from './ProductPreview/ProductPreview';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -13,12 +12,12 @@ function App() {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-      getProducts();
-    });
+    getProducts();
+  }, []);
 
   const getProducts = async () => {
     try {
-      const response = await fetch(API_URL + 'products');
+      const response = await fetch(API_URL + "products");
 
       if (!response.ok) {
         throw new Error("Something Error");
@@ -35,14 +34,11 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Login /> */}
+      <Login />
       {/* <ProductsPage products={products} isLoading={isLoading} isError={isError} /> */}
-      <ProductPreview />
+      {/* <ProductPreview /> */}
     </div>
   );
 }
 
 export default App;
-
-
-

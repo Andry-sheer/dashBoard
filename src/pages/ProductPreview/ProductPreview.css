@@ -1,10 +1,9 @@
-
 .ProductPreviewPage {
   background: #44B26F;
   min-height: 100vh;
   padding: 80px 125px;
   position: relative;
-  
+
 }
 
 .ProductPreviewLogo {
@@ -21,8 +20,3 @@
   max-width: 1000px;
   margin: 0 auto;
 }
-
-
-
-
-

@@ -1,8 +1,9 @@
-
 .CardLogin {
   background: #f5f5f5;
   padding: 80px 105px;
   padding-bottom: 200px;
+  border-radius: 12px;
+  position: relative;
 }
 
 .loginLogo {
@@ -11,4 +12,26 @@
 
 .inputLogin {
   margin-bottom: 46px;
+}
+
+.ErrorValid {
+  text-align: center;
+  color: white;
+  background: #b24444;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Inter';
+  padding: 30px 0;
+  margin: 0;
+  position: absolute;
+  left: 0;
+  bottom: 75px;
+  right: 0;
+}
+
+.formLoginPage {
+  display: flex;
+  flex-flow: column;
+  gap: 37px;
+  position: relative;
 }

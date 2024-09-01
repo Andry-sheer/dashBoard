@@ -17,3 +17,20 @@
   margin-bottom: 75px;
   margin-top: 80px;
 }
+
+.iconAdd, .iconPreview {
+  width: 30px;
+  height: 30px;
+}
+
+.iconPreview > svg {
+  width: 30px;
+  height: 30px;
+  color: black;
+}
+
+.iconAdd > svg {
+  width: 30px;
+  height: 30px;
+  color: black;
+}
