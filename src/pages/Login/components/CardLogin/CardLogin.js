@@ -99,7 +99,7 @@ const CardLogin = () => {
             {isShowPassword ? (<IoMdEye size="30px" title="Show password" color="green" />)
               : ( <IoMdEyeOff size="30px" title="Hide password" color="green" /> )}
           </button>
-        <Button type={'submit'} textButton={'Login'} className={'Button'}/>
+        <Button type='submit' textButton='Login' className='Button'/>
       </form>
         {isLoginEmpty && <p className="ErrorValid">{emptyLogin}</p>}
         {isPasswordEmpty && <p className="ErrorValid">{emptyPassword}</p>}
