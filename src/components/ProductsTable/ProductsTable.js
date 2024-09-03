@@ -1,14 +1,8 @@
+
 import "./ProductsTable.css";
-import { BiSortAlt2 } from "react-icons/bi";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
-import spinner from "../../../../assets/spinner.svg";
 
-const sortIcon = <BiSortAlt2 className="sortIcon" size="20px" />;
-const editIcon = <FaEdit className="editIcon" size="20px" />;
-const deleteIcon = <MdDelete className="deleteIcon" size="20px" />;
 
-const ProductsTable = ({ isLoading, isError, products }) => {
+const ProductsTable = ({ spinner, icons, isLoading, isError, products }) => {
   if (isError) {
     return (
       <div className="errorContainer">
@@ -24,11 +18,11 @@ const ProductsTable = ({ isLoading, isError, products }) => {
         ) : (
           <div className="ProductsTableContainer">
             <div className="productTableTitle">
-              <p className="slotName">ID{sortIcon}</p>
-              <p className="slotName">Category{sortIcon}</p>
-              <p className="slotName">Name{sortIcon}</p>
-              <p className="slotName">Quantity{sortIcon}</p>
-              <p className="slotName">Price($){sortIcon}</p>
+              <p className="slotName">ID{icons.sortIcon}</p>
+              <p className="slotName">Category{icons.sortIcon}</p>
+              <p className="slotName">Name{icons.sortIcon}</p>
+              <p className="slotName">Quantity{icons.sortIcon}</p>
+              <p className="slotName">Price($){icons.sortIcon}</p>
               <p className="slotName"></p>
             </div>
           </div>
@@ -44,8 +38,8 @@ const ProductsTable = ({ isLoading, isError, products }) => {
                 <div className="productItem">{product.quantity}</div>
                 <div className="productItem">{product.price}</div>
                 <div className="buttonContainerProductTable">
-                  <button className="buttonEdit">{editIcon}</button>
-                  <button className="buttonDelete">{deleteIcon}</button>
+                  <button className="buttonEdit">{icons.editIcon}</button>
+                  <button className="buttonDelete">{icons.deleteIcon}</button>
                 </div>
               </div>
             </div>

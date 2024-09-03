@@ -95,16 +95,21 @@ const CardLogin = () => {
           placeholder="Password"
           type={isShowPassword ? "password" : "text"}
         />
-          <button type={'button'} className={'buttonEye'} onClick={handleClickShowPassword}>
-            {isShowPassword ? (<IoMdEye size="30px" title="Show password" color="green" />)
-              : ( <IoMdEyeOff size="30px" title="Hide password" color="green" /> )}
-          </button>
+
+        <Button type='button' className='buttonEye' onClick={handleClickShowPassword}
+            icon={ isShowPassword ? <IoMdEye size="30px" title="Show password" color="green" />
+              : <IoMdEyeOff size="30px" title="Hide password" color="green" /> }
+        />
+
         <Button type='submit' textButton='Login' className='Button'/>
+
       </form>
+
         {isLoginEmpty && <p className="ErrorValid">{emptyLogin}</p>}
         {isPasswordEmpty && <p className="ErrorValid">{emptyPassword}</p>}
         {logPass && <p className="ErrorValid">{emptyLogPass}</p>}
         {isUserInvalid && <p className="ErrorValid">{userInvalid}</p>}
+        
     </div>
   );
 };
