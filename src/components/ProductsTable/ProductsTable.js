@@ -17,7 +17,7 @@ const ProductsTable = ({ isLoading, isError, products }) => {
       </div>
     );
   } else {
-    return ( 
+    return (
       <div className="ProductContainerMain">
         {isLoading ? (
           <img src={spinner} className="App-logo" alt="spinner" />
@@ -29,12 +29,12 @@ const ProductsTable = ({ isLoading, isError, products }) => {
               <p className="slotName">Name{sortIcon}</p>
               <p className="slotName">Quantity{sortIcon}</p>
               <p className="slotName">Price($){sortIcon}</p>
-              <p className="slotName"></p> 
+              <p className="slotName"></p>
             </div>
           </div>
         )}
 
-        {products.map((product) => ( 
+        {products.map((product) => (
           <div className="productTableField" key={product.id}>
             <div className="productTableSelect">
               <div className="productItem">
