@@ -4,7 +4,7 @@ import ProductsPageLogo from "../../assets/pagesLogo.svg";
 import Button from "../../components/Button/Button";
 import { IoMdAdd } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
-import ProductsTable from "../../components/ProductsTable/ProductsTable";
+import ProductsTable from "../ProductsPage/components/ProductsTable/ProductsTable";
 
 
 import { BiSortAlt2 } from "react-icons/bi";
