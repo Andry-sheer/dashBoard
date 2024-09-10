@@ -12,7 +12,7 @@ const ProductPreview = ( ) => {
 
   const navigateBack = useNavigate();
 
-  const {productId} = useParams();
+  // const {productId} = useParams();
 
   const handleButtonBack = ()=> {
     navigateBack("/preview-page");
@@ -26,7 +26,7 @@ const ProductPreview = ( ) => {
 
       <div className='productPreviewTitle'>
         <Button onClick={handleButtonBack} className='productPreviewButtonBack' icon={<IoMdArrowRoundBack size='50' />} />
-        <p className='productPreviewDescriptionTitle'>Notebook Lenovo Y50-70 Aluminum Black {productId}</p>
+        <p className='productPreviewDescriptionTitle'>Notebook Lenovo Y50-70 Aluminum Black </p>
       </div>
 
       <div className='productPreviewContainerInner'>

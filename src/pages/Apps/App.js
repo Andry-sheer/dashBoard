@@ -8,6 +8,7 @@ import ProductPreview from "../ProductPreview/ProductPreview";
 import Error from "../Error/Error";
 import PrivateRoute from "../../privateRoute";
 import PreviewPage from "../PreviewPage/PreviewPage";
+import CardPreview from "../PreviewPage/components/CardPreview/CardPreview";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -45,7 +46,7 @@ function App() {
         <Route element={<PrivateRoute/>} >
           <Route path="/product-page" element={<ProductsPage products={products} isLoading={isLoading} isError={isError}/>} />
           <Route path="/preview-page" element={<PreviewPage />} />
-          <Route path="/product-preview/:productId" element={<ProductPreview />} />
+          <Route path="/product-preview/:id" element={<ProductPreview />} />
         </Route>
 
         </Routes>
