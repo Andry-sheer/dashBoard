@@ -10,7 +10,6 @@ import ProductsTable from "../ProductsPage/components/ProductsTable/ProductsTabl
 import { BiSortAlt2 } from "react-icons/bi";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import spinner from "../../assets/spinner.svg";
 
 
 const ProductsPage = ({ products, isLoading, isError }) => {
@@ -33,7 +32,6 @@ const ProductsPage = ({ products, isLoading, isError }) => {
         products={products}
         isLoading={isLoading}
         isError={isError}
-        spinner={spinner}
         icons={icons}
       />
 

@@ -41,7 +41,9 @@
   margin: 15px 0;
 }
 
-.cardQuantity {}
+.cardQuantity {
+  margin: 30px 0;
+}
 
 .cardDelivery {
   display: flex;

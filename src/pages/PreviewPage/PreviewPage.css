@@ -1,0 +1,22 @@
+.PreviewPage {
+  background: #44B26F;
+  min-height: 100vh;
+  padding: 80px 125px;
+  position: relative;
+
+}
+
+.PreviewLogo {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+}
+
+.PreviewContainer {
+  padding: 60px;
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}

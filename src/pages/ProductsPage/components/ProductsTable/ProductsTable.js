@@ -1,6 +1,8 @@
-import "./ProductsTable.css";
 
-const ProductsTable = ({ spinner, icons, isLoading, isError, products }) => {
+import "./ProductsTable.css";
+import BasicSpinner from "../../../../components/Spinner/Spinner";
+
+const ProductsTable = ({ icons, isLoading, isError, products }) => {
   if (isError) {
     return (
       <div className="errorContainer">
@@ -12,7 +14,7 @@ const ProductsTable = ({ spinner, icons, isLoading, isError, products }) => {
     return (
       <div className="ProductContainerMain">
         {isLoading ? (
-          <img src={spinner} className="App-logo" alt="spinner" />
+          <BasicSpinner/>
         ) : (
           <div className="ProductsTableContainer">
             <div className="productTableTitle">

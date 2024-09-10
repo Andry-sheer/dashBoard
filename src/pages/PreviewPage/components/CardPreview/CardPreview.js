@@ -1,12 +1,12 @@
 import "./CardPreview.css";
-import pcImg from "../../../../assets/lenovo-laptop-y50-cover-6_01 1.png";
+import notebook from "../../../../assets/lenovo-laptop-y50-cover-6_01 1.png";
 import { BsCartCheckFill } from "react-icons/bs";
 
 const CardPreview = ({ product }) => {
   return (
     <div className="cardContainer" key={product.id}>
       <p className="cardName">for test ID: {product.id}</p>
-      <img className="cardImg" src={pcImg} alt="cardImage" />
+      <img className="cardImg" src={notebook} alt="cardImage" />
       <p className="cardName">{product.name}</p>
       <div className="cardContainerInner">
         <p className="cardPrice">{product.price}$</p>
