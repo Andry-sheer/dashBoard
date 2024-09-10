@@ -3,10 +3,15 @@ import "./PreviewPage.css";
 import logo from "../../assets/pagesLogo.svg";
 import CardPreview from "./components/CardPreview/CardPreview";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "../../components/Button/Button";
+import { IoChevronBack } from "react-icons/io5";
+
 
 const PreviewPage = () => {
 
-  const { productId } = useParams();
+  const navigate = useNavigate();
 
   const products = [
     {
@@ -29,8 +34,16 @@ const PreviewPage = () => {
       quantity: 5,
       price: 25000,
       id: 3,
-    },
+    }
   ];
+
+  const handleClickCard = () => {
+    navigate("/product-preview");
+  }
+
+  const handleClickBack = () => {
+    navigate("/product-page");
+  }
 
 
   return (
@@ -40,10 +53,12 @@ const PreviewPage = () => {
         alt="logo"
         src={logo}
       />
+
+      <Button type="button" textButton="Product page" onClick={handleClickBack} className="backButtonProductPage" icon={<IoChevronBack size='40' color="black" />} />
+
       <div className="PreviewContainer">
-        
         {products.map((product) => (
-          <CardPreview key={product.id} product={product}  />
+          <CardPreview key={product.id} product={product} onClick={handleClickCard} />
         ))}
       </div>
     </div>

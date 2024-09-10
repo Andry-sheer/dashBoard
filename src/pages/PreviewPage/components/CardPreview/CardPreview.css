@@ -27,22 +27,28 @@
   margin: 10px 0;
 }
 
+.cardCategory {
+  margin: 0;
+  color: #05BC52;
+}
+
 .cardContainerInner {
   display: flex;
   justify-content: center;
   justify-content: space-around;
   align-items: center;
+  margin-top: 10px;
 }
 
 .cardPrice {
   font-size: 20px;
   color: #FC5B00;
   font-weight: 600;
-  margin: 15px 0;
+  margin: 0;
 }
 
 .cardQuantity {
-  margin: 30px 0;
+  margin: 0;
 }
 
 .cardDelivery {

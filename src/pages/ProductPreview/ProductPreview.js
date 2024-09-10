@@ -5,12 +5,18 @@ import Button from "../../components/Button/Button";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import notebook from "../../assets/lenovo-laptop-y50-cover-6_01 1.png";
 import iconCheck from "../../assets/PatchCheck.svg";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 const ProductPreview = ( ) => {
 
+  const navigateBack = useNavigate();
+
   const {productId} = useParams();
+
+  const handleButtonBack = ()=> {
+    navigateBack("/preview-page");
+  }
 
   return(
     <div className='productPreviewContainer'>
@@ -19,7 +25,7 @@ const ProductPreview = ( ) => {
       </div>
 
       <div className='productPreviewTitle'>
-        <Button className='productPreviewButtonBack' icon={<IoMdArrowRoundBack size='50' />} />
+        <Button onClick={handleButtonBack} className='productPreviewButtonBack' icon={<IoMdArrowRoundBack size='50' />} />
         <p className='productPreviewDescriptionTitle'>Notebook Lenovo Y50-70 Aluminum Black {productId}</p>
       </div>
 
