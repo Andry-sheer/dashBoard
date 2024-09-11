@@ -17,10 +17,8 @@
 
 .cardImg {
   border-radius: 14px;
-}
-
-.cardImg {
-  border-radius: 14px;
+  width: 220px;
+  height: 160px;
 }
 
 .cardName {

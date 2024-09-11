@@ -15,6 +15,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
+
+
   useEffect(() => {
     getProducts();
   }, []);

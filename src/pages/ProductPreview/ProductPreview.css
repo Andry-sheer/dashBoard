@@ -3,7 +3,7 @@
 
 .productPreviewHeader {
   background: #44B26F;
-  padding: 20px;
+  padding: 20px 30px;
   display: flex;
   justify-content: left;
 }
@@ -45,8 +45,7 @@
 }
 
 .productPreviewImage {
-  width: 400px;
-  height: 270px;
+  height: 300px;
   border-radius: 12px;
   transition: all .3s;
 }
