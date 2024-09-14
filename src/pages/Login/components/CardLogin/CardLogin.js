@@ -3,7 +3,7 @@ import { useState } from "react";
 import loginLogo from "../../../../assets/loginLogo.svg";
 import Input from "../../../../components/Input/Input";
 import Button from "../../../../components/Button/Button";
-
+import { Link, useNavigate } from "react-router-dom";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 
@@ -23,6 +23,8 @@ const CardLogin = () => {
 
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleClickShowPassword = () => {
     setIsShowPassword((prevIsShowPassword) => !prevIsShowPassword);
@@ -71,8 +73,10 @@ const CardLogin = () => {
       setIsUserInvalid(true);
     } else {
       localStorage.setItem("jwt", "3cwn4u9do92jsb0cg6v82e1");
+      navigate("/product-page");
     }
   };
+
 
   return (
     <div className="CardLogin">

@@ -1,0 +1,20 @@
+
+.ErrorContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  background: #44B26F;
+  align-items: center;
+}
+
+.ErrorImage {
+  width: 400px;
+  height: 100px;
+}
+
+.ErrorDescription {
+  font-size: 45px;
+  color:whitesmoke;
+  margin: 0;
+}

@@ -1,21 +1,23 @@
-import "./ProductPreview.css";
+
+import "./PreviewPage.css";
 import logo from "../../assets/pagesLogo.svg";
+import CardPreview from "./components/CardPreview/CardPreview";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
-import { IoMdArrowRoundBack } from "react-icons/io";
-import iconCheck from "../../assets/PatchCheck.svg";
-import { useNavigate, useParams } from "react-router-dom";
+import { IoChevronBack } from "react-icons/io5";
 import notebook from "../../assets/lenovo-laptop-y50-cover-6_01 1.png";
 import nvidia from "../../assets/nvidia.png";
 import samsung from "../../assets/samsung.avif";
+// import ProductPreview from "../ProductPreview/ProductPreview";
 
-const ProductPreview = () => {
+
+const PreviewPage = () => {
+
   const { id } = useParams();
 
-  const navigateBack = useNavigate();
-
-  const handleButtonBack = () => {
-    navigateBack("/preview-page");
-  };
+  const navigate = useNavigate();
 
   const products = [
     {
@@ -73,96 +75,35 @@ const ProductPreview = () => {
     },
   ];
 
-  const product = products.find((productID) => productID.id === Number(id));
 
-  let img;
 
-  if (product.name === "Lenovo Y50-70 Aluminum Black") {
-    img = (
-      <img
-        className="productPreviewImage"
-        src={product.img.notebook}
-        alt="cardImage"
-      />
-    );
+
+  const handleClickCard = (id) => {
+    navigate(`/product-preview/${id}`);
   }
 
-  if (product.name === "Samsung Odyssey NEO G7") {
-    img = (
-      <img
-        className="productPreviewImage"
-        src={product.img.samsung}
-        alt="cardImage"
-      />
-    );
-  }
-
-  if (product.name === "Nvidia Quadro RTX 4000") {
-    img = (
-      <img
-        className="productPreviewImage"
-        src={product.img.nvidia}
-        alt="cardImage"
-      />
-    );
+  const handleClickBack = () => {
+    navigate("/product-page");
   }
 
   return (
-    <div className="productPreviewContainer">
-      <div className="productPreviewHeader">
-        <img className="productPreviewLogo" src={logo} alt="logo" />
-      </div>
 
-      <div className="productPreviewTitle">
-        <Button
-          onClick={handleButtonBack}
-          className="productPreviewButtonBack"
-          icon={<IoMdArrowRoundBack size="50" />}
-        />
-        <p className="productPreviewDescriptionTitle">{product.name}</p>
-      </div>
+    <div className="PreviewPage">
+      <img
+        className="PreviewLogo"
+        alt="logo"
+        src={logo}
+      />
 
-      <div className="productPreviewContainerInner">
-        <div>{img}</div>
-        <div className="productPreviewContent">
-          <p className="productPreviewStorage">
-            <img
-              className="productPreviewIconCheck"
-              src={iconCheck}
-              alt="iconCheck"
-            />{" "}
-            Storage
-          </p>
-          <p className="productPreviewPrice">{product.price}₴</p>
-          <p className="productPreviewQuantity">Quantity: {product.quantity}</p>
-        </div>
-      </div>
+      <Button type="button" textButton="Product page" onClick={handleClickBack} className="backButtonProductPage" icon={<IoChevronBack size='40' color="black" />} />
 
-      <div className="productPreviewDescriptionTitleInner">
-        Опис:
-        <h1 className="productPreviewDescriptionTitleContent">
-          {product.name}
-        </h1>
-      </div>
-
-      <div className="productPreviewDescription">
-        <div className="productPreviewDescriptionOne">
-          <h2 className="productPreviewDescriptionTwo"> {product.titleOne}</h2>
-          {product.descriptionOne}
-        </div>
-        <div className="productPreviewDescriptionOne">
-          <h2 className="productPreviewDescriptionTwo"> {product.titleTwo}</h2>
-          {product.descriptionTwo}
-        </div>
-        <div className="productPreviewDescriptionOne">
-          <h2 className="productPreviewDescriptionTwo">
-            {product.titleThree}
-          </h2>
-          {product.descriptionThree}
-        </div>
+      <div className="PreviewContainer">
+        {products.map((product) => (
+          <CardPreview key={product.id} product={product} onClick={()=> handleClickCard(product.id)} />
+          ))}
       </div>
     </div>
   );
 };
 
-export default ProductPreview;
+export default PreviewPage;

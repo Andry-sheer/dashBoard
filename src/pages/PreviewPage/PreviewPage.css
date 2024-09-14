@@ -1,0 +1,40 @@
+.PreviewPage {
+  background: #44B26F;
+  min-height: 100vh;
+  padding: 80px 125px;
+  position: relative;
+}
+
+.PreviewLogo {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+}
+
+.PreviewContainer {
+  padding: 80px 60px;
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.backButtonProductPage {
+  background: whitesmoke;
+  border: none;
+  color: #44B26F;
+  transition: all .2s;
+  position: absolute;
+  font-size: 16px;
+  left: 200px;
+  top: 90px;
+  border-radius: 14px;
+  padding: 10px 13px 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.backButtonProductPage:active {
+  transform: scale(0.8);
+}

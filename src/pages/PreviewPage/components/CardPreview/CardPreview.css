@@ -17,14 +17,17 @@
 
 .cardImg {
   border-radius: 14px;
-}
-
-.cardImg {
-  border-radius: 14px;
+  width: 220px;
+  height: 160px;
 }
 
 .cardName {
   margin: 10px 0;
+}
+
+.cardCategory {
+  margin: 0;
+  color: #05BC52;
 }
 
 .cardContainerInner {
@@ -32,16 +35,19 @@
   justify-content: center;
   justify-content: space-around;
   align-items: center;
+  margin: 10px 0;
 }
 
 .cardPrice {
   font-size: 20px;
   color: #FC5B00;
   font-weight: 600;
-  margin: 15px 0;
+  margin: 0;
 }
 
-.cardQuantity {}
+.cardQuantity {
+  margin: 0;
+}
 
 .cardDelivery {
   display: flex;
