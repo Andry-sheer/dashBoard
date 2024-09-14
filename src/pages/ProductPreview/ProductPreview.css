@@ -98,14 +98,15 @@
   display: flex;
   text-align: left;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 
 .productPreviewDescriptionOne {
-  margin: 0;
+  font-size: 18px;
 }
 
 .productPreviewDescriptionTwo {
   font-size: 28px;
+  margin-bottom: 5px;
 }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { API_URL } from "./constants/constants";
-import "./pages/Apps/App.css";
+import "./router.css";
 import Login from "./pages/Login/Login";
 import ProductsPage from "./pages/ProductsPage/ProductsPage";
 import ProductPreview from "./pages/ProductPreview/ProductPreview";
@@ -10,11 +10,10 @@ import PrivateRoute from "./privateRoute";
 import PreviewPage from "./pages/PreviewPage/PreviewPage";
 
 
-function App() {
+const RouterApp = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-
 
 
   useEffect(() => {
@@ -57,4 +56,4 @@ function App() {
   );
 }
 
-export default App;
+export default RouterApp;

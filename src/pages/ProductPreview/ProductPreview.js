@@ -139,7 +139,7 @@ const ProductPreview = () => {
       </div>
 
       <div className="productPreviewDescriptionTitleInner">
-        Descriptions:
+        Опис:
         <h1 className="productPreviewDescriptionTitleContent">
           {product.name}
         </h1>

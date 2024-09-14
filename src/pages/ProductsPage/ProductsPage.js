@@ -5,8 +5,6 @@ import Button from "../../components/Button/Button";
 import { IoMdAdd } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import ProductsTable from "../ProductsPage/components/ProductsTable/ProductsTable";
-
-
 import { BiSortAlt2 } from "react-icons/bi";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
