@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { API_URL } from "../../constants/constants";
-import "./App.css";
-import Login from "../Login/Login";
-import ProductsPage from "../ProductsPage/ProductsPage";
-import ProductPreview from "../ProductPreview/ProductPreview";
-import Error from "../Error/Error";
-import PrivateRoute from "../../privateRoute";
-import PreviewPage from "../PreviewPage/PreviewPage";
-import CardPreview from "../PreviewPage/components/CardPreview/CardPreview";
+import { API_URL } from "./constants/constants";
+import "./pages/Apps/App.css";
+import Login from "./pages/Login/Login";
+import ProductsPage from "./pages/ProductsPage/ProductsPage";
+import ProductPreview from "./pages/ProductPreview/ProductPreview";
+import Error from "./pages/Error/Error";
+import PrivateRoute from "./privateRoute";
+import PreviewPage from "./pages/PreviewPage/PreviewPage";
+
 
 function App() {
   const [products, setProducts] = useState([]);
