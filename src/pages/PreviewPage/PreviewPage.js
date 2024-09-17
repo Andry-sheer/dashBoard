@@ -13,13 +13,12 @@ const PreviewPage = ({ products, isError }) => {
 
   const handleClickCard = (id) => {
     navigate(`/product-preview/${id}`);
+    localStorage.setItem("products", products)
   };
 
   const handleClickBack = () => {
     navigate("/product-page");
   };
-
-  console.log(products)
 
   if (isError){
     return (
