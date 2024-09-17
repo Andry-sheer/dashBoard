@@ -1,10 +1,10 @@
 
 
-import { GET_PRODUCTS } from "../actionTypes"
+import { GET_PRODUCTS, SET_IS_ERROR } from "../actionTypes"
 
 const initialState = {
     productsData: [],
-    isLoading: true,
+    isError: false,
 };
 
 const products = (state = initialState, action) => {
@@ -12,6 +12,10 @@ const products = (state = initialState, action) => {
         case GET_PRODUCTS: {
           const { productsData } = action.payload;
           return { ...state, productsData }; //{ ...state, data: data };
+        }
+        case SET_IS_ERROR: {
+          const { isError } = action.payload;
+          return { ...state, isError };
         }
         default:
           return state;

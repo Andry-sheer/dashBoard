@@ -38,3 +38,27 @@
 .backButtonProductPage:active {
   transform: scale(0.8);
 }
+
+.PreviewLogo2 {
+  position: absolute;
+  width: 400px;
+  height: 100px;
+  top: 45vh;
+  left: calc(50vw - 200px);
+}
+
+.PreviewPageErrorText {
+  font-size: 35px;
+  color: white;
+  position: absolute;
+  top: 55vh;
+  left: calc(50vw - 250px);
+}
+
+.PreviewPageErrorText2 {
+  font-size: 30px;
+  color: white;
+  position: absolute;
+  top: 60vh;
+  left: calc(50vw - 110px);
+}

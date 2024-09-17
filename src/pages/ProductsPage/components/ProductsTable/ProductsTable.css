@@ -1,7 +1,15 @@
+
 .ProductsTableContainer {
   max-width: 1200px;
   margin: 0 auto;
   border-radius: 12px;
+  position: relative;
+}
+
+.productTableSpinnerContainer {
+  position: absolute;
+  top: 50vh;
+  right: 50vw;
 }
 
 .productTableTitle {

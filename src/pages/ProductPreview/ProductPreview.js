@@ -6,6 +6,7 @@ import iconCheck from "../../assets/PatchCheck.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { API_URL } from "../../constants/constants";
+import BasicSpinner from "../../components/Spinner/Spinner";
 
 const ProductPreview = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const ProductPreview = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    getProducts();
+      getProducts();
   }, []);
 
   const getProducts = async () => {
@@ -29,7 +30,7 @@ const ProductPreview = () => {
 
       const productsData = await response.json();
       setProducts(productsData);
-      setIsLoading(false);
+      setIsLoading(false); //true
     } catch (error) {
       setIsError(true);
       setIsLoading(false);
@@ -40,64 +41,92 @@ const ProductPreview = () => {
     navigateBack("/preview-page");
   };
 
-  return (
+  if (isError) {
+    return (
+      <div className="ErrorContainerProductPreview">
+        <img className='ErrorImageProductPreview' src={logo} alt='logo' />
+        <p className="ErrorDescriptionProductPreview">Oops! sorry we have a problem...</p>
+      </div>
+    )
+  }
+
+    else {
+    return (
     <div className="productPreviewContainer">
       <div className="productPreviewHeader">
         <img className="productPreviewLogo" src={logo} alt="logo" />
       </div>
 
-      <div className="productPreviewTitle">
-        <Button
-          onClick={handleButtonBack}
-          className="productPreviewButtonBack"
-          icon={<IoMdArrowRoundBack size="50" />}
-        />
-        <p className="productPreviewDescriptionTitle">{products.name}</p>
-      </div>
+      {isLoading ? (
+        <div className="productPreviewSpinnerContainer">
+          <BasicSpinner />
+        </div>
+      ) : (
+        <>
+          <div className="productPreviewTitle">
+            <Button
+              onClick={handleButtonBack}
+              className="productPreviewButtonBack"
+              icon={<IoMdArrowRoundBack size="50" />}
+            />
+            <p className="productPreviewDescriptionTitle">{products.name}</p>
+          </div>
 
-      <div className="productPreviewContainerInner">
-        <img className="productPreviewImage" src={products.image} alt="img" />
-        <div className="productPreviewContent">
-          <p className="productPreviewStorage">
+          <div className="productPreviewContainerInner">
             <img
-              className="productPreviewIconCheck"
-              src={iconCheck}
-              alt="iconCheck"
-            />{" "}
-            Storage
-          </p>
-          <p className="productPreviewPrice">{products.price}₴</p>
-          <p className="productPreviewQuantity">
-            Quantity: {products.quantity}
-          </p>
-        </div>
-      </div>
+              className="productPreviewImage"
+              src={products.image}
+              alt="img"
+            />
+            <div className="productPreviewContent">
+              <p className="productPreviewStorage">
+                <img
+                  className="productPreviewIconCheck"
+                  src={iconCheck}
+                  alt="iconCheck"
+                />{" "}
+                Storage
+              </p>
+              <p className="productPreviewPrice">{products.price}₴</p>
+              <p className="productPreviewQuantity">
+                Quantity: {products.quantity}
+              </p>
+            </div>
+          </div>
 
-      <div className="productPreviewDescriptionTitleInner">
-        Description:
-        <h1 className="productPreviewDescriptionTitleContent">
-          {products.name}
-        </h1>
-      </div>
+          <div className="productPreviewDescriptionTitleInner">
+            Description:
+            <h1 className="productPreviewDescriptionTitleContent">
+              {products.name}
+            </h1>
+          </div>
 
-      <div className="productPreviewDescription">
-        <div className="productPreviewDescriptionOne">
-          <h2 className="productPreviewDescriptionTwo"> {products.titleOne}</h2>
-          {products.descriptionOne}
-        </div>
-        <div className="productPreviewDescriptionOne">
-          <h2 className="productPreviewDescriptionTwo"> {products.titleTwo}</h2>
-          {products.descriptionTwo}
-        </div>
-        <div className="productPreviewDescriptionOne">
-          <h2 className="productPreviewDescriptionTwo">
-            {products.titleThree}
-          </h2>
-          {products.descriptionThree}
-        </div>
-      </div>
+          <div className="productPreviewDescription">
+            <div className="productPreviewDescriptionOne">
+              <h2 className="productPreviewDescriptionTwo">
+                {" "}
+                {products.titleOne}
+              </h2>
+              {products.descriptionOne}
+            </div>
+            <div className="productPreviewDescriptionOne">
+              <h2 className="productPreviewDescriptionTwo">
+                {" "}
+                {products.titleTwo}
+              </h2>
+              {products.descriptionTwo}
+            </div>
+            <div className="productPreviewDescriptionOne">
+              <h2 className="productPreviewDescriptionTwo">
+                {products.titleThree}
+              </h2>
+              {products.descriptionThree}
+            </div>
+          </div>
+        </>)}
     </div>
-  );
+    );
+  }
 };
 
 export default ProductPreview;

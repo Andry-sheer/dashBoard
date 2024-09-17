@@ -1,12 +1,14 @@
 import "./PreviewPage.css";
 import logo from "../../assets/pagesLogo.svg";
+import logo2 from "../../assets/pagesLogo.svg";
 import CardPreview from "./components/CardPreview/CardPreview";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { IoChevronBack } from "react-icons/io5";
 import { connect } from "react-redux";
+import BasicSpinner from "../../components/Spinner/Spinner";
 
-const PreviewPage = ({ products }) => {
+const PreviewPage = ({ products, isError }) => {
   const navigate = useNavigate();
 
   const handleClickCard = (id) => {
@@ -17,7 +19,23 @@ const PreviewPage = ({ products }) => {
     navigate("/product-page");
   };
 
-  return (
+  console.log(products)
+
+  if (isError){
+    return (
+    <div className="PreviewPage">
+      <img className="PreviewLogo" alt="logo" src={logo} />
+      <div className="PreviewPageErrorContainer">
+        <img className="PreviewLogo2" alt="logo2" src={logo2} />
+        <p className="PreviewPageErrorText">Oops! sorry we have a problem...</p>
+        <p className="PreviewPageErrorText2">"Data is Empty..." <BasicSpinner/></p>
+      </div>
+    </div>
+    )
+    
+  }
+  else {
+      return (
     <div className="PreviewPage">
       <img className="PreviewLogo" alt="logo" src={logo} />
 
@@ -40,10 +58,12 @@ const PreviewPage = ({ products }) => {
       </div>
     </div>
   );
+  }
 };
 
 const mapStateToProps = (state) => ({
   products: state.products.productsData,
+  isError: state.products.isError,
 });
 
 export default connect(mapStateToProps)(PreviewPage);

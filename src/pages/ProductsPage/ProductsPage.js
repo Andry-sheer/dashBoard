@@ -8,10 +8,10 @@ import { IoMdAdd } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import ProductsTable from "../ProductsPage/components/ProductsTable/ProductsTable";
 import { useNavigate } from "react-router-dom";
-import { addProducts } from "../../modules/actions/products";
+import { addProducts, setIsError } from "../../modules/actions/products";
 import { connect } from "react-redux";
 
-const ProductsPage = ( { addProducts } ) => {
+const ProductsPage = ( { addProducts, setIsError } ) => {
 
   const navigatePreview = useNavigate();
 
@@ -19,13 +19,10 @@ const ProductsPage = ( { addProducts } ) => {
     navigatePreview("/preview-page")
   }
 
-
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
 
   useEffect(() => {
-    getProducts();
+      getProducts();
   }, []);
 
   const getProducts = async () => {
@@ -55,11 +52,10 @@ const ProductsPage = ( { addProducts } ) => {
 
       <ProductsTable
         isLoading={isLoading}
-        isError={isError}
       />
 
     </div>
   );
 };
 
-export default connect(null, { addProducts })(ProductsPage);
+export default connect(null, { addProducts, setIsError })(ProductsPage);

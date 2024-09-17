@@ -26,7 +26,7 @@ const ProductsTable = ({ products, isLoading, isError }) => {
     return (
       <div className="ProductContainerMain">
         {isLoading ? (
-          <BasicSpinner/>
+          <div className="productTableSpinnerContainer"><BasicSpinner/></div>
         ) : (
           <div className="ProductsTableContainer">
             <div className="productTableTitle">
@@ -64,6 +64,7 @@ const ProductsTable = ({ products, isLoading, isError }) => {
 
 const mapStateToProps = (state) => ({
     products: state.products.productsData,
+    isError: state.products.isError,
 })
 
 export default connect(mapStateToProps)(ProductsTable);
