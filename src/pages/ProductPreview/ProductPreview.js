@@ -6,27 +6,42 @@ import iconCheck from "../../assets/PatchCheck.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { API_URL } from "../../constants/constants";
-import { connect } from "react-redux";
-import { addProducts } from "../../modules/actions/products";
-
 
 const ProductPreview = () => {
   const { id } = useParams();
   const navigateBack = useNavigate();
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [products, setProducts] = useState([]);
 
+  useEffect(() => {
+    getProducts();
+  }, []);
 
+  const getProducts = async () => {
+    try {
+      const response = await fetch(API_URL + `products/${id}`);
 
+      if (!response.ok) {
+        throw new Error("Something Error");
+      }
 
-
+      const productsData = await response.json();
+      setProducts(productsData);
+      setIsLoading(false);
+    } catch (error) {
+      setIsError(true);
+      setIsLoading(false);
+    }
+  };
 
   const handleButtonBack = () => {
     navigateBack("/preview-page");
   };
 
-
   return (
-        <div className="productPreviewContainer">
+    <div className="productPreviewContainer">
       <div className="productPreviewHeader">
         <img className="productPreviewLogo" src={logo} alt="logo" />
       </div>
@@ -37,11 +52,11 @@ const ProductPreview = () => {
           className="productPreviewButtonBack"
           icon={<IoMdArrowRoundBack size="50" />}
         />
-        <p className="productPreviewDescriptionTitle">{product.name}</p>
+        <p className="productPreviewDescriptionTitle">{products.name}</p>
       </div>
 
       <div className="productPreviewContainerInner">
-        {/* <div>{img}</div> */}
+        <img className="productPreviewImage" src={products.image} alt="img" />
         <div className="productPreviewContent">
           <p className="productPreviewStorage">
             <img
@@ -51,37 +66,38 @@ const ProductPreview = () => {
             />{" "}
             Storage
           </p>
-          <p className="productPreviewPrice">{product.price}₴</p>
-          <p className="productPreviewQuantity">Quantity: {product.quantity}</p>
+          <p className="productPreviewPrice">{products.price}₴</p>
+          <p className="productPreviewQuantity">
+            Quantity: {products.quantity}
+          </p>
         </div>
       </div>
 
       <div className="productPreviewDescriptionTitleInner">
-        Опис:
+        Description:
         <h1 className="productPreviewDescriptionTitleContent">
-          {product.name}
+          {products.name}
         </h1>
       </div>
 
       <div className="productPreviewDescription">
         <div className="productPreviewDescriptionOne">
-          <h2 className="productPreviewDescriptionTwo"> {product.titleOne}</h2>
-          {product.descriptionOne}
+          <h2 className="productPreviewDescriptionTwo"> {products.titleOne}</h2>
+          {products.descriptionOne}
         </div>
         <div className="productPreviewDescriptionOne">
-          <h2 className="productPreviewDescriptionTwo"> {product.titleTwo}</h2>
-          {product.descriptionTwo}
+          <h2 className="productPreviewDescriptionTwo"> {products.titleTwo}</h2>
+          {products.descriptionTwo}
         </div>
         <div className="productPreviewDescriptionOne">
           <h2 className="productPreviewDescriptionTwo">
-            {product.titleThree}
+            {products.titleThree}
           </h2>
-          {product.descriptionThree}
+          {products.descriptionThree}
         </div>
       </div>
     </div>
   );
 };
 
-
-export default connect(null, {addProducts})(ProductPreview);
+export default ProductPreview;

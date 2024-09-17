@@ -6,8 +6,7 @@ const CardPreview = ({ onClick, product }) => {
 
   return (
     <div onClick={onClick} className="cardContainer" key={product.id}>
-      {/* <div>{img}</div> */}
-      {/* <img className="cardImg" src={product.img.note} alt="cardImage" /> */}
+      <img className="cardImg" src={product.image} alt="cardImage" />
       <p className="cardName">{product.name}</p>
       <p className="cardCategory">Category: {product.category}</p>
       <div className="cardContainerInner">

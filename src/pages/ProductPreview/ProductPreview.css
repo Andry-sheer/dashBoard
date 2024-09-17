@@ -103,10 +103,11 @@
 
 .productPreviewDescriptionOne {
   font-size: 18px;
+  line-height: 140%;
 }
 
 .productPreviewDescriptionTwo {
   font-size: 28px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
