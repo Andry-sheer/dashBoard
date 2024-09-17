@@ -1,24 +1,52 @@
 import "./PreviewPage.css";
+import "./PreviewPageMobile/PreviewPageMobile"
 import logo from "../../assets/pagesLogo.svg";
 import logo2 from "../../assets/pagesLogo.svg";
 import CardPreview from "./components/CardPreview/CardPreview";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { IoChevronBack } from "react-icons/io5";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import BasicSpinner from "../../components/Spinner/Spinner";
+import { useState, useEffect } from "react";
+import { API_URL } from "../../constants/constants";
 
-const PreviewPage = ({ products, isError }) => {
+const PreviewPage = () => {
   const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+const getProducts = async () => {
+  try {
+    const response = await fetch(API_URL + "products");
+
+    if (!response.ok) {
+      throw new Error("Something Error");
+    }
+
+    const productsData = await response.json();
+    setProducts(productsData);
+    setIsLoading(false);
+  } catch (error) {
+    setIsError(true);
+    setIsLoading(false);
+  }
+}
 
   const handleClickCard = (id) => {
     navigate(`/product-preview/${id}`);
-    localStorage.setItem("products", products)
   };
 
   const handleClickBack = () => {
     navigate("/product-page");
   };
+
+  console.log(products)
 
   if (isError){
     return (
@@ -37,8 +65,9 @@ const PreviewPage = ({ products, isError }) => {
       return (
     <div className="PreviewPage">
       <img className="PreviewLogo" alt="logo" src={logo} />
-
-      <Button
+      {isLoading ? (<BasicSpinner />) : (
+        <>
+        <Button
         type="button"
         textButton="Product page"
         onClick={handleClickBack}
@@ -55,14 +84,17 @@ const PreviewPage = ({ products, isError }) => {
           />
         ))}
       </div>
+      </>
+      )}
     </div>
   );
   }
 };
 
-const mapStateToProps = (state) => ({
-  products: state.products.productsData,
-  isError: state.products.isError,
-});
+// const mapStateToProps = (state) => ({
+//   products: state.products.productsData,
+//   isError: state.products.isError,
+// });
 
-export default connect(mapStateToProps)(PreviewPage);
+// export default connect(mapStateToProps)(PreviewPage);
+export default PreviewPage;

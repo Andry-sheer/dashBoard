@@ -3,12 +3,26 @@
   min-height: 100vh;
   padding: 90px 70px 110px;
   position: relative;
+
+  @media (max-width: 400px) {
+    
+  }
 }
+
+
 
 .ProductsLogo {
   position: absolute;
   top: 20px;
   left: 30px;
+
+  @media (max-width: 400px) {
+    top: 30px;
+    left:50%;
+    transform:translate(-50%, -50%);
+    height: 50px;
+    width: 200px;
+  }
 }
 
 .productTitle {

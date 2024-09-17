@@ -6,8 +6,18 @@
   position: relative;
 }
 
+  @media (max-width: 400px) {
+    .CardLogin {
+      padding: 30px 15px;
+    }
+}
+
 .loginLogo {
   margin-bottom: 85px;
+
+  @media (max-width: 400px) {
+    margin-bottom: 40px;
+  }
 }
 
 .inputLogin {

@@ -1,0 +1,65 @@
+
+.PreviewPage {
+  background: #44B26F;
+  min-height: 100vh;
+  padding: 80px 125px;
+  position: relative;
+}
+
+.PreviewLogo {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+}
+
+.PreviewContainer {
+  padding: 80px 60px;
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.backButtonProductPage {
+  background: whitesmoke;
+  border: none;
+  color: #44B26F;
+  transition: all .2s;
+  position: absolute;
+  font-size: 16px;
+  left: 200px;
+  top: 90px;
+  border-radius: 14px;
+  padding: 10px 13px 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.backButtonProductPage:active {
+  transform: scale(0.8);
+}
+
+.PreviewLogo2 {
+  position: absolute;
+  width: 400px;
+  height: 100px;
+  top: 45vh;
+  left: calc(50vw - 200px);
+}
+
+.PreviewPageErrorText {
+  font-size: 35px;
+  color: white;
+  position: absolute;
+  top: 55vh;
+  left: calc(50vw - 250px);
+}
+
+.PreviewPageErrorText2 {
+  font-size: 30px;
+  color: white;
+  position: absolute;
+  top: 60vh;
+  left: calc(50vw - 110px);
+}

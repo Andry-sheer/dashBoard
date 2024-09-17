@@ -1,0 +1,36 @@
+
+.WelcomeContainer {
+  height: 100vh;
+  background: #44B26F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+}
+
+.WelcomeTitle {
+  height: 10px;
+  width: calc(100px + 50vmin);
+}
+
+
+@media (max-width: 400px) {
+  .WelcomeTitle {
+    margin-bottom: 140px;
+    height: 100px;
+  }
+
+  .WelcomeImage {
+    margin-top: 180px;
+    width: calc(100px + 50vmin);
+    height: 100px;
+  }
+}
+
+
+.WelcomeImage {
+  width: calc(100px + 50vmin);
+  height: 100px;
+}
