@@ -1,0 +1,98 @@
+
+@media (max-width: 400px) {
+  .PreviewPage {
+    position: relative;
+    background: #44B26F;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .PreviewPageHeader {
+    padding: 30px;
+    width: 100%;
+    background: #44B26F;
+    position: fixed;
+    z-index: 5;
+    border-bottom: 1px solid rgb(255, 255, 255);
+  }
+
+  .PreviewPageSpinner {
+    position: absolute;
+    top: 45vh;
+    left: calc(50vw - 20px);
+    width: 40px;
+    height: 40px;
+  }
+
+  .PreviewLogo {
+    position: fixed;
+    width: 180px;
+    height: 30px;
+    top: 30px;
+    left: 50%;
+    transform:translate(-50%, -50%);
+  }
+
+  .PreviewContainer {
+    padding-top: 100px;
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .backButtonProductPage {
+    background: white;
+    border: none;
+    transition: all .2s;
+    position: absolute;
+    font-size: 16px;
+    left: 5px;
+    top: 10px;
+    border-radius: 14px;
+    padding: 0 5px 0 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .backButtonProductPage:active {
+    background: white;
+    transform: scale(1);
+  }
+
+  .backIcon {
+    width: 40px;
+    height: 40px;
+    color: black;
+  }
+
+  .backButtonProductPageTitle {
+    display: none;
+  }
+
+  .PreviewPageErrorContainer {
+    display: flex;
+    background: #44B26F;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  .PreviewLogo2 {
+    width: 200px;
+    height: 40px;
+  }
+  
+  .PreviewPageErrorText {
+    font-size: 18px;
+    color: white;
+  }
+  
+  .PreviewPageErrorText2 {
+    font-size: 18px;
+    color: white;
+  }
+}

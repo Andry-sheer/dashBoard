@@ -1,10 +1,10 @@
 import "./PreviewPage.css";
-import "./PreviewPageMobile/PreviewPageMobile"
+import "../../mobile/PreviewPage/PreviewPageMobile.css";
 import logo from "../../assets/pagesLogo.svg";
 import logo2 from "../../assets/pagesLogo.svg";
 import CardPreview from "./components/CardPreview/CardPreview";
 import { useNavigate } from "react-router-dom";
-import Button from "../../components/Button/Button";
+import ButtonX from "../../components/Button/Button";
 import { IoChevronBack } from "react-icons/io5";
 // import { connect } from "react-redux";
 import BasicSpinner from "../../components/Spinner/Spinner";
@@ -16,6 +16,8 @@ const PreviewPage = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+
+  const buttontext = "Product Page"
 
   useEffect(() => {
     getProducts();
@@ -46,17 +48,12 @@ const getProducts = async () => {
     navigate("/product-page");
   };
 
-  console.log(products)
-
   if (isError){
     return (
-    <div className="PreviewPage">
-      <img className="PreviewLogo" alt="logo" src={logo} />
       <div className="PreviewPageErrorContainer">
         <img className="PreviewLogo2" alt="logo2" src={logo2} />
         <p className="PreviewPageErrorText">Oops! sorry we have a problem...</p>
-        <p className="PreviewPageErrorText2">"Data is Empty..." <BasicSpinner/></p>
-      </div>
+        <p className="PreviewPageErrorText2">"Data is Empty..."</p>
     </div>
     )
     
@@ -64,17 +61,13 @@ const getProducts = async () => {
   else {
       return (
     <div className="PreviewPage">
-      <img className="PreviewLogo" alt="logo" src={logo} />
-      {isLoading ? (<BasicSpinner />) : (
-        <>
-        <Button
-        type="button"
-        textButton="Product page"
-        onClick={handleClickBack}
-        className="backButtonProductPage"
-        icon={<IoChevronBack size="40" color="black" />}
-      />
+      <header className="PreviewPageHeader">
+        <img className="PreviewLogo" alt="logo" src={logo} />        
+        <ButtonX type="button" icon={<IoChevronBack className="backIcon" />} textButton={<p className="backButtonProductPageTitle">Product Page</p>} onClick={handleClickBack} className="backButtonProductPage" />
+      </header>
 
+      {isLoading ? (<div className="PreviewPageSpinner"><BasicSpinner/></div>) : (
+      <>
       <div className="PreviewContainer">
         {products.map((product) => (
           <CardPreview

@@ -1,5 +1,6 @@
 
-import "./ProductsTable.css";
+import "./ProductsTable.css"; 
+import "../../../../mobile/ProductTable/ProductTableMobile.css";
 import { connect } from "react-redux";
 import BasicSpinner from "../../../../components/Spinner/Spinner";
 import { BiSortAlt2 } from "react-icons/bi";
@@ -24,21 +25,21 @@ const ProductsTable = ({ products, isLoading, isError }) => {
     );
   } else {
     return (
-      <div className="ProductContainerMain">
-        {isLoading ? (
-          <div className="productTableSpinnerContainer"><BasicSpinner/></div>
+      <>
+      {isLoading ? ( <div className="productTableSpinnerContainer"><BasicSpinner/></div> 
         ) : (
           <div className="ProductsTableContainer">
             <div className="productTableTitle">
-              <p className="slotName">ID{icons.sortIcon}</p>
-              <p className="slotName">Category{icons.sortIcon}</p>
-              <p className="slotName">Name{icons.sortIcon}</p>
-              <p className="slotName">Quantity{icons.sortIcon}</p>
-              <p className="slotName">Price($){icons.sortIcon}</p>
-              <p className="slotName"></p>
+              <div className="slotName">ID<div className="slotIcon">{icons.sortIcon}</div> </div>
+              <div className="slotName">Category<div className="slotIcon">{icons.sortIcon}</div> </div>
+              <div className="slotName">Name<div className="slotIcon">{icons.sortIcon}</div> </div>
+              <div className="slotName">Quantity<div className="slotIcon">{icons.sortIcon}</div> </div>
+              <div className="slotName">Price($)<div className="slotIcon">{icons.sortIcon}</div> </div>
+              <div className="slotName"></div>
             </div>
           </div>
-        )}
+          )
+        }
 
         {products.map((product) => (
           <div className="productTableField" key={product.id}>
@@ -57,7 +58,7 @@ const ProductsTable = ({ products, isLoading, isError }) => {
             </div>
           </div>
         ))}
-      </div>
+    </>
     );
   }
 };

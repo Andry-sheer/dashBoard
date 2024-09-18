@@ -14,7 +14,7 @@ const Welcome = () => {
   };
 
   return (
-    <div className="WelcomeContainer" breakpoints={['xs']}>
+    <div className="WelcomeContainer">
       <img className="WelcomeImage" src={WelcomeLogo} alt="LOGO" />
       <div className="WelcomeTitle"></div>
         <Button onClick={handleClickWelcome} variant="primary">Get Started</Button>

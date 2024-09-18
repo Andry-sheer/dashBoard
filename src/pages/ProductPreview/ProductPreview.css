@@ -6,7 +6,9 @@
 .productPreviewSpinnerContainer {
   position: absolute;
   top: 50vh;
-  left: 50vw;
+  left: calc(50vw - 20px);
+  width: 40px;
+  height: 40px;
 }
 
 .productPreviewHeader {
@@ -20,6 +22,14 @@
   background: transparent;
   border: none;
   transition: all .2s;
+}
+
+.PreviewButtonIcon {
+  background: transparent;
+}
+
+.productPreviewButtonBackMobile {
+  display: none;
 }
 
 .productPreviewButtonBack:active {
@@ -41,7 +51,7 @@
 
 .productPreviewContainerInner {
   display: flex;
-  padding: 40px;
+  padding: 0 40px;
   gap: 80px;
 }
 
@@ -55,7 +65,6 @@
 .productPreviewImage {
   height: 300px;
   border-radius: 12px;
-  transition: all .3s;
 }
 
 .productPreviewImage img {
@@ -73,6 +82,12 @@
 .productPreviewIconCheck {
   width: 30px;
   height: 30px;
+}
+
+.PreviewStorageContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .productPreviewPrice {

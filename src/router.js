@@ -8,15 +8,12 @@ import Error from "./pages/Error/Error";
 import PrivateRoute from "./privateRoute";
 import PreviewPage from "./pages/PreviewPage/PreviewPage";
 import Welcome from "./pages/Welcome/Welcome";
-import ThemeProvider from 'react-bootstrap/ThemeProvider'
 
 
 
 const RouterApp = () => {
 
   return (
-    <ThemeProvider breakpoints={['xs']}
-    minBreakpoint="xxs">
     <div className="App">
       <BrowserRouter>
         <Routes>
@@ -34,7 +31,6 @@ const RouterApp = () => {
       </BrowserRouter>
       
     </div>
-    </ThemeProvider>
   );
 }
 

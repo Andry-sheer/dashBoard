@@ -1,7 +1,10 @@
+
 import "./ProductPreview.css";
+import "../../mobile/ProductPreview/ProductPreviewMobile.css";
 import logo from "../../assets/pagesLogo.svg";
-import Button from "../../components/Button/Button";
+import ButtonX from "../../components/Button/Button";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { IoChevronBack } from "react-icons/io5";
 import iconCheck from "../../assets/PatchCheck.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -64,10 +67,16 @@ const ProductPreview = () => {
       ) : (
         <>
           <div className="productPreviewTitle">
-            <Button
+            <ButtonX
               onClick={handleButtonBack}
               className="productPreviewButtonBack"
-              icon={<IoMdArrowRoundBack size="50" />}
+              icon={<IoMdArrowRoundBack className="PreviewButtonIcon" size="50" />}
+            />
+
+            <ButtonX
+              onClick={handleButtonBack}
+              className="productPreviewButtonBackMobile"
+              icon={<IoChevronBack className="PreviewButtonIconMobile" size="40" />}
             />
             <p className="productPreviewDescriptionTitle">{products.name}</p>
           </div>
@@ -79,14 +88,17 @@ const ProductPreview = () => {
               alt="img"
             />
             <div className="productPreviewContent">
-              <p className="productPreviewStorage">
-                <img
+              <div className="PreviewStorageContainer">
+              <img
                   className="productPreviewIconCheck"
                   src={iconCheck}
                   alt="iconCheck"
-                />{" "}
+                />
+              <p className="productPreviewStorage">
                 Storage
               </p>
+              </div>
+
               <p className="productPreviewPrice">{products.price}₴</p>
               <p className="productPreviewQuantity">
                 Quantity: {products.quantity}

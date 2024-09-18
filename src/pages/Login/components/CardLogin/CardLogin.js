@@ -1,9 +1,10 @@
 import "./CardLogin.css";
+import "../../../../mobile/Login/LoginMobile.css";
 import { useState } from "react";
 import loginLogo from "../../../../assets/loginLogo.svg";
 import Input from "../../../../components/Input/Input";
-import Button from "../../../../components/Button/Button";
-import { Link, useNavigate } from "react-router-dom";
+import ButtonX from "../../../../components/Button/Button";
+import { useNavigate } from "react-router-dom";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 
@@ -100,12 +101,12 @@ const CardLogin = () => {
           type={isShowPassword ? "password" : "text"}
         />
 
-        <Button type='button' className='buttonEye' onClick={handleClickShowPassword}
+        <ButtonX type='button' className='buttonEye' onClick={handleClickShowPassword}
             icon={ isShowPassword ? <IoMdEye size="30px" title="Show password" color="green" />
               : <IoMdEyeOff size="30px" title="Hide password" color="green" /> }
         />
 
-        <Button type='submit' textButton='Login' className='Button'/>
+        <ButtonX type='submit' textButton='Login' className='buttonLogin'/>
 
       </form>
 
