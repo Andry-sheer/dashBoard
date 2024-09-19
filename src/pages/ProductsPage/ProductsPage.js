@@ -2,38 +2,29 @@
 import { useState, useEffect } from "react";
 import { API_URL } from "../../constants/constants";
 import "./ProductsPage.css";
+import "../../mobile/ProductsPage/ProductsPageMobile.css";
+import "../../mobile/ProductTable/ProductTableMobile.css";
 import ProductsPageLogo from "../../assets/pagesLogo.svg";
-import Button from "../../components/Button/Button";
+import ButtonX from "../../components/Button/Button";
 import { IoMdAdd } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import ProductsTable from "../ProductsPage/components/ProductsTable/ProductsTable";
-import { BiSortAlt2 } from "react-icons/bi";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { addProducts, setIsError } from "../../modules/actions/products";
+import { connect } from "react-redux";
 
-
-const ProductsPage = () => {
+const ProductsPage = ( { addProducts, setIsError } ) => {
 
   const navigatePreview = useNavigate();
 
-  const handleButtonPreview = ()=> {
+  const handleButtonPreview = () => {
     navigatePreview("/preview-page")
   }
 
-  const icons = {
-    sortIcon: <BiSortAlt2 className="sortIcon" size="20px" />,
-    editIcon: <FaEdit className="editIcon" size="20px" />,
-    deleteIcon: <MdDelete className="deleteIcon" size="20px" />,
-  }
-
-  const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
 
   useEffect(() => {
-    getProducts();
+      getProducts();
   }, []);
 
   const getProducts = async () => {
@@ -45,8 +36,8 @@ const ProductsPage = () => {
       }
 
       const productsData = await response.json();
-      setProducts(productsData);
-      setIsLoading(false);
+      addProducts(productsData);
+      setIsLoading(false ); // true        
     } catch (error) {
       setIsError(true);
       setIsLoading(false);
@@ -57,19 +48,16 @@ const ProductsPage = () => {
   return (
     <div className="ProductsPage">
       <img className="ProductsLogo" alt="ProductsLogo" src={ProductsPageLogo} />
-      <Button onClick={handleButtonPreview} type='button' className='two' textButton='Preview' icon={<div className="iconPreview"><CgProfile/></div>} />
-      <Button type='button' className='three' textButton='Add Product' icon={<div className="iconAdd"><IoMdAdd/></div>} />
+      <ButtonX onClick={handleButtonPreview} type='button' className='buttonPreview' textButton='Preview' icon={<div className="iconPreview"><CgProfile/></div>} />
+      <ButtonX type='button' className='buttonAdd' textButton='Add Product' icon={<div className="iconAdd"><IoMdAdd/></div>} />
       <h1 className="productTitle">Products</h1>
 
       <ProductsTable
-        products={products}
         isLoading={isLoading}
-        isError={isError}
-        icons={icons}
       />
 
     </div>
   );
 };
 
-export default ProductsPage;
+export default connect(null, { addProducts, setIsError })(ProductsPage);

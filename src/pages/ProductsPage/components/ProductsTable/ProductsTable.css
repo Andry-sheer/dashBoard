@@ -1,7 +1,9 @@
+
 .ProductsTableContainer {
   max-width: 1200px;
   margin: 0 auto;
   border-radius: 12px;
+  position: relative;
 }
 
 .productTableTitle {
@@ -17,27 +19,16 @@
   max-width: 1200px;
 }
 
-.productTableField:hover {
-  background: #3CD78C;
-  color: #A58F8F;
-}
-
 .productTableField:last-child {
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }
 
-.sortIcon {
+.slotIcon {
   position: absolute;
-}
+  top: 0;
+  right: 0;
 
-.slotName {
-  position: relative;
-  width: 100%;
-  font-weight: 600;
-  font-family: 'Inter';
-  font-size: 18px;
-  margin: 15px 0;
 }
 
 .productTableSelect {
@@ -45,14 +36,6 @@
   flex-direction: column;
   font-weight: 600;
   font-family: 'Inter';
-}
-
-.productItem {
-  width: 100%;
-  padding: 5px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .buttonContainerProductTable {

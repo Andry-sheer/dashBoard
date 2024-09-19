@@ -1,0 +1,21 @@
+
+.WelcomeContainer {
+  height: 100vh;
+  background: #44B26F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+}
+
+.WelcomeTitle {
+  height: 10px;
+  width: calc(100px + 50vmin);
+}
+
+.WelcomeImage {
+  width: calc(100px + 50vmin);
+  height: 100px;
+}

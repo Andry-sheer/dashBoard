@@ -5,14 +5,27 @@
   position: relative;
 }
 
+.PreviewPageSpinner {
+  position: absolute;
+  top: 50vh;
+  left: calc(50vw - 20px);
+  width: 40px;
+  height: 40px;
+}
+
+
 .PreviewLogo {
   position: absolute;
   top: 20px;
   left: 30px;
 }
 
+.PreviewMobileTitle {
+  display: none;
+}
+
 .PreviewContainer {
-  padding: 80px 60px;
+  padding: 90px 60px;
   display: flex;
   gap: 60px;
   flex-wrap: wrap;
@@ -35,6 +48,48 @@
   align-items: center;
 }
 
+.backButtonProductPage:hover {
+  background: whitesmoke;
+}
+
 .backButtonProductPage:active {
   transform: scale(0.8);
+  background: whitesmoke;
+}
+
+.backButtonProductPageTitle {
+  color: #44B26F;
+  margin: 0;
+}
+
+.backIcon {
+  width: 40px;
+  height: 40px;
+  color: black;
+}
+
+.PreviewPageErrorContainer {
+  display: flex;
+  background: #44B26F;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.PreviewLogo2 {
+  width: 400px;
+  height: 100px;
+}
+
+.PreviewPageErrorText {
+  font-size: 35px;
+  color: white;
+  margin: 0;
+}
+
+.PreviewPageErrorText2 {
+  font-size: 30px;
+  color: white;
+  margin: 0;
 }

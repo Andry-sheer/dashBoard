@@ -1,5 +1,6 @@
 
 import './Error.css';
+import "../../mobile/Error/ErrorMobile.css";
 import logo from '../../assets/pagesLogo.svg'
 
 const Error = () => (

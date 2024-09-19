@@ -1,0 +1,101 @@
+
+.productTableSpinnerContainer {
+  position: fixed;
+  top: 50vh;
+  right: 50vw;
+}
+
+.slotName {
+  position: relative;
+  width: 100%;
+  font-weight: 600;
+  font-family: 'Inter';
+  font-size: 18px;
+  margin: 15px 0;
+}
+
+.productTableField:hover {
+  background: #3CD78C;
+  color: #A58F8F;
+}
+
+.productItem {
+  width: 100%;
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*****************************************************/
+
+@media (max-width: 400px) {
+    .ProductsTableContainer {
+  }
+
+  .productTableTitle {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid black;
+  }
+
+  .slotIcon {
+    display: none;
+  }
+
+    .ProductsPage {
+    padding: 50px 0 20px;
+    position: relative;
+  }
+
+    .slotName {
+    font-size: 15px;
+    width: 100%;
+  }
+
+  .slotName:first-child {
+    padding-left: 15px;
+  }
+
+  .slotName:last-child {
+    display: none;
+  }
+  
+  .slotName:nth-child(5) {
+    margin-right: 30px;
+  }
+
+  .productTableField {
+    border-bottom: 1px solid black;
+  }
+
+  .productTableField:hover {
+    background: silver;
+    color: black;
+  }
+
+  .productItem {
+    width: 330px;
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .buttonContainerProductTable {
+    display: none;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  .buttonEdit, .buttonDelete {
+    display: none;
+  }
+
+    .productTableSpinnerContainer {
+    position: fixed;
+    top: 50%;
+    right: calc(50% - 15px);
+  }
+}

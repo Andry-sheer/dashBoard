@@ -1,0 +1,29 @@
+
+@media (max-width: 400px) {
+    .CardLogin {
+      padding: 30px 15px;
+    }
+
+    .loginLogo {
+      margin-bottom: 40px;
+  }
+
+    .ErrorValid {
+      font-size: 18px;
+      padding: 30px 0;
+      position: absolute;
+      left: 0;
+      bottom: -120px;
+      right: 0;
+      border-radius: 12px;
+  }
+
+  .formLoginPage {
+    display: flex;
+    flex-flow: column;
+    gap: 37px;
+    position: relative;
+  }
+}
+
+
