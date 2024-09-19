@@ -54,7 +54,7 @@ const ProductsTable = ({ products, isLoading, isError }) => {
         )}
 
         {products.map((product) => {
-          const Handlers = CreateSwipeHandlers(product.id); // Создаем обработчики свайпов для каждого продукта
+          const Handlers = CreateSwipeHandlers(product.id);
 
           return (
             <div {...Handlers} className="productTableField" key={product.id}>
