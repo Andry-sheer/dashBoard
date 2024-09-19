@@ -7,6 +7,8 @@ import ProductPreview from "./pages/ProductPreview/ProductPreview";
 import Error from "./pages/Error/Error";
 import PrivateRoute from "./privateRoute";
 import PreviewPage from "./pages/PreviewPage/PreviewPage";
+import Welcome from "./pages/Welcome/Welcome";
+
 
 
 const RouterApp = () => {
@@ -16,6 +18,7 @@ const RouterApp = () => {
       <BrowserRouter>
         <Routes>
           <Route path="*" element={<Error/>} />
+          <Route path="/" element={<Welcome/>} />
           <Route path="/login" element={<Login />} />
 
         <Route element={<PrivateRoute/>} >
@@ -26,6 +29,7 @@ const RouterApp = () => {
 
         </Routes>
       </BrowserRouter>
+      
     </div>
   );
 }
