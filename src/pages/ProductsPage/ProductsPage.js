@@ -2,8 +2,6 @@
 import { useState, useEffect } from "react";
 import { API_URL } from "../../constants/constants";
 import "./ProductsPage.css";
-import "../../mobile/ProductsPage/ProductsPageMobile.css";
-import "../../mobile/ProductTable/ProductTableMobile.css";
 import ProductsPageLogo from "../../assets/pagesLogo.svg";
 import ButtonX from "../../components/Button/Button";
 import { IoMdAdd } from "react-icons/io";

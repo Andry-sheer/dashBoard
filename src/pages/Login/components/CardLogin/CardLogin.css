@@ -44,3 +44,25 @@
   gap: 37px;
   position: relative;
 }
+
+/********* MOBILE ****************/
+
+@media (max-width: 400px) { 
+  .CardLogin {
+    padding: 15px;
+  }
+
+  .loginLogo {
+    margin-bottom: 40px;
+  }
+
+  .ErrorValid {
+    font-size: 18px;
+    padding: 30px 0;
+    position: absolute;
+    left: 0;
+    bottom: -110px;
+    right: 0;
+    border-radius: 12px;
+  }
+}

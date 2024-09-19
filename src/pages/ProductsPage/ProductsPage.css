@@ -78,3 +78,73 @@
 .buttonPreview:active {
   transform: scale(0.9);
 }
+
+/********** MOBILE *****************/
+
+
+@media (max-width: 400px) {
+  .ProductsLogo {
+  top: 20px;
+  left:50%;
+  transform:translate(-50%);
+  height: 50px;
+  width: 220px;
+}
+
+  .productTitle {
+  font-size: 30px;
+  margin: 50px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.iconAdd, .iconPreview {
+  width: 30px;
+  height: 30px;
+}
+
+.iconPreview > svg {
+  width: 30px;
+  height: 30px;
+  color: black;
+}
+
+  .iconAdd > svg {
+  width: 30px;
+  height: 30px;
+  color: black;
+}
+
+  .buttonPreview {
+  font-size: 0;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  position: absolute;
+  left: 80%;
+  top: 93px;
+  transition: all .2s;
+  display: block;
+}
+
+  .buttonAdd {
+  font-size: 0;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  position: absolute;
+  top: 93px;
+  right: 80%;
+  transition: all .2s;
+  display: block;
+}
+
+.buttonPreview:active {
+  transform: scale(0.9);
+}
+
+.buttonAdd:active {
+  transform: scale(0.9);
+}
+}
+

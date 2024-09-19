@@ -1,6 +1,5 @@
 
 import "./ProductPreview.css";
-import "../../mobile/ProductPreview/ProductPreviewMobile.css";
 import logo from "../../assets/pagesLogo.svg";
 import ButtonX from "../../components/Button/Button";
 import { IoMdArrowRoundBack } from "react-icons/io";

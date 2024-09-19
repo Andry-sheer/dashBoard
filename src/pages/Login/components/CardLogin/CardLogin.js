@@ -1,5 +1,4 @@
 import "./CardLogin.css";
-import "../../../../mobile/Login/LoginMobile.css";
 import { useState } from "react";
 import loginLogo from "../../../../assets/loginLogo.svg";
 import Input from "../../../../components/Input/Input";

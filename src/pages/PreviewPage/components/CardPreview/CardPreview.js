@@ -1,6 +1,5 @@
 
 import "./CardPreview.css";
-import "../../../../mobile/CardPreviewMobile/CardPreviewMobile.css";
 import { BsCartCheckFill } from "react-icons/bs";
 
 const CardPreview = ({ onClick, product }) => {

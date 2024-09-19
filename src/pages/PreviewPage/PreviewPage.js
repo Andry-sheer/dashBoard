@@ -1,5 +1,4 @@
 import "./PreviewPage.css";
-import "../../mobile/PreviewPage/PreviewPageMobile.css";
 import logo from "../../assets/pagesLogo.svg";
 import logo2 from "../../assets/pagesLogo.svg";
 import CardPreview from "./components/CardPreview/CardPreview";
@@ -16,8 +15,6 @@ const PreviewPage = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-
-  const buttontext = "Product Page"
 
   useEffect(() => {
     getProducts();

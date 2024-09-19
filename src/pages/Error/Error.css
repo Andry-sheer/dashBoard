@@ -18,3 +18,16 @@
   color:whitesmoke;
   margin: 0;
 }
+
+/**************** MOBILE ******************/
+
+@media (max-width: 400px) {
+  .ErrorImage {
+  width: 250px;
+  height: 50px;
+}
+
+  .ErrorDescription {
+  font-size: 20px;
+}
+}

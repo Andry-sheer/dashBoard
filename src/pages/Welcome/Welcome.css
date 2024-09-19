@@ -19,3 +19,18 @@
   width: calc(100px + 50vmin);
   height: 100px;
 }
+
+/********* MOBILE *****************/
+
+@media (max-width: 400px) {
+  .WelcomeTitle {
+    margin-bottom: 140px;
+    height: 100px;
+  }
+
+  .WelcomeImage {
+    margin-top: 180px;
+    width: calc(100px + 50vmin);
+    height: 100px;
+  }
+}

@@ -1,6 +1,5 @@
 
 import "./Welcome.css";
-import "../../mobile/Welcome/WelcomeMobile.css";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import WelcomeLogo from "../../assets/pagesLogo.svg";

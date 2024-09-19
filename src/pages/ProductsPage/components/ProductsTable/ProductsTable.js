@@ -1,6 +1,5 @@
 
 import "./ProductsTable.css"; 
-import "../../../../mobile/ProductTable/ProductTableMobile.css";
 import { connect } from "react-redux";
 import BasicSpinner from "../../../../components/Spinner/Spinner";
 import { BiSortAlt2 } from "react-icons/bi";
