@@ -20,6 +20,21 @@
   height: 100px;
 }
 
+.buttonStart {
+  background-color: #44B26F;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  border: solid 1px white;
+  transition: all .2s;
+}
+
+.buttonStart:active {
+  transform: scale(0.9);
+}
+
 /********* MOBILE *****************/
 
 @media (max-width: 400px) {

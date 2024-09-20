@@ -13,6 +13,11 @@
   border: none;
   color: white;
   font-size: 23px;
+  transition: all .2s;
+}
+
+.buttonLogin:active {
+  transform: scale(0.9);
 }
 
 .loginLogo {
