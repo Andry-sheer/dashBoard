@@ -21,7 +21,6 @@
 .productPreviewButtonBack {
   background: transparent;
   border: none;
-  transition: all .2s;
 }
 
 .PreviewButtonIcon {
@@ -30,10 +29,6 @@
 
 .productPreviewButtonBackMobile {
   display: none;
-}
-
-.productPreviewButtonBack:active {
-  transform: scale(0.9);
 }
 
 .productPreviewTitle {
@@ -211,10 +206,6 @@
 
   .backButtonProductPage {
     display: none;
-  }
-  
-  .backButtonProductPage:active {
-    transform: scale(0.8);
   }
 
   .productPreviewTitle {

@@ -77,7 +77,7 @@
   border: none;
 }
 
-.buttonEdit:active>.editIcon {
+.buttonEdit:active > .editIcon {
   fill: blue;
 }
 
@@ -88,7 +88,7 @@
   margin-left: 5px;
 }
 
-.buttonDelete:active>.deleteIcon {
+.buttonDelete:active > .deleteIcon {
   fill: red;
   transition: linear .1s;
 }
@@ -113,9 +113,6 @@
 /********** MOBILE ***************************/
 
 @media (max-width: 400px) {
-    .ProductsTableContainer {
-  }
-
   .productTableTitle {
     display: flex;
     gap: 20px;
