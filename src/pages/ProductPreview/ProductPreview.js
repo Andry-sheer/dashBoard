@@ -1,7 +1,7 @@
 
 import "./ProductPreview.css";
 import logo from "../../assets/pagesLogo.svg";
-import Button from "../../components/Button/Button";
+import MyButton from "../../components/MyButton/MyButton";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { IoChevronBack } from "react-icons/io5";
 import iconCheck from "../../assets/PatchCheck.svg";
@@ -66,13 +66,13 @@ const ProductPreview = () => {
       ) : (
         <>
           <div className="productPreviewTitle">
-            <Button
+            <MyButton
               onClick={handleButtonBack}
               className="productPreviewButtonBack"
               icon={<IoMdArrowRoundBack className="PreviewButtonIcon" size="50" />}
             />
 
-            <Button
+            <MyButton
               onClick={handleButtonBack}
               className="productPreviewButtonBackMobile"
               icon={<IoChevronBack className="PreviewButtonIconMobile" size="40" />}
