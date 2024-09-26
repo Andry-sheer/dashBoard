@@ -1,96 +1,34 @@
 
-.ProductsTableContainer {
-  max-width: 1200px;
-  margin: 0 auto;
-  border-radius: 12px;
-  position: relative;
+.MuiTableRow-head {
+  background: white;
+}
+
+.MuiTableRow-root:hover {
+  background: #3CD78C;
+}
+
+.MuiTableCell-body {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.editButton, .deleteButton {
+  color: black;
+  transition: linear .1s;
+}
+
+.editButton:active {
+  color: blue;
+}
+
+.deleteButton:active {
+  color: red;
 }
 
 .productTableSpinnerContainer {
   position: fixed;
-  top: 50vh;
-  right: 50vw;
-}
-
-.slotName {
-  position: relative;
-  width: 100%;
-  font-weight: 600;
-  font-family: 'Inter';
-  font-size: 18px;
-  margin: 15px 0;
-}
-
-
-.productItem {
-  width: 100%;
-  padding: 5px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.productTableTitle {
-  display: flex;
-  background: #0EC86F;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-}
-
-.productTableField {
-  background: silver;
-  margin: 0 auto;
-  max-width: 1200px;
-}
-
-.productTableField:last-child {
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
-}
-
-.productTableField:hover {
-  background: #3CD78C;
-  color: #A58F8F;
-}
-
-.slotIcon {
-  position: absolute;
-  top: 0;
-  right: 0;
-
-}
-
-.productTableSelect {
-  display: flex;
-  flex-direction: column;
-  font-weight: 600;
-  font-family: 'Inter';
-}
-
-.buttonContainerProductTable {
-  width: 100%;
-}
-
-.buttonEdit {
-  cursor: pointer;
-  background: transparent;
-  border: none;
-}
-
-.buttonEdit:active > .editIcon {
-  fill: blue;
-}
-
-.buttonDelete {
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  margin-left: 5px;
-}
-
-.buttonDelete:active > .deleteIcon {
-  fill: red;
-  transition: linear .1s;
+  top: 50%;
+  left: calc(50% - 30px);
 }
 
 .errorContainer {
