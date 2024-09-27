@@ -14,10 +14,6 @@ import { MdDelete } from "react-icons/md";
 import { BiSolidEdit } from "react-icons/bi";
 
 const BasicTable = ({ products, isLoading, isError, onDeleteModal }) => {
-  const styleTwo = {
-    paddingLeft: "3px",
-    paddingRight: "3px",
-  };
 
   if (isError) {
     return (
@@ -42,11 +38,11 @@ const BasicTable = ({ products, isLoading, isError, onDeleteModal }) => {
                   paddingLeft: "0px",
                   paddingRight: "0px",
                   fontFamily: "Inter",
-                },
+                }, "& .MuiTableCell-head": { borderBottom: 0 }
               }}
               aria-label="simple table"
             >
-              <TableHead>
+              <TableHead sx={{"& .MuiTableHead-root":{ borderBottom : 0}}}>
                 <TableRow style={{ background: "#0EC86F" }}>
                   <TableCell sx={{ fontWeight: "600" }} align="center">
                     ID
@@ -73,7 +69,6 @@ const BasicTable = ({ products, isLoading, isError, onDeleteModal }) => {
                 {products.map((product) => (
                   <TableRow
                     key={product.id}
-                    style={styleTwo}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell align="center" component="th" scope="row">
