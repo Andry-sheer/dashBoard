@@ -20,6 +20,11 @@
   transform: scale(0.9);
 }
 
+.buttonLogin:focus {
+  outline: none; 
+  box-shadow: #44B26F 1px 0 10px;
+}
+
 .loginLogo {
   margin-bottom: 50px;
 }

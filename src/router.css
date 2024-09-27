@@ -1,7 +1,7 @@
 
 button {
-  font-family: "Inter";
   font-weight: 600;
+  font-family: "Inter";
   transition: all .2s;
 }
 

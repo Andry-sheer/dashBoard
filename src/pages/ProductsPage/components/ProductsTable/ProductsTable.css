@@ -6,6 +6,11 @@
   background: #3cd78c;
 }
 
+
+.MuiTableRow-head {
+  background: white;
+}
+
 .MuiTableCell-body {
   padding-left: 5px;
   padding-right: 5px;

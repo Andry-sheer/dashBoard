@@ -104,9 +104,7 @@ const CardLogin = () => {
             icon={ isShowPassword ? <IoMdEye size="30px" title="Show password" color="green" />
               : <IoMdEyeOff size="30px" title="Hide password" color="green" /> }
         />
-
         <MyButton type='submit' textButton='Login' className='buttonLogin'/>
-
       </form>
 
         {isLoginEmpty && <p className="ErrorValid">{emptyLogin}</p>}
