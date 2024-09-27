@@ -16,10 +16,13 @@ const ProductPreview = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [products, setProducts] = useState([]);
+  const [isLoadProducts, setIsLoadProducts] = useState(false);
 
   useEffect(() => {
-    getProducts();
-  }, []);
+    if (!isLoadProducts) {
+      getProducts();
+    }
+  }, [isLoadProducts]);
 
   const getProducts = async () => {
     try {
@@ -31,7 +34,8 @@ const ProductPreview = () => {
 
       const productsData = await response.json();
       setProducts(productsData);
-      setIsLoading(false); //true
+      setIsLoading(false);
+      setIsLoadProducts(true);
     } catch (error) {
       setIsError(true);
       setIsLoading(false);
