@@ -1,10 +1,14 @@
-
 .MuiTableRow-head {
   background: white;
 }
 
 .MuiTableRow-root:hover {
-  background: #3CD78C;
+  background: #3cd78c;
+}
+
+
+.MuiTableRow-head {
+  background: white;
 }
 
 .MuiTableCell-body {
@@ -12,9 +16,10 @@
   padding-right: 5px;
 }
 
-.editButton, .deleteButton {
+.editButton,
+.deleteButton {
   color: black;
-  transition: linear .1s;
+  transition: linear 0.1s;
 }
 
 .editButton:active {
@@ -35,7 +40,7 @@
   border-radius: 14px;
   background: silver;
   padding: 50px 0;
-  border: #0EC86F 5px solid;
+  border: #0ec86f 5px solid;
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
@@ -57,16 +62,16 @@
     border-bottom: 1px solid black;
   }
 
-  .slotIcon {
+  .TableCellMobile:last-child {
     display: none;
   }
 
-    .ProductsPage {
+  .ProductsPage {
     padding: 50px 0 20px;
     position: relative;
   }
 
-    .slotName {
+  .slotName {
     font-size: 15px;
     width: 100%;
   }
@@ -78,7 +83,7 @@
   .slotName:last-child {
     display: none;
   }
-  
+
   .slotName:nth-child(5) {
     margin-right: 30px;
   }
@@ -107,11 +112,12 @@
     z-index: -1;
   }
 
-  .buttonEdit, .buttonDelete {
+  .buttonEdit,
+  .buttonDelete {
     display: none;
   }
 
-    .productTableSpinnerContainer {
+  .productTableSpinnerContainer {
     position: fixed;
     top: 50%;
     right: calc(50% - 15px);
@@ -121,13 +127,13 @@
     border-radius: 14px;
     background: silver;
     padding: 20px 0;
-    border: #0EC86F 5px solid;
+    border: #0ec86f 5px solid;
     max-width: 320px;
     margin: 0 auto;
     margin-top: 150px;
     text-align: center;
   }
-  
+
   .errorText {
     font-size: 18px;
     font-weight: 600;

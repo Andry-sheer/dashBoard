@@ -1,32 +1,23 @@
-
 import "./ProductsTable.css";
 import { connect } from "react-redux";
 import BasicSpinner from "../../../../components/Spinner/Spinner";
-import { BiSortAlt2 } from "react-icons/bi";
-import { FaEdit } from "react-icons/fa";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
 import { MdDelete } from "react-icons/md";
-import { useSwipeable } from "react-swipeable";
+import { BiSolidEdit } from "react-icons/bi";
 
-const ProductsTable = ({ products, isLoading, isError }) => {
-
-  const icons = {
-    sortIcon: <BiSortAlt2 className="sortIcon" size="20px" />,
-    editIcon: <FaEdit className="editIcon" size="20px" />,
-    deleteIcon: <MdDelete className="deleteIcon" size="20px" />,
+const BasicTable = ({ products, isLoading, isError, onDeleteModal }) => {
+  const styleTwo = {
+    paddingLeft: "3px",
+    paddingRight: "3px",
   };
-
-  const handleSwipeRight = (productId) => {
-    alert(`EDIT ID: ${productId}`);
-  };
-
-  const handleSwipeLeft = (productId) => {
-    alert(`DELETE ID: ${productId}`);
-  };
-
-  const CreateSwipeHandlers = (productId) => useSwipeable({
-    onSwipedLeft: () => handleSwipeLeft(productId),
-    onSwipedRight: () => handleSwipeRight(productId),
-  });
 
   if (isError) {
     return (
@@ -39,41 +30,82 @@ const ProductsTable = ({ products, isLoading, isError }) => {
     return (
       <>
         {isLoading ? (
-          <div className="productTableSpinnerContainer"><BasicSpinner/></div>
-        ) : (
-          <div className="ProductsTableContainer">
-            <div className="productTableTitle">
-              <div className="slotName">ID<div className="slotIcon">{icons.sortIcon}</div></div>
-              <div className="slotName">Category<div className="slotIcon">{icons.sortIcon}</div></div>
-              <div className="slotName">Name<div className="slotIcon">{icons.sortIcon}</div></div>
-              <div className="slotName">Quantity<div className="slotIcon">{icons.sortIcon}</div></div>
-              <div className="slotName">Price($)<div className="slotIcon">{icons.sortIcon}</div></div>
-              <div className="slotName"></div>
-            </div>
+          <div className="productTableSpinnerContainer">
+            <BasicSpinner />
           </div>
+        ) : (
+          <TableContainer style={{ borderRadius: "12px" }} component={Paper}>
+            <Table
+              sx={{
+                minWidth: 400,
+                "& .MuiTableCell-body": {
+                  paddingLeft: "0px",
+                  paddingRight: "0px",
+                  fontFamily: "Inter",
+                },
+              }}
+              aria-label="simple table"
+            >
+              <TableHead>
+                <TableRow style={{ background: "#0EC86F" }}>
+                  <TableCell sx={{ fontWeight: "600" }} align="center">
+                    ID
+                  </TableCell>
+                  <TableCell sx={{ fontWeight: "600" }} align="center">
+                    Category
+                  </TableCell>
+                  <TableCell sx={{ fontWeight: "600" }} align="center">
+                    Name
+                  </TableCell>
+                  <TableCell sx={{ fontWeight: "600" }} align="center">
+                    Quantity
+                  </TableCell>
+                  <TableCell sx={{ fontWeight: "600" }} align="center">
+                    Price(₴)
+                  </TableCell>
+                  <TableCell
+                    className="TableCellMobile"
+                    align="center"
+                  ></TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {products.map((product) => (
+                  <TableRow
+                    key={product.id}
+                    style={styleTwo}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell align="center" component="th" scope="row">
+                      {product.id}
+                    </TableCell>
+                    <TableCell align="center">{product.category}</TableCell>
+                    <TableCell align="center">{product.name}</TableCell>
+                    <TableCell align="center">{product.quantity}</TableCell>
+                    <TableCell align="center">{product.price}</TableCell>
+
+                    <TableCell className="TableCellMobile" align="center">
+                      <Tooltip title="Edit">
+                        <IconButton aria-label="delete">
+                          <BiSolidEdit className="editButton" />
+                        </IconButton>
+                      </Tooltip>
+
+                      <Tooltip title="Delete">
+                        <IconButton
+                          onClick={() => onDeleteModal(product)}
+                          aria-label="delete"
+                        >
+                          <MdDelete className="deleteButton" />
+                        </IconButton>
+                      </Tooltip>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         )}
-
-        {products.map((product) => {
-          const Handlers = CreateSwipeHandlers(product.id);
-
-          return (
-            <div {...Handlers} className="productTableField" key={product.id}>
-              <div className="productTableSelect">
-                <div className="productItem">
-                  <div className="productItem">{product.id}</div>
-                  <div className="productItem">{product.category}</div>
-                  <div className="productItem">{product.name}</div>
-                  <div className="productItem">{product.quantity}</div>
-                  <div className="productItem">{product.price}</div>
-                  <div className="buttonContainerProductTable">
-                    <button className="buttonEdit">{icons.editIcon}</button>
-                    <button className="buttonDelete">{icons.deleteIcon}</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
       </>
     );
   }
@@ -84,4 +116,4 @@ const mapStateToProps = (state) => ({
   isError: state.products.isError,
 });
 
-export default connect(mapStateToProps)(ProductsTable);
+export default connect(mapStateToProps)(BasicTable);

@@ -3,7 +3,7 @@ import logo from "../../assets/pagesLogo.svg";
 import logo2 from "../../assets/pagesLogo.svg";
 import CardPreview from "./components/CardPreview/CardPreview";
 import { useNavigate } from "react-router-dom";
-import ButtonX from "../../components/Button/Button";
+import MyButton from "../../components/MyButton/MyButton";
 import { IoChevronBack } from "react-icons/io5";
 // import { connect } from "react-redux";
 import BasicSpinner from "../../components/Spinner/Spinner";
@@ -60,7 +60,11 @@ const getProducts = async () => {
     <div className="PreviewPage">
       <header className="PreviewPageHeader">
         <img className="PreviewLogo" alt="logo" src={logo} />        
-        <ButtonX type="button" icon={<IoChevronBack className="backIcon" />} textButton={<p className="backButtonProductPageTitle">Product Page</p>} onClick={handleClickBack} className="backButtonProductPage" />
+        <MyButton type="button" 
+          icon={<IoChevronBack className="backIcon" />} 
+          textButton={<p className="backButtonProductPageTitle">Product Page</p>} 
+          onClick={handleClickBack} className="backButtonProductPage" 
+        />
       </header>
 
       {isLoading ? (<div className="PreviewPageSpinner"><BasicSpinner/></div>) : (
