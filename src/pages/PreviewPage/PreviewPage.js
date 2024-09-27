@@ -5,7 +5,6 @@ import CardPreview from "./components/CardPreview/CardPreview";
 import { useNavigate } from "react-router-dom";
 import MyButton from "../../components/MyButton/MyButton";
 import { IoChevronBack } from "react-icons/io5";
-// import { connect } from "react-redux";
 import BasicSpinner from "../../components/Spinner/Spinner";
 import { useState, useEffect } from "react";
 import { API_URL } from "../../constants/constants";
@@ -22,7 +21,7 @@ const PreviewPage = () => {
 
 const getProducts = async () => {
   try {
-    const response = await fetch(API_URL + "products");
+    const response = await fetch(`${API_URL}/products`);
 
     if (!response.ok) {
       throw new Error("Something Error");

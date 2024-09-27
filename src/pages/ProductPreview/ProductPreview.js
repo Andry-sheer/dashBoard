@@ -16,17 +16,14 @@ const ProductPreview = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [products, setProducts] = useState([]);
-  const [isLoadProducts, setIsLoadProducts] = useState(false);
 
   useEffect(() => {
-    if (!isLoadProducts) {
       getProducts();
-    }
-  }, [isLoadProducts]);
+  }, []);
 
   const getProducts = async () => {
     try {
-      const response = await fetch(API_URL + `products/${id}`);
+      const response = await fetch(`${API_URL}/products/${id}`);
 
       if (!response.ok) {
         throw new Error("Something Error");
@@ -35,7 +32,6 @@ const ProductPreview = () => {
       const productsData = await response.json();
       setProducts(productsData);
       setIsLoading(false);
-      setIsLoadProducts(true);
     } catch (error) {
       setIsError(true);
       setIsLoading(false);
