@@ -47,8 +47,10 @@ const BasicTable = ({ products, isLoading, isError, onDeleteModal }) => {
               aria-label="simple table"
             >
               <TableHead>
-                <TableRow style={{ background: "#0EC86F" }}>
-                  <TableCell sx={{ fontWeight: "600" }} align="center">
+                <TableRow sx={{ "& .MuiTableCell-head": {
+                    borderBottom: "0px"
+                  } }} style={{ background: "#0EC86F" }}>
+                  <TableCell sx={{ fontWeight: "600"  }} align="center">
                     ID
                   </TableCell>
                   <TableCell sx={{ fontWeight: "600" }} align="center">
