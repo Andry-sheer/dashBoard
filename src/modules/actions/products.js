@@ -1,5 +1,5 @@
 
-import { GET_PRODUCTS, SET_IS_ERROR } from "../actionTypes"
+import { GET_PRODUCTS } from "../actionTypes"
 
 export const addProducts = productsData => ({
     type: GET_PRODUCTS,
@@ -8,9 +8,3 @@ export const addProducts = productsData => ({
     }
 })
 
-export const setIsError = isError => ({
-  type: SET_IS_ERROR,
-  payload: {
-    isError
-  }
-})

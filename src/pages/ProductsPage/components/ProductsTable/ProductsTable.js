@@ -1,5 +1,4 @@
 import "./ProductsTable.css";
-import { connect } from "react-redux";
 import BasicSpinner from "../../../../components/Spinner/Spinner";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -18,6 +17,8 @@ const BasicTable = ({ products, isLoading, isError, onDeleteModal }) => {
     paddingLeft: "3px",
     paddingRight: "3px",
   };
+
+  console.log(products)
 
   if (isError) {
     return (
@@ -113,9 +114,4 @@ const BasicTable = ({ products, isLoading, isError, onDeleteModal }) => {
   }
 };
 
-const mapStateToProps = (state) => ({
-  products: state.products.productsData,
-  isError: state.products.isError,
-});
-
-export default connect(mapStateToProps)(BasicTable);
+export default BasicTable;

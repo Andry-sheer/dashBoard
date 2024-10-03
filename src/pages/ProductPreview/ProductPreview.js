@@ -26,7 +26,7 @@ const ProductPreview = () => {
 
   const getProducts = async () => {
     try {
-      const response = await fetch(API_URL + `products/${id}`);
+      const response = await fetch(`${API_URL}/products/${id}`);
 
       if (!response.ok) {
         throw new Error("Something Error");

@@ -7,16 +7,17 @@ import { IoMdAdd } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import ProductsTable from "../ProductsPage/components/ProductsTable/ProductsTable";
 import { useNavigate } from "react-router-dom";
-import { addProducts, setIsError } from "../../modules/actions/products";
+import { addProducts } from "../../modules/actions/products";
 import { connect } from "react-redux";
 import ModalDelete from "../../components/ModalWindows/ModalDelete";
 
-const ProductsPage = ({ addProducts, setIsError }) => {
+const ProductsPage = ({ products, addProducts }) => {
   const navigatePreview = useNavigate();
   const [isLoadProducts, setIsLoadProducts] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [productDelete, setProductDelete] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const handleButtonPreview = () => {
     navigatePreview("/preview-page");
@@ -66,6 +67,8 @@ const ProductsPage = ({ addProducts, setIsError }) => {
     setIsOpenModal(false);
   };
 
+  
+
   return (
     <div className="ProductsPage">
       <img className="ProductsLogo" alt="ProductsLogo" src={ProductsPageLogo} />
@@ -92,7 +95,7 @@ const ProductsPage = ({ addProducts, setIsError }) => {
       />
       <h1 className="productTitle">Products</h1>
 
-      <ProductsTable isLoading={isLoading} onDeleteModal={handleOpenModal} />
+      <ProductsTable products={products} isError={isError} isLoading={isLoading} onDeleteModal={handleOpenModal} />
 
       <ModalDelete
         open={isOpenModal}
@@ -103,4 +106,8 @@ const ProductsPage = ({ addProducts, setIsError }) => {
   );
 };
 
-export default connect(null, { addProducts, setIsError })(ProductsPage);
+const mapStateToProps = (state) => ({
+  products: state.products.productsData,
+});
+
+export default connect(mapStateToProps, { addProducts })(ProductsPage);
