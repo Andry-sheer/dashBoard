@@ -10,7 +10,7 @@ import PreviewPage from "./pages/PreviewPage/PreviewPage";
 
 
 
-const RouterApp = () => {
+const AppRouter = () => {
 
   return (
     <div className="App">
@@ -32,4 +32,4 @@ const RouterApp = () => {
   );
 }
 
-export default RouterApp;
+export default AppRouter;
