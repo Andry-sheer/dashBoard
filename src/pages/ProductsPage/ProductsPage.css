@@ -11,6 +11,13 @@
   left: 30px;
 }
 
+.SpinnerContainer {
+  margin-top: calc(20% - 40px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .productTitle {
   font-size: 64px;
@@ -76,6 +83,13 @@
   transform:translate(-50%);
   height: 50px;
   width: 220px;
+}
+
+  .SpinnerContainer {
+  margin-top: calc(50% - 40px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
   .productTitle {

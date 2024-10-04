@@ -1,21 +1,5 @@
-.MuiTableRow-head {
-  background: white;
-}
-
-.MuiTableRow-root:hover {
-  background: #3cd78c;
-}
 
 
-
-.MuiTableRow-head {
-  background: white;
-}
-
-.MuiTableCell-body {
-  padding-left: 5px;
-  padding-right: 5px;
-}
 
 .editButton,
 .deleteButton {

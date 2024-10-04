@@ -8,9 +8,10 @@ import ProductsTable from "../ProductsPage/components/ProductsTable/ProductsTabl
 import { useNavigate } from "react-router-dom";
 import { fetchProducts } from "../../modules/actions/products";
 import { connect } from "react-redux";
+import BasicSpinner from "../../components/Spinner/Spinner";
 
 
-const ProductsPage = ({ fetchProducts, isLoadProducts }) => {
+const ProductsPage = ({ fetchProducts, isLoading, isLoadProducts }) => {
   const navigatePreview = useNavigate();
 
 
@@ -53,8 +54,10 @@ const ProductsPage = ({ fetchProducts, isLoadProducts }) => {
         }
       />
       <h1 className="productTitle">Products</h1>
-
-      <ProductsTable />
+      {isLoading ? <div className="SpinnerContainer"><BasicSpinner/></div> :
+          <ProductsTable />
+      }
+      
     </div>
   );
 };
@@ -62,6 +65,7 @@ const ProductsPage = ({ fetchProducts, isLoadProducts }) => {
 const mapStateToProps = (state) => ({
   products: state.products.productsData,
   isLoadProducts: state.products.isLoadProducts,
+  isLoading: state.products.isLoading
 });
 
 export default connect(mapStateToProps, { fetchProducts })(ProductsPage);

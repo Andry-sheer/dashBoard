@@ -1,7 +1,13 @@
 import { API_URL } from "../../constants/constants";
-import { DELETE_PRODUCT, FETCH_PRODUCTS } from "../actionTypes";
+import { DELETE_PRODUCT, FETCH_PRODUCTS, SET_IS_LOADING } from "../actionTypes";
 
 export const fetchProducts = () => async (dispatch) => {
+
+  dispatch({
+    type: SET_IS_LOADING,
+  })
+
+
   try {
     const response = await fetch(`${API_URL}/products`);
     const productsData = await response.json();

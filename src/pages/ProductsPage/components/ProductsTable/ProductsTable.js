@@ -1,4 +1,5 @@
 import "./ProductsTable.css";
+// import BasicSpinner from "../../../../components/Spinner/Spinner";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -15,7 +16,7 @@ import { useState } from "react";
 import { deleteProduct } from "../../../../modules/actions/products";
 import ModalDelete from "../../../../components/ModalWindows/ModalDelete";
 
-const BasicTable = ({ products, deleteProduct }) => {
+const BasicTable = ({ products, isLoading, deleteProduct }) => {
 
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [selectProductToDelete, setSelectProductToDelete] = useState(null);
@@ -37,6 +38,8 @@ const BasicTable = ({ products, deleteProduct }) => {
 
     return (
       <>
+        {/* {isLoading ? <BasicSpinner /> :  */}
+        <>
           <TableContainer style={{ borderRadius: "12px" }} component={Paper}>
             <Table
               sx={{
@@ -45,7 +48,10 @@ const BasicTable = ({ products, deleteProduct }) => {
                   paddingLeft: "0px",
                   paddingRight: "0px",
                   fontFamily: "Inter",
-                }, "& .MuiTableCell-head": { borderBottom: 0 }
+                }, "& .MuiTableCell-head": { borderBottom: 0 },
+                "& .MuiTableRow-root:hover":{
+                      backgroundColor: "#3cd78c"
+                    },
               }}
               aria-label="simple table"
             >
@@ -111,6 +117,8 @@ const BasicTable = ({ products, deleteProduct }) => {
           </TableContainer>
 
           <ModalDelete onOpen={isOpenModal} onDelete={handleDelete} onClose={handleCloseModals} />
+          </> 
+          {/* } */}
       </>
     );
 };
@@ -118,6 +126,7 @@ const BasicTable = ({ products, deleteProduct }) => {
 const mapStateToProps = (state) => ({
   products: state.products.productsData,
   isLoadProducts: state.products.isLoadProducts,
+  isLoading: state.products.isLoading
 });
 
 export default connect(mapStateToProps, {deleteProduct} )(BasicTable);

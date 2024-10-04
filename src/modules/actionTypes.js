@@ -4,3 +4,5 @@ const MAIN_PAGE = "MAIN";
 export const FETCH_PRODUCTS = `${MAIN_PAGE}/FETCH_PRODUCTS`;
 
 export const DELETE_PRODUCT = `${MAIN_PAGE}/DELETE_PRODUCT`;
+
+export const SET_IS_LOADING = `${MAIN_PAGE}/SET_IS_LOADING`;
