@@ -1,6 +1,4 @@
 import "./ProductsTable.css";
-import { connect } from "react-redux";
-import BasicSpinner from "../../../../components/Spinner/Spinner";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,24 +10,33 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { MdDelete } from "react-icons/md";
 import { BiSolidEdit } from "react-icons/bi";
+import { connect } from "react-redux";
+import { useState } from "react";
+import { deleteProduct } from "../../../../modules/actions/products";
+import ModalDelete from "../../../../components/ModalWindows/ModalDelete";
 
-const BasicTable = ({ products, isLoading, isError, onDeleteModal }) => {
+const BasicTable = ({ products, deleteProduct }) => {
 
-  if (isError) {
-    return (
-      <div className="errorContainer">
-        <p className="errorText">Oops! sorry we have a problem...</p>
-        <p className="errorText">Server: unavailable</p>
-      </div>
-    );
-  } else {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [selectProductToDelete, setSelectProductToDelete] = useState(null);
+
+  const handleOpenModals = (product) => {
+    setIsOpenModal(true);
+    setSelectProductToDelete(product);
+  }
+
+  const handleCloseModals = () => {
+    setIsOpenModal(false);
+    setSelectProductToDelete(null);
+  }
+
+  const handleDelete = ()=> {
+        deleteProduct(selectProductToDelete.id);
+        handleCloseModals()
+    }
+
     return (
       <>
-        {isLoading ? (
-          <div className="productTableSpinnerContainer">
-            <BasicSpinner />
-          </div>
-        ) : (
           <TableContainer style={{ borderRadius: "12px" }} component={Paper}>
             <Table
               sx={{
@@ -42,9 +49,11 @@ const BasicTable = ({ products, isLoading, isError, onDeleteModal }) => {
               }}
               aria-label="simple table"
             >
-              <TableHead sx={{"& .MuiTableHead-root":{ borderBottom : 0}}}>
-                <TableRow style={{ background: "#0EC86F" }}>
-                  <TableCell sx={{ fontWeight: "600" }} align="center">
+              <TableHead>
+                <TableRow sx={{ "& .MuiTableCell-head": {
+                    borderBottom: "0px"
+                  } }} style={{ background: "#0EC86F" }}>
+                  <TableCell sx={{ fontWeight: "600"  }} align="center">
                     ID
                   </TableCell>
                   <TableCell sx={{ fontWeight: "600" }} align="center">
@@ -88,7 +97,7 @@ const BasicTable = ({ products, isLoading, isError, onDeleteModal }) => {
 
                       <Tooltip title="Delete">
                         <IconButton
-                          onClick={() => onDeleteModal(product)}
+                          onClick={()=> handleOpenModals(product)}
                           aria-label="delete"
                         >
                           <MdDelete className="deleteButton" />
@@ -100,15 +109,15 @@ const BasicTable = ({ products, isLoading, isError, onDeleteModal }) => {
               </TableBody>
             </Table>
           </TableContainer>
-        )}
+
+          <ModalDelete onOpen={isOpenModal} onDelete={handleDelete} onClose={handleCloseModals} />
       </>
     );
-  }
 };
 
 const mapStateToProps = (state) => ({
   products: state.products.productsData,
-  isError: state.products.isError,
+  isLoadProducts: state.products.isLoadProducts,
 });
 
-export default connect(mapStateToProps)(BasicTable);
+export default connect(mapStateToProps, {deleteProduct} )(BasicTable);

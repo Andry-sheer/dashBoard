@@ -1,22 +1,26 @@
 
 
-import { GET_PRODUCTS, SET_IS_ERROR } from "../actionTypes"
+import { DELETE_PRODUCT, FETCH_PRODUCTS } from "../actionTypes"
 
 const initialState = {
     productsData: [],
-    isError: false,
+    isLoadProducts: false,
 };
 
 const products = (state = initialState, action) => {
     switch (action.type){
-        case GET_PRODUCTS: {
+        case FETCH_PRODUCTS: {
           const { productsData } = action.payload;
-          return { ...state, productsData }; //{ ...state, data: data };
+          return { ...state, productsData, isLoadProducts: true, };
         }
-        case SET_IS_ERROR: {
-          const { isError } = action.payload;
-          return { ...state, isError };
+
+        case DELETE_PRODUCT: {
+          return {
+            ...state, 
+            isLoadProducts: false
+          }
         }
+
         default:
           return state;
     }

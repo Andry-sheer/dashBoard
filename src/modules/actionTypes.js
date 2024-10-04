@@ -1,6 +1,6 @@
 
 const MAIN_PAGE = "MAIN";
 
-export const GET_PRODUCTS = `${MAIN_PAGE}/GET_PRODUCTS`;
+export const FETCH_PRODUCTS = `${MAIN_PAGE}/FETCH_PRODUCTS`;
 
-export const SET_IS_ERROR = `${MAIN_PAGE}/SET_IS_ERROR`;
+export const DELETE_PRODUCT = `${MAIN_PAGE}/DELETE_PRODUCT`;

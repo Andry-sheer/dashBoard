@@ -7,7 +7,6 @@ import ProductPreview from "./pages/ProductPreview/ProductPreview";
 import Error from "./pages/Error/Error";
 import PrivateRoute from "./privateRoute";
 import PreviewPage from "./pages/PreviewPage/PreviewPage";
-import Welcome from "./pages/Welcome/Welcome";
 
 
 
@@ -18,8 +17,7 @@ const RouterApp = () => {
       <BrowserRouter>
         <Routes>
           <Route path="*" element={<Error/>} />
-          <Route path="/" element={<Welcome/>} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
 
         <Route element={<PrivateRoute/>} >
           <Route path="/product-page" element={<ProductsPage />} />
