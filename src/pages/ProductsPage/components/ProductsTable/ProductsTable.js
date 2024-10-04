@@ -1,5 +1,4 @@
 import "./ProductsTable.css";
-import BasicSpinner from "../../../../components/Spinner/Spinner";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -11,30 +10,34 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { MdDelete } from "react-icons/md";
 import { BiSolidEdit } from "react-icons/bi";
+import { connect } from "react-redux";
+import { useState } from "react";
+import { deleteProduct } from "../../../../modules/actions/products";
+import ModalDelete from "../../../../components/ModalWindows/ModalDelete";
 
-const BasicTable = ({ products, isLoading, isError, onDeleteModal }) => {
-  const styleTwo = {
-    paddingLeft: "3px",
-    paddingRight: "3px",
-  };
 
-  console.log(products)
+const BasicTable = ({ products, deleteProduct }) => {
 
-  if (isError) {
-    return (
-      <div className="errorContainer">
-        <p className="errorText">Oops! sorry we have a problem...</p>
-        <p className="errorText">Server: unavailable</p>
-      </div>
-    );
-  } else {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [selectProductToDelete, setSelectProductToDelete] = useState(null);
+
+  const handleOpenModals = (product) => {
+    setIsOpenModal(true);
+    setSelectProductToDelete(product);
+  }
+
+  const handleCloseModals = () => {
+    setIsOpenModal(false);
+    setSelectProductToDelete(null);
+  }
+
+  const handleDelete = ()=> {
+        deleteProduct(selectProductToDelete.id);
+        handleCloseModals()
+    }
+
     return (
       <>
-        {isLoading ? (
-          <div className="productTableSpinnerContainer">
-            <BasicSpinner />
-          </div>
-        ) : (
           <TableContainer style={{ borderRadius: "12px" }} component={Paper}>
             <Table
               sx={{
@@ -76,7 +79,6 @@ const BasicTable = ({ products, isLoading, isError, onDeleteModal }) => {
                 {products.map((product) => (
                   <TableRow
                     key={product.id}
-                    style={styleTwo}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell align="center" component="th" scope="row">
@@ -96,7 +98,7 @@ const BasicTable = ({ products, isLoading, isError, onDeleteModal }) => {
 
                       <Tooltip title="Delete">
                         <IconButton
-                          onClick={() => onDeleteModal(product)}
+                          onClick={()=> handleOpenModals(product)}
                           aria-label="delete"
                         >
                           <MdDelete className="deleteButton" />
@@ -108,10 +110,15 @@ const BasicTable = ({ products, isLoading, isError, onDeleteModal }) => {
               </TableBody>
             </Table>
           </TableContainer>
-        )}
+
+          <ModalDelete onOpen={isOpenModal} onDelete={handleDelete} onClose={handleCloseModals} />
       </>
     );
-  }
 };
 
-export default BasicTable;
+const mapStateToProps = (state) => ({
+  products: state.products.productsData,
+  isLoadProducts: state.products.isLoadProducts,
+});
+
+export default connect(mapStateToProps, {deleteProduct} )(BasicTable);

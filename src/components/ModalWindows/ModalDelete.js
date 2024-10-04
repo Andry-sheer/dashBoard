@@ -41,11 +41,11 @@ const styleCancel = {
   background: 'silver'
 }
 
-const ModalDelete =({open, product, onClose, onDeleteModal })=> {
+const ModalDelete =({onOpen, onClose, product, onDelete })=> {
 
   return (
     <div>
-      <Modal open={open}>
+      <Modal open={onOpen}>
           <Box sx={style}>
             <div style={textColor} id="modal-modal-title" variant="h5" component="h2">
               Are u sure you want to delete this product?
@@ -53,7 +53,7 @@ const ModalDelete =({open, product, onClose, onDeleteModal })=> {
 
             <div style={{display: 'flex', justifyContent:'space-around', marginTop: '30px'}} id="modal-modal-description" sx={{ mt: 5 }}>
               <Button onClick={onClose} style={styleCancel}>Cancel</Button>
-              <Button onClick={()=> onDeleteModal(product)} style={styleDelete}>Delete</Button>
+              <Button onClick={()=> onDelete(product)} style={styleDelete}>Delete</Button>
             </div>
           </Box>
       </Modal>
@@ -62,8 +62,5 @@ const ModalDelete =({open, product, onClose, onDeleteModal })=> {
   );
 }
 
-const mapStateToProps = (state) => ({
-  products: state.products.productsData,
-});
 
-export default connect(mapStateToProps)(ModalDelete);
+export default connect(null)(ModalDelete);

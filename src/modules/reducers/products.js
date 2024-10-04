@@ -1,16 +1,24 @@
 
 
-import { GET_PRODUCTS } from "../actionTypes"
+import { DELETE_PRODUCT, FETCH_PRODUCTS } from "../actionTypes"
 
 const initialState = {
     productsData: [],
+    isLoadProducts: false,
 };
 
 const products = (state = initialState, action) => {
     switch (action.type){
-        case GET_PRODUCTS: {
+        case FETCH_PRODUCTS: {
           const { productsData } = action.payload;
-          return { ...state, productsData };
+          return { ...state, productsData, isLoadProducts: true, };
+        }
+
+        case DELETE_PRODUCT: {
+          return {
+            ...state, 
+            isLoadProducts: false
+          }
         }
 
         default:
