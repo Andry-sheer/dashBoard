@@ -1,11 +1,11 @@
-import "./CardLogin.css";
 import { useState } from "react";
-import loginLogo from "../../../../assets/loginLogo.svg";
-import Input from "../../../../components/Input/Input";
-import MyButton from "../../../../components/MyButton/MyButton";
 import { useNavigate } from "react-router-dom";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
+import loginLogo from "../../../../assets/loginLogo.svg";
+import Input from "../../../../components/Input/Input";
+import MyButton from "../../../../components/MyButton/MyButton";
+import styles from "../../../../styles/CardLogin.module.css";
 
 const CardLogin = () => {
 
@@ -79,11 +79,12 @@ const CardLogin = () => {
 
 
   return (
-    <div className="CardLogin">
-      <img className="loginLogo" src={loginLogo} alt="loginLogo" />
-      <form className="formLoginPage" onSubmit={handleSubmit}>
+    <div className={styles.CardLoginContainer}>
+    <div className={styles.CardLogin}>
+      <img className={styles.loginLogo} src={loginLogo} alt="loginLogo" />
+      <form className={styles.formLoginPage} onSubmit={handleSubmit}>
         <Input
-          className="loginInput"
+          className={styles.loginInput}
           onChange={handleChange}
           value={login}
           name="login"
@@ -91,8 +92,9 @@ const CardLogin = () => {
           placeholder="User Name"
         />
 
-        <Input
-          className="password"
+        <div className={styles.inputPass}>
+          <Input
+          className={styles.password}
           onChange={handleChange}
           value={password}
           name="password"
@@ -100,18 +102,19 @@ const CardLogin = () => {
           type={isShowPassword ? "password" : "text"}
         />
 
-        <MyButton type='button' className='buttonEye' onClick={handleClickShowPassword}
+          <MyButton type='button' className={styles.buttonEye} onClick={handleClickShowPassword}
             icon={ isShowPassword ? <IoMdEye size="30px" title="Show password" color="green" />
               : <IoMdEyeOff size="30px" title="Hide password" color="green" /> }
-        />
-        <MyButton type='submit' textButton='Login' className='buttonLogin'/>
+          />
+        </div>
+        <MyButton type='submit' textButton='Login' className={styles.buttonLogin}/>
       </form>
 
-        {isLoginEmpty && <p className="ErrorValid">{emptyLogin}</p>}
-        {isPasswordEmpty && <p className="ErrorValid">{emptyPassword}</p>}
-        {logPass && <p className="ErrorValid">{emptyLogPass}</p>}
-        {isUserInvalid && <p className="ErrorValid">{userInvalid}</p>}
-        
+        {isLoginEmpty && <p className={styles.ErrorValid}>{emptyLogin}</p>}
+        {isPasswordEmpty && <p className={styles.ErrorValid}>{emptyPassword}</p>}
+        {logPass && <p className={styles.ErrorValid}>{emptyLogPass}</p>}
+        {isUserInvalid && <p className={styles.ErrorValid}>{userInvalid}</p>}
+      </div>
     </div>
   );
 };

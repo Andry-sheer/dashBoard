@@ -1,13 +1,12 @@
-import "./PreviewPage.css";
-import logo from "../../assets/pagesLogo.svg";
-import logo2 from "../../assets/pagesLogo.svg";
-import CardPreview from "./components/CardPreview/CardPreview";
-import { useNavigate } from "react-router-dom";
-import MyButton from "../../components/MyButton/MyButton";
-import { IoChevronBack } from "react-icons/io5";
-import BasicSpinner from "../../components/Spinner/Spinner";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { IoChevronBack } from "react-icons/io5";
 import { API_URL } from "../../constants/constants";
+import Logo from "../../assets/pagesLogo.svg";
+import CardPreview from "./components/CardPreview/CardPreview";
+import MyButton from "../../components/MyButton/MyButton";
+import BasicSpinner from "../../components/Spinner/Spinner";
+import styles from "../../styles/PreviewPage.module.css";
 
 const PreviewPage = () => {
   const navigate = useNavigate();
@@ -46,29 +45,26 @@ const getProducts = async () => {
 
   if (isError){
     return (
-      <div className="PreviewPageErrorContainer">
-        <img className="PreviewLogo2" alt="logo2" src={logo2} />
-        <p className="PreviewPageErrorText">Oops! sorry we have a problem...</p>
-        <p className="PreviewPageErrorText2">"Data is Empty..."</p>
+      <div className={styles.error}>
+        <div className={styles.errorContainer}>
+          <img alt="logo2" src={Logo} />
+          <p className={styles.title}>Oops! sorry we have a problem...</p>
+        </div>
     </div>
     )
-    
-  }
-  else {
+  } else {
       return (
-    <div className="PreviewPage">
-      <header className="PreviewPageHeader">
-        <img className="PreviewLogo" alt="logo" src={logo} />        
-        <MyButton type="button" 
-          icon={<IoChevronBack className="backIcon" />} 
+    <div className={styles.preview}>
+      <div className={styles.container}>
+        <MyButton className={styles.buttonBack} type="button" 
+          icon={<IoChevronBack size={20} />} 
           textButton={<p className="backButtonProductPageTitle">Product Page</p>} 
-          onClick={handleClickBack} className="backButtonProductPage" 
+          onClick={handleClickBack} 
         />
-      </header>
 
-      {isLoading ? (<div className="PreviewPageSpinner"><BasicSpinner/></div>) : (
-      <>
-      <div className="PreviewContainer">
+
+      {isLoading ? (<div className={styles.spinner}><BasicSpinner/></div>) : (
+      <div className={styles.cards}>
         {products.map((product) => (
           <CardPreview
             key={product.id}
@@ -77,17 +73,11 @@ const getProducts = async () => {
           />
         ))}
       </div>
-      </>
       )}
+    </div>
     </div>
   );
   }
 };
 
-// const mapStateToProps = (state) => ({
-//   products: state.products.productsData,
-//   isError: state.products.isError,
-// });
-
-// export default connect(mapStateToProps)(PreviewPage);
 export default PreviewPage;

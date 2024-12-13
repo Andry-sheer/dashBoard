@@ -1,10 +1,10 @@
 
-import "./Login.css";
+import styles from "../../styles/Login.module.css";
 import CardLogin from "./components/CardLogin/CardLogin";
 
 const Login = () => {
   return (
-    <div className="LoginPage">
+    <div className={styles.login}>
       <CardLogin />
     </div>
   );

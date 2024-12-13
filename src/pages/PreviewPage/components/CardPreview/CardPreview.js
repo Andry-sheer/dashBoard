@@ -1,21 +1,23 @@
 
-import "./CardPreview.css";
 import { BsCartCheckFill } from "react-icons/bs";
+import styles from "../../../../styles/CardPreview.module.css";
 
 const CardPreview = ({ onClick, product }) => {
 
   return (
-    <div onClick={onClick} className="cardContainer" key={product.id}>
-      <img className="cardImg" src={product.image} alt="cardImage" />
-      <p className="cardName">{product.name}</p>
-      <p className="cardCategory">Category: {product.category}</p>
-      <div className="cardContainerInner">
-        <p className="cardPrice">{product.price}$</p>
-        <p className="cardQuantity">Quantity: {product.quantity}</p>
+    <div onClick={onClick} className={styles.card} key={product.id}>
+      <div className={styles.containerImage}>
+        <img className={styles.image} src={product.image} alt="cardImage" />
       </div>
-      <div className="cardDelivery">
-        <BsCartCheckFill className="cardImgDelivery" />
-        <p className="cardDescription">Ready to delivery</p>
+      <p className={styles.title}>{product.name}</p>
+      <p className={styles.category}>Категорія: {product.category}</p>
+      <div className={styles.container}>
+        <p className={styles.price}>{product.price}$</p>
+        <p className={styles.quantity}>Кількість: {product.quantity}</p>
+      </div>
+      <div className={styles.containerInner}>
+        <BsCartCheckFill size={20} fill="#05BC52" />
+        <p className={styles.delivery}>Ready to delivery</p>
       </div>
     </div>
   );
