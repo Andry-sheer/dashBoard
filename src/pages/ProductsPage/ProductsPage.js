@@ -19,7 +19,7 @@ const ProductsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(null);
 
-
+  // eslint-disable-next-line
   const openModal = (product = null) => {
     if(product){
       setIsEdit(true);
