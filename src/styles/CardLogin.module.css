@@ -1,0 +1,127 @@
+.CardLoginContainer {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-30%);
+}
+
+.CardLogin {
+  background: #f5f5f5;
+  padding: 30px 80px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.loginInput {
+  font-size: 15px;
+  border-radius: 12px;
+  padding: 20px;
+  font-weight: 600;
+  border: none;
+  background-color: #d9d9d9;
+  font-family: 'Inter';
+}
+
+.password {
+  padding: 20px;
+  padding-right: 65px;
+  font-size: 15px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  background-color: #d9d9d9;
+}
+
+.loginInput::placeholder {
+  color: #44B26F;
+}
+
+.loginInput:focus {
+  outline: none; 
+  box-shadow: #44B26F 1px 0 10px;
+}
+
+.password::placeholder {
+  color: #44B26F;
+}
+
+.password:focus {
+  outline: none; 
+  box-shadow: #44B26F 1px 0 10px;
+}
+
+.inputPass {
+  position: relative;
+}
+
+.buttonEye {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  transform: translateY(-50%);
+}
+
+.buttonEye:active {
+  transform: scale(1);
+  transform: translateY(-50%);
+}
+
+.buttonEye:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.buttonLogin {
+  background-color: #44B26F;
+  padding: 10px 0;
+  border-radius: 12px;
+  border: none;
+  color: white;
+  font-size: 23px;
+  transition: all .2s;
+}
+
+.buttonLogin:active {
+  transform: scale(0.9);
+}
+
+.buttonLogin:focus {
+  outline: none; 
+  box-shadow: #44B26F 1px 0 10px;
+}
+
+.loginLogo {
+  margin-bottom: 50px;
+}
+
+.inputLogin {
+  margin-bottom: 46px;
+}
+
+.ErrorValid {
+  text-align: center;
+  color: white;
+  background: #b24444;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Inter';
+  padding: 30px 0;
+  margin: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 20px;
+}
+
+.formLoginPage {
+  display: flex;
+  flex-flow: column;
+  gap: 37px;
+  position: relative;
+}
