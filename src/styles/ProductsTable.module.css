@@ -1,15 +1,16 @@
-.BasicTable {
-  position: relative;
-  min-height: calc(100vh - 206.5px);
+
+.tableRow {
+  cursor: pointer;
 }
 
-.spinner {
-  position: absolute;
-  left: 50%;
-  top: 45%;
-  transform: translateX(-50%) translateY(-45%);
-  width: 40px;
-  height: 40px;
+.tableRow:hover {
+  background: #278956e9;
+  cursor: pointer;
+}
+
+.name:hover {
+  color: white;
+  text-decoration: 1px underline;
 }
 
 .editButton,
@@ -19,33 +20,14 @@
 }
 
 .editButton:active {
-  color: blue;
+  color: rgb(0, 166, 255);
 }
 
 .deleteButton:active {
-  color: red;
+  color: rgb(229, 11, 11);
 }
 
-.error {
-  background: #44B26F;
-  min-height: calc(100vh - 206.5px);
-  padding: 30px;
-  position: relative;
+.tableRow:last-child .rows, .tableRow:last-child .name {
+  border-bottom: 0 !important;
 }
 
-.container {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-45%);
-  display: flex;
-  flex-flow: column;
-  gap: 10px;
-  align-items: center;
-}
-
-.title {
-  font-size: 30px;
-  font-weight: 700;
-  color: white;
-}

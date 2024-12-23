@@ -1,17 +1,19 @@
 
 .spinner {
   position: absolute;
-  top: 50vh;
-  left: calc(50vw - 20px);
-  width: 40px;
-  height: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
-.container {
+.wrapper {
+  min-height: calc(100vh - 210px);
   max-width: 1280px;
   margin: 0 auto;
   padding: 30px;
-  min-height: calc(100vh - 206.5px);
+}
+
+.container {
 }
 
 .buttonBack {
@@ -104,8 +106,15 @@
   object-fit: cover;
 }
 
+.storageZero {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #f42652;
+}
+
 .error {
-  min-height: calc(100vh - 206.5px);
+  min-height: calc(100vh - 210px);
   position: relative;
   background-color: #44b26f;
 }

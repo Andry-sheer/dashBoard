@@ -1,131 +1,162 @@
+import { API_URL } from "../../constants/constants";
 import {
   ADD_PRODUCT,
   EDIT_PRODUCT,
+  CHANGE_CATEGORY,
+  CHANGE_DESCRIPTIONS,
+  CHANGE_NAME,
+  CHANGE_PRICE,
+  CHANGE_QUANTITY,
+  CHANGE_IMAGE,
   DELETE_PRODUCT,
   FETCH_PRODUCTS,
-  FILL_FORM,
-  UPD_FORM,
   SET_IS_LOADING,
-  RESET_FORM,
-  IS_ERROR,
+  SET_EDIT,
+  SET_RESET,
 } from "../actionTypes";
 
-import { API_URL } from "../../constants/constants";
-
-export const fetchProducts = ()=> async(dispatch)=> {
-  dispatch({ type: SET_IS_LOADING, payload: true });
+export const fetchProducts = () => async (dispatch) => {
+  dispatch({
+    type: SET_IS_LOADING,
+  });
 
   try {
-    const res = await fetch(`${API_URL}/products`);
-    const productsData = await res.json();
+    const response = await fetch(`${API_URL}/products`);
+    const productsData = await response.json();
 
     dispatch({
       type: FETCH_PRODUCTS,
       payload: {
-        productsData
+        productsData,
       },
     });
-
   } catch (error) {
-    console.error("Error FETCH products", error);
-    dispatch({ type: IS_ERROR, payload: true });
-  }
-
-  finally {
-    dispatch({ type: SET_IS_LOADING, payload: false})
+    console.log("Error", error);
   }
 };
 
-export const addProduct = ()=> async(dispatch, getState)=> {
-  const { form } = getState().products;
-  dispatch({ type: SET_IS_LOADING, payload: true });
+export const resetForm = ()=> ({
+  type: SET_RESET,
+});
 
-  try {
-    const res = await fetch(`${API_URL}/products`, {
-      method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
-
-    const newProduct = await res.json();
-
-    dispatch({
-      type: ADD_PRODUCT,
-      payload: newProduct
-    });
-
-    dispatch(resetForm());
-
-  } catch (error) {
-    console.log("Error ADD product", error);
-  }
-
-  finally {
-    dispatch({ type: SET_IS_LOADING, payload: false})
-  }
-};
-
-export const editProduct = ()=> async(dispatch, getState)=> {
-  const { form } = getState().products;
-  dispatch({ type: SET_IS_LOADING, payload: true });
-
-  try {
-    const res = await fetch(`${API_URL}/products/${form.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form)
-    });
-
-    const updateProduct = await res.json();
-
-    dispatch({
-      type: EDIT_PRODUCT,
-      payload: updateProduct
-    });
-    dispatch(resetForm());
-
-  } catch (error) {
-    console.log("Error EDIT product", error);
-  }
-
-  finally {
-    dispatch({ type: SET_IS_LOADING, payload: false})
-  }
-};
-
-export const deleteProduct = (id)=> async(dispatch)=> {
-  dispatch({ type: SET_IS_LOADING, payload: true });
-
+export const deleteProduct = (id) => async (dispatch) => {
   try {
     await fetch(`${API_URL}/products/${id}`, {
-      method: 'DELETE'
+      method: "DELETE",
     });
 
     dispatch({
       type: DELETE_PRODUCT,
-      payload: id
     });
-
   } catch (error) {
-    console.log("Error DELETE product", error);
-  }
-
-  finally {
-    dispatch({ type: SET_IS_LOADING, payload: false})
+    console.log("Error Delete product", error);
   }
 };
 
-export const fillForm = (product) => ({
-  type: FILL_FORM,
-  payload: product
+export const addProducts = (category, name, price, quantity, descriptions, image) => async (dispatch, getState) => {
+
+  try {
+    await fetch(`${API_URL}/products`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(
+        category,
+        name,
+        price,
+        quantity,
+        descriptions,
+        image,
+      ),
+    });
+
+    dispatch({
+      type: ADD_PRODUCT,
+    });
+  } catch (error) {
+    console.log("Error ADD product...", error);
+  }
+};
+
+export const editId = (editId, editCategory, editName, editQuantity, editPrice, editDescriptions, editImage ) => ({
+  type: SET_EDIT,
+  payload: {
+    editId,
+    editCategory,
+    editName,
+    editQuantity,
+    editPrice,
+    editDescriptions,
+    editImage,
+  }
+})
+
+export const editProducts = (category, name, price, quantity, descriptions, image ) => async (dispatch, getState) => {
+  const { products } = getState();
+
+  try {
+    await fetch(`${API_URL}/products/${products.editId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(
+        category,
+        name,
+        price,
+        quantity,
+        descriptions,
+        image,
+    ),
+    });
+
+    dispatch({
+      type: EDIT_PRODUCT,
+    });
+  } catch (error) {
+    console.log("Error EDIT product...", error);
+  }
+}
+
+export const changeName = (name) => ({
+  type: CHANGE_NAME,
+  payload: {
+    name,
+  },
 });
 
-export const updateForm = (name, value) => ({
-  type: UPD_FORM,
-  payload: { name, value }
+export const changeCategory = (category) => ({
+  type: CHANGE_CATEGORY,
+  payload: {
+    category,
+  },
 });
 
-export const resetForm = ()=> ({
-  type: RESET_FORM,
+export const changeDescriptions = (descriptions) => ({
+  type: CHANGE_DESCRIPTIONS,
+  payload: {
+    descriptions,
+  },
 });
 
+export const changePrice = (price) => ({
+  type: CHANGE_PRICE,
+  payload: {
+    price,
+  },
+});
+
+export const changeQuantity = (quantity) => ({
+  type: CHANGE_QUANTITY,
+  payload: {
+    quantity,
+  },
+});
+
+export const changeImage = (image) => ({
+  type: CHANGE_IMAGE,
+  payload: {
+    image,
+  }
+});

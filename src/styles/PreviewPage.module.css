@@ -1,21 +1,20 @@
 
 .spinner {
   position: absolute;
-  top: 50vh;
-  left: calc(50vw - 20px);
-  width: 40px;
-  height: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .preview {
   background: #44B26F;
-  min-height: calc(100vh - 206.5px);
+  min-height: calc(100vh - 210px);
 }
 
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 60px 30px;
+  padding: 0 30px;
 }
 
 .buttonBack {
@@ -26,11 +25,11 @@
   color: white;
   transition: linear .2s;
   text-transform: uppercase;
-  margin: 0 0 60px 0;
   cursor: pointer;
 }
 
 .cards {
+  padding: 40px 0 50px;
   gap: 60px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -39,15 +38,15 @@
 
 .error {
   background: #44B26F;
-  min-height: calc(100vh - 206.5px);
+  min-height: calc(100vh - 210px);
   position: relative;
 }
 
 .errorContainer {
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(-45%);
+  transform: translateX(-50%) translateY(-50%);
   display: flex;
   flex-flow: column;
   gap: 10px;
@@ -58,4 +57,29 @@
   font-size: 30px;
   font-weight: 700;
   color: white;
+}
+
+.wrapperSkull {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.containerSkull {
+  padding: 40px 0 50px;
+  gap: 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.buttonSkull {
+  width: 150px;
+  height: 25px;
+  border-radius: 8px;
+}
+
+.skull {
+  border-radius: 12px;
+  height: 350px !important;
 }

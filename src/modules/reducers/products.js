@@ -1,92 +1,163 @@
+
 import {
   DELETE_PRODUCT,
   FETCH_PRODUCTS,
   SET_IS_LOADING,
   ADD_PRODUCT,
+  CHANGE_NAME,
+  CHANGE_CATEGORY,
+  CHANGE_DESCRIPTIONS,
+  CHANGE_PRICE,
+  CHANGE_QUANTITY,
+  CHANGE_IMAGE,
   EDIT_PRODUCT,
-  FILL_FORM,
-  UPD_FORM,
-  RESET_FORM,
-  IS_ERROR,
+  SET_EDIT,
+  SET_RESET,
 } from "../actionTypes";
 
 const initialState = {
   productsData: [],
-  isLoading: false,
   isLoadProducts: false,
-  isError: false,
-  form: {
-    id: null,
-    name: "",
-    category: "",
-    price: "",
-    quantity: "",
-    descriptions: "",
-    image: "",
-  }
+  isLoading: false,
+  name: "",
+  category: "",
+  price: "",
+  quantity: "",
+  descriptions: "",
+  image: "",
+  editId: null,
 };
 
 const products = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_PRODUCTS:
-      return { 
-        ...state, 
-        productsData: action.payload.productsData, isLoadProducts: true
-      };
+    case FETCH_PRODUCTS: {
+      const { productsData } = action.payload;
+      return { ...state, productsData, isLoadProducts: true, isLoading: false };
+    }
 
-    case ADD_PRODUCT:
+    case DELETE_PRODUCT: {
       return {
         ...state,
-        productsData: [...state.productsData, action.payload],
+        isLoadProducts: false,
       };
+    }
 
-    case EDIT_PRODUCT:
+    case SET_IS_LOADING: {
       return {
         ...state,
-        productsData: state.productsData.map((product)=> product.id === action.payload.id ?
-        action.payload : product
-        )
+        isLoading: true,
       };
+    }
 
-    case DELETE_PRODUCT:
+    case SET_RESET: {
       return {
         ...state,
-        productsData: state.productsData.filter((product)=> product.id !== action.payload),
-      };
-
-    case UPD_FORM: {
-      const { name, value } = action.payload;
-
-      return {
-        ...state,
-        form: { ...state.form, [name]: value }
+        editId: null,
+        name: "",
+        category: "",
+        price: "",
+        quantity: "",
+        descriptions: "",
+        image: "",
       }
     }
 
-    case FILL_FORM:
+    case ADD_PRODUCT: {
       return {
         ...state,
-        form: action.payload
+        isLoading: true,
+        isLoadProducts: false,
+        name: "",
+        category: "",
+        price: "",
+        quantity: "",
+        descriptions: "",
+        image: "",
       };
+    }
 
+    case SET_EDIT: {
+      const { editId, editName, editCategory, editDescriptions, editImage, editPrice, editQuantity } = action.payload;
 
-    case SET_IS_LOADING:
       return {
         ...state,
-        isLoading: action.payload,
-      };
+        editId,
+        name: editName,
+        category: editCategory,
+        descriptions: editDescriptions,
+        price: editPrice,
+        quantity: editQuantity,
+        image: editImage,
+      }
+    };
 
-      case IS_ERROR:
-        return {
-          ...state,
-          isError: action.payload,
-        }
-
-    case RESET_FORM:
+    case EDIT_PRODUCT: {
       return {
         ...state,
-        form: initialState.form
+        isLoadProducts: false,
+        editId: null,
+        name: "",
+        category: "",
+        price: "",
+        quantity: "",
+        descriptions: "",
+        image: "",
       };
+    }
+
+    case CHANGE_NAME: {
+      const {name} = action.payload;
+
+      return {
+        ...state,
+        name,
+      }
+    }
+
+    case CHANGE_CATEGORY: {
+      const {category} = action.payload;
+
+      return {
+        ...state,
+        category,
+      }
+    }
+
+    case CHANGE_DESCRIPTIONS: {
+      const {descriptions} = action.payload;
+
+      return {
+        ...state,
+        descriptions,
+      }
+    }
+
+    case CHANGE_QUANTITY: {
+      const {quantity} = action.payload;
+
+      return {
+        ...state,
+        quantity,
+      }
+    }
+
+    case CHANGE_PRICE: {
+      const {price} = action.payload;
+
+      return {
+        ...state,
+        price,
+      }
+    }
+
+    case CHANGE_IMAGE: {
+      const {image} = action.payload;
+
+      return {
+        ...state,
+        image,
+      }
+    }
 
     default:
       return state;

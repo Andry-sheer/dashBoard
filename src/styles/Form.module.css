@@ -7,25 +7,6 @@
   font-weight: 600;
 }
 
-.header {
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.title {
-  font-size: 25px;
-  text-transform: uppercase;
-}
-
-.buttonClose {
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  padding: 0;
-}
-
 .input {
   padding: 10px;
   border-radius: 12px;
@@ -51,6 +32,9 @@
   flex-flow: column;
   gap: 5px;
   cursor: pointer;
+  position: relative;
+  transition: linear .7s;
+  overflow: hidden;
 }
 
 .footer {
@@ -60,7 +44,7 @@
   margin-top: 10px;
 }
 
-.buttonCancel, .buttonSubmit {
+.buttonCancel, .buttonSubmit, .buttonSubmitDis {
   color: white;
   font-weight: 700;
   background: #726969;
@@ -73,4 +57,16 @@
 
 .buttonSubmit {
   background: #05BC52;
+}
+
+.buttonSubmitDis {
+  background: #726969;
+}
+
+.errorMessage {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 14px;
+  color: red;
 }

@@ -1,17 +1,20 @@
 .card {
   background: white;
   padding: 20px;
-  font-weight: 500;
   font-family: 'Inter';
   font-size: 16px;
   border-radius: 14px;
   transition: transform .5s;
   cursor: pointer;
   font-weight: 600;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .card:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   box-shadow: 1px 1px 12px black;
 }
 
@@ -27,7 +30,6 @@
 }
 
 .title {
-  margin: 10px 0;
   font-weight: 700;
 }
 
@@ -39,7 +41,6 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 10px 0;
 }
 
 .price {
@@ -60,6 +61,11 @@
 .delivery {
   font-size: 16px;
   color: #05BC52;
-  margin: 5px 0;
+  font-weight: 400;
+}
+
+.noDelivery {
+  font-size: 16px;
+  color: #bc0514;
   font-weight: 400;
 }
