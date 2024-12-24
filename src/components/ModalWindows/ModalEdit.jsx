@@ -1,13 +1,10 @@
-
-import { useDispatch } from "react-redux";
-import { updateForm } from "../../modules/actions/products";
+import { connect } from "react-redux";
+import { addProducts, editProducts, resetForm } from "../../modules/actions/products";
 import { RiCloseFill } from "react-icons/ri";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import Form from "../Form/Form";
-import Input from "../Input/Input";
+import Form from "../Formik/Formik";
 import MyButton from "../MyButton/MyButton";
-import style from "../../styles/Form.module.css";
 
 const styles = {
   position: "absolute",
@@ -19,54 +16,66 @@ const styles = {
   boxShadow: 24,
   padding: 2,
   width: 500,
+
+  header: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: "10px"
+  },
+
+  title: {
+    fontSize: '20px',
+    fontFamily: 'Inter',
+    fontWeight: 600,
+    color: '#726969',
+  },
+
+  buttonClose: {
+    background: "transparent",
+    border: 0,
+    cursor: "pointer",
+    padding: 0,
+  }
+
 };
 
-const ModalEdit = ({onOpen, onClose, onSave, form, isEdit}) => {
+const ModalEdit = ({
+  onOpen,
+  onClose,
+  editId,
+  addProducts,
+  editProducts,
+  resetForm,
+}) => {
 
-  const dispatch = useDispatch();
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    dispatch(updateForm(name, value));
-  };
+  const closeModal = ()=> {
+    resetForm()
+    onClose();
+  }
 
   return (
     <div>
-      <Modal open={onOpen} onClose={onClose}>
+      <Modal open={onOpen}>
         <Box sx={styles}>
-          <Form className={style.form} onSubmit={(event)=> event.preventDefault()}>
-            <div className={style.header}>
-              <span className={style.title}>{isEdit ? "edit product" : "add product"}</span>
-              <MyButton className={style.buttonClose} onClick={onClose} icon={<RiCloseFill size={30}/>} />
+          <div className="header" style={styles.header}>
+            <span className="title" style={styles.title}>{editId ? "EDIT PRODUCT" : "ADD PRODUCT"}</span>
+              <MyButton
+                className="buttonClose"
+                style={styles.buttonClose}
+                onClick={closeModal}
+                icon={<RiCloseFill size={30} />}
+              />
             </div>
-            <label className={style.label}> Category
-              <Input className={style.input} type='text' onChange={handleChange} value={form.category} name='category' required />
-            </label>
-            <label className={style.label}> Name
-              <Input className={style.input} type='text' onChange={handleChange} value={form.name} name='name' required />
-            </label>
-            <label className={style.label}> Quantity
-              <Input className={style.input} type='number' onChange={handleChange} value={form.quantity} name='quantity' required />
-            </label>
-            <label className={style.label}> Price
-              <Input className={style.input} type='number' onChange={handleChange} value={form.price} name='price' required />
-            </label>
-            <label className={style.label}> Descriptions
-              <Input className={style.input} type='text' onChange={handleChange} value={form.descriptions} name='descriptions' autoComplete="off" required />
-            </label>
-
-            <label className={style.label}> image
-              <Input className={style.input} type='text' onChange={handleChange} value={form.image} name='image' autoComplete="off" placeholder="please enter images url address..." required />
-            </label>
-            <div className={style.footer}>
-              <MyButton type='button' className={style.buttonCancel} onClick={onClose} textButton='Cancel' />
-              <MyButton type='submit' className={style.buttonSubmit} onClick={onSave} textButton='Submit' />
-            </div>
-          </Form>
+          <Form handleSubmit={editId ? editProducts : addProducts } onClose={onClose} editId={editId} />
         </Box>
       </Modal>
     </div>
   );
 };
 
-export default ModalEdit;
+const mapState = (state) => ({
+  editId: state.products.editId,
+});
+
+export default connect(mapState, { resetForm, addProducts, editProducts })(ModalEdit);

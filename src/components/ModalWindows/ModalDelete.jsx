@@ -7,76 +7,99 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  maxWidth: 600,
-  bgcolor: 'background.paper',
-  borderRadius: 4,
-  boxShadow: 24,
-  p: 4,
-  paddingTop: '40px',
-  paddingBottom: '40px',
-  textAlign: 'center',
-  fontFamily: 'Inter'
+  box: {
+    background: 'white',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 500,
+    borderRadius: 8,
+    boxShadow: 24,
+    padding: "32px",
+    textAlign: 'center',
+    fontFamily: 'Inter'
+  },
+
+  header: {
+    position: 'relative',
+    marginBottom: "16px"
+  },
+
+  title: {
+    color: '#000',
+    fontWeight: 600,
+    fontSize: '20px',
+    textTransform: "uppercase"
+  },
+
+  close: {
+    background: 'transparent',
+    position: 'absolute',
+    top: "-20px",
+    right: "-20px",
+  },
+
+  name: {
+    color: "#726969",
+    fontSize: "18px",
+    padding: "0 0 5px 0",
+    fontWeight: 600,
+
+    display: "inline-block",
+    marginBottom: "24px"
+  },
+
+  buttons: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "12px",
+    alignItems: "center",
+  },
+
+  cancel: {
+    color: 'white',
+    fontWeight: 600,
+    padding: "10px 50px",
+    background: 'silver'
+  },
+
+  delete: {
+    color: 'white',
+    fontWeight: 600,
+    padding: "10px 50px",
+    background: 'red'
+  }
+
+
+
 };
 
-const header = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  gap: '10px',
-}
 
-const buttonClose = {
-  background: 'transparent'
-}
 
-const textColor = {
-  color: '#05BC52',
-  fontWeight: 600,
-  fontSize: '20px'
-}
 
-const styleDelete = {
-  color: 'white',
-  fontWeight: 600,
-  padding: 10,
-  paddingLeft: 70,
-  paddingRight: 70,
-  background: 'red'
-}
 
-const styleCancel = {
-  color: 'white',
-  fontWeight: 600,
-  padding: 10,
-  paddingLeft: 70,
-  paddingRight: 70,
-  background: 'silver'
-}
 
-const ModalDelete =({onOpen, onClose, product, onDelete })=> {
-  const handleDelete = () => {
-    onDelete(product);
-    onClose();
-  }
+
+
+
+const ModalDelete =({ onOpen, onClose, product, onDelete })=> {
 
   return (
     <div>
-      <Modal open={onOpen} onClose={onClose}>
-          <Box sx={style}>
-            <div style={header}>
-              <p style={textColor}>
-                Are u sure you want to delete this product?
-              </p>
-              <MyButton style={buttonClose} type="button" onClick={onClose} icon={<RiCloseFill fill='black' size={30}/>} />
+      <Modal open={onOpen}>
+          <Box style={style.box}>
+            <div style={style.header}>
+              <p style={style.title}>delete this product? </p>
+
+              <MyButton style={style.close} type="button" onClick={onClose} icon={<RiCloseFill fill='black' size={30}/>} />
             </div>
 
-            <div style={{display: 'flex', justifyContent:'space-around', marginTop: '30px'}} id="modal-modal-description" sx={{ mt: 5 }}>
-              <Button onClick={onClose} style={styleCancel}>Cancel</Button>
-              <Button onClick={handleDelete} style={styleDelete}>Delete</Button>
+            <div style={style.name}>{product.name}</div>
+
+            <div style={style.buttons}>
+              <Button onClick={onClose} style={style.cancel}>Cancel</Button>
+              <Button onClick={()=> onDelete(product)} style={style.delete}>Delete</Button>
             </div>
           </Box>
       </Modal>

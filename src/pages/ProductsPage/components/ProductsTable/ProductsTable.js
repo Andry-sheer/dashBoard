@@ -1,7 +1,7 @@
-
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch} from "react-redux";
-import { deleteProduct, editProduct, fetchProducts, addProduct, fillForm, resetForm, } from "../../../../modules/actions/products";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { deleteProduct, editId } from "../../../../modules/actions/products";
 import { BiSolidEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import Table from "@mui/material/Table";
@@ -10,137 +10,120 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import ModalDelete from "../../../../components/ModalWindows/ModalDelete";
 import styles from "../../../../styles/ProductsTable.module.css";
 import ModalEdit from "../../../../components/ModalWindows/ModalEdit";
-import Spinner from "../../../../components/Spinner/Spinner"
-import Logo from "../../../../assets/pagesLogo.svg"
 
-const BasicTable = () => {
-  const dispatch = useDispatch();
-  const products = useSelector((state)=> state.products.productsData);
-  const form = useSelector((state)=> state.products.form);
-  const isLoading = useSelector((state)=> state.products.isLoading);
-  const isError = useSelector((state)=> state.products.isError);
+const BasicTable = ({ products, deleteProduct, editId }) => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [selectProductToDelete, setSelectProductToDelete] = useState("");
+  const navigate = useNavigate();
+  const [isOpenModalEdit, setIsOpenModalEdit] = useState(false);
+  // eslint-disable-next-line
+  const [selectEdit, setSelectEdit] = useState(null);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isEdit, setIsEdit] = useState(false);
-  const [isOpenModalDelete, setIsOpenModalDelete] = useState(false);
-  const [selectDelete, setSelectDelete] = useState(null);
 
-  const productToDelete = (product)=> {
-    setSelectDelete(product);
-    setIsOpenModalDelete(true)
-  }
+  const handleCloseEdit = () => {
+    setIsOpenModalEdit(false);
+    setSelectEdit(null);
+  };
 
-  useEffect(()=> {
-    dispatch(fetchProducts());
-  },[dispatch]);
+  const handleOpenEdit = (product) => {
+    setIsOpenModalEdit(true);
+    editId(
+      product.id, 
+      product.category, 
+      product.name, 
+      product.quantity, 
+      product.price, 
+      product.descriptions, 
+      product.image
+    );
+  };
 
-  const openModal = (product = null) => {
-    if (product) {
-      setIsEdit(true);
-      dispatch(fillForm(product));
-    } else {
-      setIsEdit(false);
-      dispatch(resetForm());
+  const handleOpenModals = (product) => {
+    setIsOpenModal(true);
+    setSelectProductToDelete(product);
+  };
+
+  const handleCloseModals = () => {
+    setIsOpenModal(false);
+    setSelectProductToDelete("");
+  };
+
+  const handleDelete = ()=> {
+    deleteProduct(selectProductToDelete.id);
+    handleCloseModals();
+  };
+
+  const sortProducts = [...products].sort((a, b)=> {
+    return a.id - b.id;
+  });
+
+  const handleClickProduct = (id) => {
+    navigate(`/product-preview/${id}`);
+  };
+
+  const style = {
+    container: {
+      borderRadius: "12px",
+      background: "white",
+    },
+
+    table: {
+      minWidth: 400,
+      padding: 0,
+      fontFamily: "Inter",
+    },
+
+    row: {
+      background: "#0EC86F",
+    },
+
+    cellHead: {
+      fontWeight: 600,
+      textAlign: "center",
+      borderBottom: 0
+    },
+
+    cell: {
+      textAlign: "center",
     }
-
-    setIsModalOpen(true);
-  };
-
-  const closeModalDelete =()=> {
-    setIsOpenModalDelete(false)
   }
-
-
-
-  const closeModal = ()=> {
-    setIsModalOpen(false);
-    dispatch(resetForm());
-  };
-
-  const handleSave = ()=> {
-    if(isEdit){
-      dispatch(editProduct());
-    } else {
-      dispatch(addProduct());
-    }
-
-    closeModal();
-  };
-
-
-
 
     return (
-      <>
-      { isError ? (<div className={styles.error}>
-        <div className={styles.container}>
-          <img src={Logo} alt="logo"/>
-            <p className={styles.title}>Somethings error... no Data</p>
-          </div>
-        </div>
-      ) : (
-        <div className={styles.BasicTable}>
-          {isLoading ? (<div className={styles.spinner}><Spinner/></div>) : (
-          <TableContainer style={{ borderRadius: "12px" }} component={Paper}>
-            <Table
-              sx={{
-                minWidth: 400,
-                "& .MuiTableCell-body": {
-                  paddingLeft: "0px",
-                  paddingRight: "0px",
-                  fontFamily: "Inter",
-                }, "& .MuiTableCell-head": { borderBottom: 0 },
-                "& .MuiTableRow-root:hover":{
-                      backgroundColor: "#3cd78c"
-                    },
-              }}
-              aria-label="simple table"
-            >
-              <TableHead>
-                <TableRow sx={{ "& .MuiTableCell-head": {
-                    borderBottom: "0px"
-                  } }} style={{ background: "#0EC86F" }}>
-                  <TableCell sx={{ fontWeight: "600"  }} align="center">
-                    ID
-                  </TableCell>
-                  <TableCell sx={{ fontWeight: "600" }} align="center">
-                    Category
-                  </TableCell>
-                  <TableCell sx={{ fontWeight: "600" }} align="center">
-                    Name
-                  </TableCell>
-                  <TableCell sx={{ fontWeight: "600" }} align="center">
-                    Quantity
-                  </TableCell>
-                  <TableCell sx={{ fontWeight: "600" }} align="center">
-                    Price(₴)
-                  </TableCell>
-                  <TableCell
-                    align="center"
-                  ></TableCell>
+        <>
+          <TableContainer style={style.container}>
+            <Table style={style.table} aria-label="simple table">
+              <TableHead style={style.body}>
+                <TableRow style={style.row}>
+                  <TableCell style={style.cellHead}>ID</TableCell>
+                  <TableCell style={style.cellHead}>Категорія</TableCell>
+                  <TableCell style={style.cellHead}>Ім'я</TableCell>
+                  <TableCell style={style.cellHead}>Кількість</TableCell>
+                  <TableCell style={style.cellHead}>Ціна(₴)</TableCell>
+                  <TableCell style={style.cellHead}></TableCell>
                 </TableRow>
               </TableHead>
+
               <TableBody>
-                {products.map((product) => (
-                  <TableRow
-                    key={product.id}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell align="center" component="th" scope="row">{product.id}</TableCell>
-                    <TableCell align="center">{product.category}</TableCell>
-                    <TableCell align="center">{product.name}</TableCell>
-                    <TableCell align="center">{product.quantity}</TableCell>
-                    <TableCell align="center">{product.price}</TableCell>
-                    <TableCell align="center">
+                {sortProducts.map((product) => (
+                  <TableRow className={styles.tableRow} key={product.id}>
+                    <TableCell className={styles.rows} style={style.cell}>{product.id}</TableCell>
+                    <TableCell className={styles.rows} style={style.cell}>{product.category}</TableCell>
+                    <TableCell 
+                      className={styles.name} 
+                      style={style.cell} 
+                      onClick={() => handleClickProduct(product.id)}>{product.name}
+                    </TableCell>
+                    <TableCell className={styles.rows} style={style.cell}>{product.quantity}</TableCell>
+                    <TableCell className={styles.rows} style={style.cell}>{product.price}</TableCell>
+                    <TableCell className={styles.rows} style={style.cell}>
                       <Tooltip title="Edit">
                         <IconButton aria-label="edit"
-                          onClick={()=> openModal(product)}
+                          onClick={()=> handleOpenEdit(product)}
                         >
                           <BiSolidEdit className={styles.editButton} />
                         </IconButton>
@@ -148,7 +131,7 @@ const BasicTable = () => {
 
                       <Tooltip title="Delete">
                         <IconButton aria-label="delete"
-                          onClick={()=> productToDelete(product)}
+                          onClick={()=> handleOpenModals(product)}
                         >
                           <MdDelete className={styles.deleteButton} />
                         </IconButton>
@@ -159,26 +142,16 @@ const BasicTable = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          )}
-
-          <ModalEdit 
-            onOpen={isModalOpen} 
-            onSave={handleSave} 
-            form={form} 
-            isEdit={isEdit} 
-            onClose={closeModal} 
-          />
-
-          <ModalDelete 
-            onOpen={isOpenModalDelete} 
-            onClose={closeModalDelete}
-            onDelete={(product)=> dispatch(deleteProduct(product.id))}
-            product={selectDelete}
-          />
-      </div>)}
+          <ModalEdit onOpen={isOpenModalEdit} onClose={handleCloseEdit} />
+          <ModalDelete onOpen={isOpenModal} product={selectProductToDelete} onDelete={handleDelete} onClose={handleCloseModals} />
       </>
     );
 };
 
+const mapStateToProps = (state) => ({
+  products: state.products.productsData,
+  isLoadProducts: state.products.isLoadProducts,
+  isLoading: state.products.isLoading
+});
 
-export default BasicTable;
+export default connect(mapStateToProps, { deleteProduct, editId } )(BasicTable);

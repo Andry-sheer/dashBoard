@@ -13,8 +13,13 @@ const Input = ({
 }) => {
 
   const handleOnChange = (e)=> {
-    if(onChange) onChange(e);
-    if(handleChange) handleChange(e.target.value);
+    if (onChange) {
+      onChange(e);
+    }
+
+    else if (handleChange) {
+      handleChange(e.target.value);
+    } 
   }
 
   return (
