@@ -1,11 +1,27 @@
+
+import { API_URL } from "../../constants/constants";
 import { 
   SET_LOGIN, 
   SET_PASSWORD,
   SHOW_HIDE_PASSWORD, 
   SET_ERROR,
   CLEAR_ERROR,
-  SET_USER
+  SET_USER,
+  FETCH_USERS
 } from "../actionTypes";
+
+export const fetchUsers = () => async (dispatch) => {
+
+  try {
+    const response = await fetch(`${API_URL}/users`);
+    const data = await response.json();
+    const users = Array.isArray(data) ? data : Object.values(data);
+    dispatch({ type: FETCH_USERS,
+      payload: users });
+  } catch (error) {
+    console.log("Error", error);
+  }
+};
 
 export const setUser = (user) => ({
   type: SET_USER,

@@ -11,7 +11,7 @@ const styles = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  background: "#D9D9D9",
+  background: "#F5F5FA",
   borderRadius: 4,
   boxShadow: 24,
   padding: 2,
@@ -21,7 +21,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: "10px"
+    marginBottom: "20px"
   },
 
   title: {

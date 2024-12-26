@@ -1,8 +1,11 @@
 import { connect } from "react-redux";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import { resetForm } from "../../modules/actions/products";
+import { styled } from '@mui/material/styles';
+import { Button } from "@mui/material";
+import LoadingButton from '@mui/lab/LoadingButton';
 import styles from "../../styles/Form.module.css";
-import MyButton from "../MyButton/MyButton";
+import TextField from '@mui/material/TextField';
 
 const ProductForm = ({
   editId,
@@ -16,11 +19,12 @@ const ProductForm = ({
   category,
   image,
 }) => {
+  
   const validateName = (value) => {
     let errorMessage;
 
     if (!value.trim()) {
-      errorMessage = "Обов'язкове поле!";
+      errorMessage = "обов'язкове поле!";
     }
 
     return errorMessage;
@@ -30,7 +34,7 @@ const ProductForm = ({
     let errorMessage;
 
     if (value === "" || value <= -1) {
-      errorMessage = "ціна або кількість має бути не меньше нуля!";
+      errorMessage = "має бути не меньше нуля!";
     }
 
     return errorMessage;
@@ -40,6 +44,83 @@ const ProductForm = ({
     onClose();
     resetForm();
   };
+
+  const style = {
+    cancel: {
+      color: 'white',
+      fontWeight: 600,
+      padding: "10px 50px",
+      background: 'silver'
+    },
+
+    submit: {
+      color: 'white',
+      fontWeight: 600,
+      padding: "10px 50px",
+      background: '#44b26f',
+      borderColor: 'transparent',
+      letterSpacing: '1px'
+    },
+
+    disabled: {
+      color: 'transparent',
+      borderColor: '#726969',
+      fontWeight: 600,
+      padding: "10px 50px",
+    }
+  }
+
+  const CustomTextField = styled(TextField)({
+    '& .MuiOutlinedInput-root': {
+      borderRadius: "12px",
+      color: '#44b26f', 
+      fontWeight: 600,
+      
+      '& fieldset': {
+        borderColor: '#44b26f',
+      },
+      '&:hover fieldset': {
+        borderColor: '#44b26f',
+        cursor: 'pointer',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#44b26f',
+        color: '#44b26f',
+      },
+    },
+
+    '& .MuiInputLabel-root': {
+      color: '#44b26f',
+      fontWeight: 600,
+
+      '&.Mui-focused': {
+        color: '#44b26f',
+      },
+    },
+
+
+    '& .Mui-error': {
+      color: 'red',
+
+      '& fieldset': {
+        borderColor: 'red',
+      },
+      
+      '&:hover fieldset': {
+        borderColor: 'red',
+      },
+
+      '&.Mui-focused fieldset': {
+        borderColor: 'red',
+        color: 'red',
+      },
+
+      '&.MuiInputLabel-root': {
+        color: 'red',
+      }
+    },
+
+  });
 
   return (
     <Formik
@@ -71,112 +152,94 @@ const ProductForm = ({
       {({ isSubmitting }) => {
         return (
           <Form className={styles.form}>
-            <label className={styles.label}>
-              Category
-              <Field
-                className={styles.input}
-                validate={validateName}
-                type="text"
-                name="category"
-              />
-              <ErrorMessage
-                className={styles.errorMessage}
-                name="category"
-                component="div"
-              />
-            </label>
 
-            <label className={styles.label}>
-              Name
-              <Field
-                className={styles.input}
-                validate={validateName}
-                type="text"
-                name="name"
-              />
-              <ErrorMessage
-                className={styles.errorMessage}
-                name="name"
-                component="div"
-              />
-            </label>
+            <Field name="category" validate={validateName}>
+              {({ field, meta }) => (
+                <CustomTextField
+                  {...field}
+                  label={meta.error ? `Категорія: ${meta.error}` : 'Категорія'}
+                  variant="outlined"
+                  error={Boolean(meta.error)}
+                />
+              )}
+            </Field>
 
-            <label className={styles.label}>
-              Quantity
-              <Field
-                className={styles.input}
-                validate={validateNumber}
-                type="number"
-                name="quantity"
-              />
-              <ErrorMessage
-                className={styles.errorMessage}
-                name="quantity"
-                component="div"
-              />
-            </label>
 
-            <label className={styles.label}>
-              Price
-              <Field
-                className={styles.input}
-                validate={validateNumber}
-                type="number"
-                name="price"
-              />
-              <ErrorMessage
-                className={styles.errorMessage}
-                name="price"
-                component="div"
-              />
-            </label>
+            <Field name="name" validate={validateName}>
+              {({ field, meta }) => (
+                <CustomTextField
+                  {...field}
+                  // eslint-disable-next-line
+                  label={meta.touched && meta.error ? `Ім\'я: ${meta.error}` : 'Ім\'я'}
+                  variant="outlined"
+                  error={Boolean(meta.error && meta.touched)}
+                />
+              )}
+            </Field>
 
-            <label className={styles.label}>
-              Descriptions
-              <Field
-                className={styles.input}
-                validate={validateName}
-                type="text"
-                name="descriptions"
-              />
-              <ErrorMessage
-                className={styles.errorMessage}
-                name="descriptions"
-                component="div"
-              />
-            </label>
+            <Field name="quantity" validate={validateNumber}>
+              {({ field, meta }) => (
+                <CustomTextField
+                  {...field}
+                  label={meta.touched && meta.error ? `Кількість: ${meta.error}` : 'Кількість'}
+                  variant="outlined"
+                  type="number"
+                  error={Boolean(meta.error && meta.touched)}
+                />
+              )}
+            </Field>
 
-            <label className={styles.label}>
-              Images
-              <Field
-                className={styles.input}
-                validate={validateName}
-                placeholder="enter img url address..."
-                type="text"
-                name="image"
-              />
-              <ErrorMessage
-                className={styles.errorMessage}
-                name="image"
-                component="div"
-              />
-            </label>
+            <Field name="price" validate={validateNumber}>
+              {({ field, meta }) => (
+                <CustomTextField
+                  {...field}
+                  label={meta.touched && meta.error ? `Ціна: ${meta.error}` : 'Ціна'}
+                  variant="outlined"
+                  type="number"
+                  error={Boolean(meta.error && meta.touched)}
+                />
+              )}
+            </Field>
+
+            <Field name="descriptions" validate={validateName}>
+              {({ field, meta }) => (
+                <CustomTextField
+                  {...field}
+                  label={meta.touched && meta.error ? `Опис: ${meta.error}` : 'Опис'}
+                  variant="outlined"
+                  error={Boolean(meta.error && meta.touched)}
+                />
+              )}
+            </Field>
+
+            <Field name="image" validate={validateName}>
+              {({ field, meta }) => (
+                <CustomTextField
+                  {...field}
+                  label={meta.touched && meta.error ? `посилання на фото: ${meta.error}` : 'посилання на фото'}
+                  variant="outlined"
+                  error={Boolean(meta.error && meta.touched)}
+                />
+              )}
+            </Field>
 
             <div className={styles.footer}>
-              <MyButton
-                className={styles.buttonCancel}
+              <Button
+                style={style.cancel}
                 type="button"
-                textButton="Cancel"
-                onClick={closeAndReset}
-              />
-              <MyButton
-                className={
-                  isSubmitting ? styles.buttonSubmitDis : styles.buttonSubmit
-                }
+                onClick={closeAndReset}>
+                  Cancel
+              </Button>
+
+              <LoadingButton
+                style={ isSubmitting ? style.disabled : style.submit }
+                size="small"
                 type="submit"
-                textButton="Submit"
-                disabled={isSubmitting}
-              />
+                loading={isSubmitting}
+                variant="outlined"
+                disabled={isSubmitting}>
+                  { isSubmitting ? "Submit" : "Submit"}
+              </LoadingButton>
             </div>
           </Form>
         );
