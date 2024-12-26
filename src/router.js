@@ -14,7 +14,7 @@ const AppRouter = () => {
   return (
     <div className="App">
       <BrowserRouter>
-      <Header />
+        <Header />
           <Routes>
             <Route path="*" element={<Error />} />
             <Route path="/" element={<Login />} />

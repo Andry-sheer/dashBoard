@@ -1,72 +1,16 @@
 .form {
   display: flex;
   flex-flow: column;
-  gap: 10px;
+  gap: 20px;
   color: #726969;
   font-family: 'Inter';
   font-weight: 600;
 }
 
-.input {
-  padding: 10px;
-  border-radius: 12px;
-  border: transparent 2px solid;
-  outline: none;
-  color: #05BC52;
-  font-weight: 600;
-  font-size: 20px;
-}
-
-.input::placeholder {
-  font-size: 16px;
-  letter-spacing: 1px;
-  color: #05BC52;
-}
-
-.input:focus {
-  border: #05BC52 2px solid;
-}
-
-.label {
-  display: flex;
-  flex-flow: column;
-  gap: 5px;
-  cursor: pointer;
-  position: relative;
-  transition: linear .7s;
-  overflow: hidden;
-}
-
 .footer {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  margin-top: 10px;
-}
-
-.buttonCancel, .buttonSubmit, .buttonSubmitDis {
-  color: white;
-  font-weight: 700;
-  background: #726969;
-  padding: 10px 60px;
-  border-radius: 12px;
-  outline: none;
-  border: 0;
-  cursor: pointer;
-}
-
-.buttonSubmit {
-  background: #05BC52;
-}
-
-.buttonSubmitDis {
-  background: #726969;
-}
-
-.errorMessage {
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-size: 14px;
-  color: red;
+  gap: 12px;
+  margin: 0 0 10px 0;
 }

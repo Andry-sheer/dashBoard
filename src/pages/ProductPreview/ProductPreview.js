@@ -69,7 +69,7 @@ const ProductPreview = () => {
           </div>
         ) : (
           <div className={styles.container}>
-            <MyButton className={styles.buttonBack} icon={<IoIosArrowBack className={styles.iconButton} size={20} />} textButton="BACK TO STORE" onClick={handleButtonBack} />
+            <MyButton className={styles.buttonBack} icon={<IoIosArrowBack className={styles.iconButton} size={20} />} textButton="PREVIEW PAGE" onClick={handleButtonBack} />
             <div className={styles.containerInner}>
               <div className={styles.blockImage}>
                 <img className={styles.image} src={products.image} alt="product-image" />

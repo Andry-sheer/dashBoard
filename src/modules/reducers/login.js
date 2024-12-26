@@ -5,7 +5,8 @@ import {
   SHOW_HIDE_PASSWORD, 
   SET_ERROR,
   CLEAR_ERROR,
-  SET_USER
+  SET_USER,
+  FETCH_USERS
 } from "../actionTypes";
 
 const initialState = {
@@ -13,11 +14,21 @@ const initialState = {
   password: "",
   isShowHidePassword: true,
   error: null,
-  user: ""
+  users: [],
+  user: {
+    name: "",
+    password: "",
+  },
 }
 
 const singInReducer = (state = initialState, action) => {
   switch (action.type) {
+
+    case FETCH_USERS:
+      return {
+        ...state,
+        users: action.payload
+      }
 
     case SET_USER:
       return {
