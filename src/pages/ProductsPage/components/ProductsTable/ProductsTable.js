@@ -39,7 +39,7 @@ const BasicTable = ({ products, deleteProduct, editId }) => {
       product.quantity, 
       product.price, 
       product.descriptions, 
-      product.image
+      product.images
     );
   };
 

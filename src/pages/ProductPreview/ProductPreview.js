@@ -1,12 +1,17 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { API_URL } from "../../constants/constants";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { IoIosArrowBack } from "react-icons/io";
 import { FaHouseCircleCheck, FaHouseCircleXmark } from "react-icons/fa6";
 import MyButton from "../../components/MyButton/MyButton";
 import BasicSpinner from "../../components/Spinner/Spinner";
 import Logo from "../../assets/pagesLogo.svg";
 import styles from "../../styles/ProductPreview.module.css";
+import defaultImage from "../../assets/noImg.png";
+import "swiper/css/bundle";
+import "swiper/css";
+
 
 const ProductPreview = () => {
   const { id } = useParams();
@@ -71,8 +76,14 @@ const ProductPreview = () => {
           <div className={styles.container}>
             <MyButton className={styles.buttonBack} icon={<IoIosArrowBack className={styles.iconButton} size={20} />} textButton="PREVIEW PAGE" onClick={handleButtonBack} />
             <div className={styles.containerInner}>
-              <div className={styles.blockImage}>
-                <img className={styles.image} src={products.image} alt="product-image" />
+              <div className={products.images[0].trim() ? styles.blockImage : styles.noImage}>
+              <Swiper spaceBetween={10} slidesPerView={1}>
+                {products.images.map((image, index) => (
+                  <SwiperSlide key={index}>
+                    <img className={styles.image} src={!image.trim() ? defaultImage : image}  alt={!image.trim() ?  "No image..." : `image Product: ${products.name}`} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
               </div>
               <div className={styles.blockInfo}>
                 <h1 className={styles.name}>{products.name}</h1>
