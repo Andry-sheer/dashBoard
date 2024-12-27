@@ -53,7 +53,7 @@ export const deleteProduct = (id) => async (dispatch) => {
   }
 };
 
-export const addProducts = (category, name, price, quantity, descriptions, image) => async (dispatch, getState) => {
+export const addProducts = (category, name, price, quantity, descriptions, images) => async (dispatch, getState) => {
 
   try {
     await fetch(`${API_URL}/products`, {
@@ -67,7 +67,7 @@ export const addProducts = (category, name, price, quantity, descriptions, image
         price,
         quantity,
         descriptions,
-        image,
+        images,
       ),
     });
 
@@ -79,7 +79,7 @@ export const addProducts = (category, name, price, quantity, descriptions, image
   }
 };
 
-export const editId = (editId, editCategory, editName, editQuantity, editPrice, editDescriptions, editImage ) => ({
+export const editId = (editId, editCategory, editName, editQuantity, editPrice, editDescriptions, editImages ) => ({
   type: SET_EDIT,
   payload: {
     editId,
@@ -88,11 +88,11 @@ export const editId = (editId, editCategory, editName, editQuantity, editPrice, 
     editQuantity,
     editPrice,
     editDescriptions,
-    editImage,
+    editImages,
   }
 })
 
-export const editProducts = (category, name, price, quantity, descriptions, image ) => async (dispatch, getState) => {
+export const editProducts = (category, name, price, quantity, descriptions, images ) => async (dispatch, getState) => {
   const { products } = getState();
 
   try {
@@ -107,7 +107,7 @@ export const editProducts = (category, name, price, quantity, descriptions, imag
         price,
         quantity,
         descriptions,
-        image,
+        images,
     ),
     });
 

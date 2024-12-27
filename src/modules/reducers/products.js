@@ -24,7 +24,7 @@ const initialState = {
   price: "",
   quantity: "",
   descriptions: "",
-  image: "",
+  images: [""],
   editId: null,
 };
 
@@ -77,7 +77,7 @@ const products = (state = initialState, action) => {
     }
 
     case SET_EDIT: {
-      const { editId, editName, editCategory, editDescriptions, editImage, editPrice, editQuantity } = action.payload;
+      const { editId, editName, editCategory, editDescriptions, editImages, editPrice, editQuantity } = action.payload;
 
       return {
         ...state,
@@ -87,7 +87,7 @@ const products = (state = initialState, action) => {
         descriptions: editDescriptions,
         price: editPrice,
         quantity: editQuantity,
-        image: editImage,
+        images: editImages,
       }
     };
 
@@ -101,7 +101,7 @@ const products = (state = initialState, action) => {
         price: "",
         quantity: "",
         descriptions: "",
-        image: "",
+        images: [""],
       };
     }
 
@@ -151,11 +151,13 @@ const products = (state = initialState, action) => {
     }
 
     case CHANGE_IMAGE: {
-      const {image} = action.payload;
+      const { index, newImage} = action.payload;
+      const updatedImages = [...state.images];
+      updatedImages[index] = newImage;
 
       return {
         ...state,
-        image,
+        images: updatedImages,
       }
     }
 

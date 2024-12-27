@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { BsCartCheckFill, BsCartXFill } from "react-icons/bs";
 import styles from "../../../../styles/CardPreview.module.css";
+import defaultImage from "../../../../assets/noImg.png";
 
 const CardPreview = ({ onClick, product }) => {
   const [inStorage, setInStorage] = useState(false);
@@ -17,7 +18,7 @@ const CardPreview = ({ onClick, product }) => {
   return (
     <div onClick={onClick} className={styles.card} key={product.id}>
       <div className={styles.containerImage}>
-        <img className={styles.image} src={product.image} alt="cardImage" />
+        <img className={styles.image} src={product.images[0].trim() ? product.images[0] : defaultImage } alt="cardImage" />
       </div>
       <p className={styles.title}>{product.name}</p>
       <p className={styles.category}>Категорія: {product.category}</p>

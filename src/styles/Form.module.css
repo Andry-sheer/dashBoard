@@ -14,3 +14,41 @@
   gap: 12px;
   margin: 0 0 10px 0;
 }
+
+.container {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+}
+
+.addFullButton, .addLiteButton, .deleteFullButton, .deleteLiteButton {
+  padding: 10px 0;
+  background: transparent;
+  width: 100%;
+  border-radius: 4px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 13px;
+  border: #44b26f solid 2px;
+  color: #44b26f;
+}
+
+.addLiteButton {
+  flex: 1 1 50%;
+}
+
+.deleteFullButton, .deleteLiteButton {
+  border: #b24444 solid 2px;
+  color: #b24444;
+}
+
+.deleteLiteButton {
+  flex: 1 1 50%;
+}
+
+.buttonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}

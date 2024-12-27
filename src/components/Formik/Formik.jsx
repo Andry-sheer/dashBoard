@@ -1,11 +1,12 @@
 import { connect } from "react-redux";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, FieldArray } from "formik";
 import { resetForm } from "../../modules/actions/products";
-import { styled } from '@mui/material/styles';
+import { CustomTextField } from "./components/CustomTextField";
+import { style } from "./components/CustomStyles";
 import { Button } from "@mui/material";
 import LoadingButton from '@mui/lab/LoadingButton';
 import styles from "../../styles/Form.module.css";
-import TextField from '@mui/material/TextField';
+import MyButton from "../MyButton/MyButton";
 
 const ProductForm = ({
   editId,
@@ -17,7 +18,7 @@ const ProductForm = ({
   price,
   descriptions,
   category,
-  image,
+  images
 }) => {
   
   const validateName = (value) => {
@@ -40,87 +41,20 @@ const ProductForm = ({
     return errorMessage;
   };
 
+  const validateImages = (value)=> {
+    let errorMessage;
+
+    if (!value) {
+      errorMessage = "обов'язкове поле!";
+    }
+
+    return errorMessage;
+  }
+
   const closeAndReset = () => {
     onClose();
     resetForm();
   };
-
-  const style = {
-    cancel: {
-      color: 'white',
-      fontWeight: 600,
-      padding: "10px 50px",
-      background: 'silver'
-    },
-
-    submit: {
-      color: 'white',
-      fontWeight: 600,
-      padding: "10px 50px",
-      background: '#44b26f',
-      borderColor: 'transparent',
-      letterSpacing: '1px'
-    },
-
-    disabled: {
-      color: 'transparent',
-      borderColor: '#726969',
-      fontWeight: 600,
-      padding: "10px 50px",
-    }
-  }
-
-  const CustomTextField = styled(TextField)({
-    '& .MuiOutlinedInput-root': {
-      borderRadius: "12px",
-      color: '#44b26f', 
-      fontWeight: 600,
-      
-      '& fieldset': {
-        borderColor: '#44b26f',
-      },
-      '&:hover fieldset': {
-        borderColor: '#44b26f',
-        cursor: 'pointer',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: '#44b26f',
-        color: '#44b26f',
-      },
-    },
-
-    '& .MuiInputLabel-root': {
-      color: '#44b26f',
-      fontWeight: 600,
-
-      '&.Mui-focused': {
-        color: '#44b26f',
-      },
-    },
-
-
-    '& .Mui-error': {
-      color: 'red',
-
-      '& fieldset': {
-        borderColor: 'red',
-      },
-      
-      '&:hover fieldset': {
-        borderColor: 'red',
-      },
-
-      '&.Mui-focused fieldset': {
-        borderColor: 'red',
-        color: 'red',
-      },
-
-      '&.MuiInputLabel-root': {
-        color: 'red',
-      }
-    },
-
-  });
 
   return (
     <Formik
@@ -132,15 +66,16 @@ const ProductForm = ({
               quantity,
               price,
               descriptions,
-              image,
+              images,
             }
-          : {
+          : 
+          {
               category: "",
               name: "",
               quantity: "",
               price: "",
               descriptions: "",
-              image: "",
+              images: [""],
             }
       }
       onSubmit={async (values, actions) => {
@@ -149,7 +84,7 @@ const ProductForm = ({
         onClose();
       }}
     >
-      {({ isSubmitting }) => {
+      {({ isSubmitting, values }) => {
         return (
           <Form className={styles.form}>
 
@@ -157,9 +92,9 @@ const ProductForm = ({
               {({ field, meta }) => (
                 <CustomTextField
                   {...field}
-                  label={meta.error ? `Категорія: ${meta.error}` : 'Категорія'}
+                  label={meta.touched && meta.error ? `Категорія: ${meta.error}` : 'Категорія'}
                   variant="outlined"
-                  error={Boolean(meta.error)}
+                  error={Boolean(meta.error && meta.touched)}
                 />
               )}
             </Field>
@@ -169,8 +104,7 @@ const ProductForm = ({
               {({ field, meta }) => (
                 <CustomTextField
                   {...field}
-                  // eslint-disable-next-line
-                  label={meta.touched && meta.error ? `Ім\'я: ${meta.error}` : 'Ім\'я'}
+                  label={meta.touched && meta.error ? `Ім'я: ${meta.error}` : 'Ім\'я'}
                   variant="outlined"
                   error={Boolean(meta.error && meta.touched)}
                 />
@@ -212,16 +146,42 @@ const ProductForm = ({
               )}
             </Field>
 
-            <Field name="image" validate={validateName}>
-              {({ field, meta }) => (
-                <CustomTextField
-                  {...field}
-                  label={meta.touched && meta.error ? `посилання на фото: ${meta.error}` : 'посилання на фото'}
-                  variant="outlined"
-                  error={Boolean(meta.error && meta.touched)}
-                />
-              )}
-            </Field>
+            <FieldArray name="images"> 
+              {({ remove, push }) => (
+                <div className={styles.container}>
+                  { values.images.map((image, index) => (
+                    <Field key={index} validate={values.images.length < 2 ? null : validateImages}
+                      name={`images.${index}`}
+                      render={({ field, meta }) => (
+                        <CustomTextField
+                          {...field}
+                          label={`введіть URL Зображення ${index + 1}`}
+                          variant="outlined"
+                          error={Boolean(meta.error && meta.touched)}
+                        />
+                      )}
+                    />
+                  ))}
+
+                  <div className={styles.buttonsContainer}>
+                    {values.images.length > 3 ? null : 
+                      <MyButton 
+                        className={values.images.length <= 1 ? styles.addFullButton : styles.addLiteButton} 
+                        type="button" 
+                        onClick={() => push("")} 
+                        textButton={values.images.length <= 1 ? "add image" : "add more images" } 
+                      />
+                    }
+
+                    {values.images.length <= 1 ? null :
+                      <MyButton
+                        type="button"
+                        className={values.images.length === 4 ? styles.deleteFullButton : styles.deleteLiteButton}
+                        onClick={() => remove(values.images.length - 1)}
+                        textButton={"delete image"}
+                      />
+                    }
+                  </div>
 
             <div className={styles.footer}>
               <Button
@@ -241,6 +201,9 @@ const ProductForm = ({
                   { isSubmitting ? "Submit" : "Submit"}
               </LoadingButton>
             </div>
+            </div>
+            )}
+        </FieldArray>
           </Form>
         );
       }}
@@ -254,9 +217,7 @@ const mapStateToProps = (state) => ({
   price: state.products.price,
   quantity: state.products.quantity,
   descriptions: state.products.descriptions,
-  image: state.products.image,
+  images: state.products.images,
 });
 
-export default connect(mapStateToProps, {
-  resetForm,
-})(ProductForm);
+export default connect(mapStateToProps, { resetForm })(ProductForm);
