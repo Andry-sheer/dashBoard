@@ -13,8 +13,7 @@
   padding: 30px;
 }
 
-.container {
-}
+.container {}
 
 .buttonBack {
   display: flex;
@@ -65,6 +64,41 @@
   grid-row: 2/3;
 }
 
+.descriptionTitle {
+  letter-spacing: 1px;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+
+.descriptions {
+  line-height: 1.5em;
+  font-weight: 400;
+  max-height: 12em;
+  overflow: hidden;
+}
+
+.descriptionsFull {
+  line-height: 1.5em;
+  font-weight: 400;
+  max-height: none;
+  overflow: visible;
+}
+
+.buttonMore {
+  color: #44b26f;
+  font-size: 16px;
+  font-weight: 400;
+  background: transparent;
+  transition: linear .2s;
+  text-decoration: 1px transparent underline;
+  cursor: pointer;
+  text-align: left;
+}
+
+.buttonMore:hover {
+  text-decoration: 1px underline;
+}
+
 .spanTitle {
   font-weight: 400;
 }
@@ -94,17 +128,6 @@
 .quantity {
   font-weight: 400;
   color: #726969;
-}
-
-.descriptionTitle {
-  letter-spacing: 1px;
-  margin: 0 0 8px 0;
-  font-weight: 600;
-}
-
-.descriptions {
-  line-height: 1.5;
-  font-weight: 400;
 }
 
 .storageZero {
