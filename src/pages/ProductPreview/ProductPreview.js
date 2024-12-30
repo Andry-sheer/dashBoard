@@ -1,17 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { API_URL } from "../../constants/constants";
-// import { Swiper, SwiperSlide } from "swiper/react";
 import { IoIosArrowBack } from "react-icons/io";
 import { FaHouseCircleCheck, FaHouseCircleXmark } from "react-icons/fa6";
 import MyButton from "../../components/MyButton/MyButton";
 import BasicSpinner from "../../components/Spinner/Spinner";
 import Logo from "../../assets/pagesLogo.svg";
 import styles from "../../styles/ProductPreview.module.css";
-// import defaultImage from "../../assets/noImg.png";
 import Slider from "../../components/Slider/Slider";
-// import "swiper/css/bundle";
-// import "swiper/css";
+
 
 
 const ProductPreview = () => {
@@ -22,11 +19,17 @@ const ProductPreview = () => {
   const [isError, setIsError] = useState(false);
   const [products, setProducts] = useState(null);
   const [isZero, setIsZero] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [lengthText, setLengthText] = useState(0);
 
   useEffect(() => {
       getProducts();
       // eslint-disable-next-line
   }, []);
+
+  const toggleIsHidden = () => {
+    setIsHidden(!isHidden);
+  }
 
   const getProducts = async () => {
     try {
@@ -39,6 +42,11 @@ const ProductPreview = () => {
       const productsData = await response.json();
       setProducts(productsData);
       setIsLoading(false);
+
+      if(productsData.descriptions){
+        setLengthText(productsData.descriptions.length)
+      }
+
     } catch (error) {
       setIsError(true);
       setIsLoading(false);
@@ -89,7 +97,14 @@ const ProductPreview = () => {
                 <p className={styles.descriptionTitle}>Опис:</p>
               </div>
               <div className={styles.blockDescription}>
-                <p className={styles.descriptions}>{products.descriptions}</p>
+                <p className={isHidden ? styles.descriptionsFull : styles.descriptions}>
+                  {products.descriptions}
+                </p>
+                {lengthText > 700 ?
+                  <MyButton className={styles.buttonMore} 
+                    onClick={toggleIsHidden} 
+                    textButton={isHidden ? "Сховати" : "Показати більше..."} 
+                  /> : null}
               </div>
             </div>
           </div>
