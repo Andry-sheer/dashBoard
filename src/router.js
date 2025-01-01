@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./router.css";
 import Login from "./pages/Login/Login";
 import ProductsPage from "./pages/ProductsPage/ProductsPage";
@@ -17,7 +17,10 @@ const AppRouter = () => {
         <Header />
           <Routes>
             <Route path="*" element={<Error />} />
-            <Route path="/" element={<Login />} />
+
+            <Route path="/" element={<Navigate to="/sing-in" replace />} />
+
+            <Route path="/sing-in" element={<Login />} />
 
             <Route element={<PrivateRoute />}>
               <Route path="/product-page" element={<ProductsPage />} />
