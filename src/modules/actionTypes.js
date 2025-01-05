@@ -1,5 +1,6 @@
 
 const MAIN_PAGE = "MAIN";
+const UI = "UI_ACTIONS";
 
 export const FETCH_PRODUCTS = `${MAIN_PAGE}/FETCH_PRODUCTS`;
 
@@ -30,5 +31,7 @@ export const SET_ERROR = `${MAIN_PAGE}/SET_ERROR`;
 export const CLEAR_ERROR = `${MAIN_PAGE}/CLEAR_ERROR`;
 export const SET_USER = `${MAIN_PAGE}/SET_USER`;
 
-
 export const FETCH_USERS = `${MAIN_PAGE}/FETCH_USERS`;
+
+export const SHOW_OVERLAY = `${UI}/SHOW_OVERLAY`;
+export const HIDE_OVERLAY = `${UI}/HIDE_OVERLAY`;

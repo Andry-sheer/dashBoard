@@ -13,7 +13,7 @@ import TableRow from "@mui/material/TableRow";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import ModalDelete from "../../../../components/ModalWindows/ModalDelete";
-import styles from "../../../../styles/ProductsTable.module.css";
+import styles from "../../../../styles/ProductsTable.module.scss";
 import ModalEdit from "../../../../components/ModalWindows/ModalEdit";
 
 const BasicTable = ({ products, deleteProduct, editId }) => {

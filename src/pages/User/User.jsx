@@ -2,8 +2,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { CiLock, CiUnlock } from "react-icons/ci";
 import { IoChevronBack } from "react-icons/io5";
-import styles from "../../styles/User.module.css";
-import MyButton from "../MyButton/MyButton";
+import styles from "../../styles/User.module.scss";
+import MyButton from "../../components/MyButton/MyButton";
 
 const User = () => {
   const navigate = useNavigate();
@@ -15,6 +15,8 @@ const User = () => {
     localStorage.removeItem("jwt");
     localStorage.removeItem("user");
   }
+
+  
   
   return (
     <Link className={styles.link}>
@@ -26,7 +28,7 @@ const User = () => {
       </div>
 
       {user && jwt ? 
-        <div className={styles.contr}>
+        <div className={styles.container}>
           <MyButton className={styles.logOutButton} onClick={singOut} icon={<IoChevronBack size={20} />} textButton="sing out" />
           <MyButton className={styles.profileButton} icon={<IoChevronBack size={20} />} textButton="profile" />
       </div> : null }

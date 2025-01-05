@@ -1,0 +1,9 @@
+@use "./fonts";
+@use "./reset";
+@use "./vars";
+
+.App {
+  font-family: 'Inter';
+  font-weight: 400;
+  scroll-behavior: smooth;
+}

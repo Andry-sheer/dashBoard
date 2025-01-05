@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import "./router.css";
+import "./styles/style.scss";
 import Login from "./pages/Login/Login";
 import ProductsPage from "./pages/ProductsPage/ProductsPage";
 import ProductPreview from "./pages/ProductPreview/ProductPreview";
@@ -9,6 +9,7 @@ import PrivateRoute from "./privateRoute";
 import PreviewPage from "./pages/PreviewPage/PreviewPage";
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer";
+import User from "./pages/User/User";
 
 const AppRouter = () => {
   return (
@@ -23,6 +24,7 @@ const AppRouter = () => {
             <Route path="/sing-in" element={<Login />} />
 
             <Route element={<PrivateRoute />}>
+              <Route path="/profile" element={<User />} />
               <Route path="/product-page" element={<ProductsPage />} />
               <Route path="/preview-page" element={<PreviewPage />} />
               <Route path="/product-preview/:id" element={<ProductPreview />} />

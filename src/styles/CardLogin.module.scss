@@ -1,3 +1,5 @@
+@use "./vars";
+
 .CardLoginContainer {
   position: absolute;
   top: 40%;
@@ -14,6 +16,7 @@
   flex-flow: column;
   align-items: center;
   gap: 25px;
+  font-weight: 600;
 }
 
 .loginLogo {
@@ -130,4 +133,19 @@
   font-family: 'Inter';
   text-transform: uppercase;
 }
-/* MOBILE */
+
+
+
+//? MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+  .CardLoginContainer {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-40%);
+  }
+  
+  .CardLogin {
+    padding: 20px 15px;
+  }
+}

@@ -1,0 +1,32 @@
+@use "./vars";
+
+.header {
+  background: vars.$bgGreen;
+  padding: 30px;
+  height: 103px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.logo {
+}
+
+.navButton {
+  background: transparent;
+  cursor: pointer;
+}
+
+//? MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+  .header {
+    padding: 20px 30px;
+    height: 80px;
+  }
+  
+  .logo {
+    width: 150px;
+    height: 25px;
+  }
+}

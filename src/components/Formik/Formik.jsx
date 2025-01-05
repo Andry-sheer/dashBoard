@@ -5,7 +5,7 @@ import { CustomTextField } from "./components/CustomTextField";
 import { style } from "./components/CustomStyles";
 import { Button } from "@mui/material";
 import LoadingButton from '@mui/lab/LoadingButton';
-import styles from "../../styles/Form.module.css";
+import styles from "../../styles/Form.module.scss";
 import MyButton from "../MyButton/MyButton";
 
 const ProductForm = ({

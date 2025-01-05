@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { BsCartCheckFill, BsCartXFill } from "react-icons/bs";
-import styles from "../../../../styles/CardPreview.module.css";
+import styles from "../../../../styles/CardPreview.module.scss";
 import defaultImage from "../../../../assets/noImg.png";
 
 const CardPreview = ({ onClick, product }) => {

@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { fetchProducts } from "../../modules/actions/products";
 import { FaCirclePlus, FaCircleCheck } from "react-icons/fa6";
 import MyButton from "../../components/MyButton/MyButton";
-import ProductsTable from "../ProductsPage/components/ProductsTable/ProductsTable";
+import ProductsTable from "./components/ProductsTable/ProductsTable";
 import BasicSpinner from "../../components/Spinner/Spinner";
-import styles from "../../styles/ProductsPage.module.css";
+import styles from "../../styles/ProductsPage.module.scss";
 import ModalEdit from "../../components/ModalWindows/ModalEdit";
 
 const ProductsPage = ({ fetchProducts, isLoading, isLoadProducts }) => {

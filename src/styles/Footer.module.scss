@@ -1,0 +1,59 @@
+@use "./vars";
+
+.footer {
+  background: vars.$basicBlack;
+  padding: 32px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 107px;
+}
+
+.logo {}
+
+.link {
+  text-decoration: none;
+  color: #726969;
+  transition: linear .2s;
+}
+
+.author {
+  font-size: 20px;
+  color: white;
+  transition: linear .2s;
+}
+
+.link:hover > .author {
+  color: #44b26f;
+  text-shadow: white 1px 0 20px;
+}
+
+//? MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+  .footer {
+    padding: 20px 30px;
+    height: 80px;
+  }
+  
+  .logo {
+    height: 25px;
+    width: 150px;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: #726969;
+    transition: linear .2s;
+  }
+  
+  .author {
+    font-size: 20px;
+    color: white;
+    transition: linear .2s;
+  }
+  
+  .link:hover > .author {
+    color: #44b26f;
+    text-shadow: white 1px 0 20px;
+  }
+}

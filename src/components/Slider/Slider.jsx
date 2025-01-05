@@ -6,7 +6,7 @@ import 'swiper/css/pagination';
 import defaultImage from "../../assets/noImg.png";
 import { SliderConfig } from "./Slider.config"
 import { Navigation, Pagination } from "swiper/modules";
-import "../../styles/Slider.css"
+import "../../styles/Slider.scss"
 
 
 const Slider = ({ images, name }) => {

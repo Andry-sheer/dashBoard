@@ -6,7 +6,7 @@ import { FaHouseCircleCheck, FaHouseCircleXmark } from "react-icons/fa6";
 import MyButton from "../../components/MyButton/MyButton";
 import BasicSpinner from "../../components/Spinner/Spinner";
 import Logo from "../../assets/pagesLogo.svg";
-import styles from "../../styles/ProductPreview.module.css";
+import styles from "../../styles/ProductPreview.module.scss";
 import Slider from "../../components/Slider/Slider";
 
 

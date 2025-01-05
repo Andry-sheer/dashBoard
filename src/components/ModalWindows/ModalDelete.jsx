@@ -70,17 +70,7 @@ const style = {
     padding: "10px 50px",
     background: 'red'
   }
-
-
-
 };
-
-
-
-
-
-
-
 
 
 const ModalDelete =({ onOpen, onClose, product, onDelete })=> {

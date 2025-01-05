@@ -1,0 +1,71 @@
+@use "vars" as *;
+
+.sideMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 350px;
+  background: $basicWhite;
+  transition: transform 0.4s ease;
+  z-index: 1001;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  padding: 30px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+
+  &__visible {
+    transform: translateX(0);
+  }
+
+  &__hidden {
+    transform: translateX(100%);
+  }
+
+  &__container {
+    text-align: center;
+    color: $greyColor;
+  }
+
+  &__title {
+    font-size: 30px;
+    font-weight: 700;
+    color: $bgGreen;
+    text-align: center;
+  }
+
+  &__list {
+    display: flex;
+    flex-flow: column;
+    gap: 15px;
+    margin: 30px 0;
+  }
+
+  &__item {
+    color: inherit;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: ease .4s;
+
+    &:hover {
+      color: $bgGreen;
+    }
+  }
+
+  &__singOutButton {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding: 10px;
+    font-size: 18px;
+    color: $basicWhite;
+    background: $redAccent;
+    border-radius: $radius-md;
+  }
+}

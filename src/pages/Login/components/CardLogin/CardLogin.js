@@ -6,7 +6,7 @@ import { fetchUsers, setUser, clearError, setError, setLogin, setPassword, showH
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 import { PiWarningOctagonBold } from "react-icons/pi";
-import styles from "../../../../styles/CardLogin.module.css";
+import styles from "../../../../styles/CardLogin.module.scss";
 import loginLogo from "../../../../assets/loginLogo.svg";
 import Input from "../../../../components/Input/Input";
 import MyButton from "../../../../components/MyButton/MyButton";
@@ -71,7 +71,7 @@ const CardLogin = ({
 
     localStorage.setItem("jwt", "3cwn4u9do92jsb0cg6v82e1");
     localStorage.setItem("user", user.name);
-    navigate("/product-page");
+    navigate(0, "/product-page");
   };
 
 
