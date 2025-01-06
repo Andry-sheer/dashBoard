@@ -1,4 +1,4 @@
-@use "./vars";
+@use "./vars" as *;
 
 .spinner {
   position: absolute;
@@ -15,7 +15,7 @@
 }
 
 .container {
-  background: vars.$basicWhite;
+  background: $basicWhite;
 }
 
 .buttonBack {
@@ -24,17 +24,17 @@
   gap: 5px;
   background: transparent;
   border: 0;
-  color: #726969;
+  color: $greyColor;
   cursor: pointer;
 }
 
 .containerInner {
-  padding: 50px 0 30px 0;
+  padding: 30px 0;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
   column-gap: 30px;
-  color: #726969;
+  color: $greyColor;
 }
 
 .blockImage {
@@ -88,7 +88,7 @@
 }
 
 .buttonMore {
-  color: #44b26f;
+  color: $bgGreen;
   font-size: 16px;
   font-weight: 400;
   background: transparent;
@@ -115,7 +115,159 @@
   font-weight: 700;
 }
 
-.category {}
+.price {
+  color: coral;
+}
+
+.storage {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: $bgGreen;
+}
+
+.quantity {
+  font-weight: 400;
+  color: $greyColor;
+}
+
+.storageZero {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: $redAccent;
+}
+
+.error {
+  min-height: calc(100vh - 210px);
+  position: relative;
+  background-color: $bgGreen;
+}
+
+.errorBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  text-align: center;
+}
+
+.errorLogo {
+  height: auto;
+  width: 350px;
+  margin: 0 0 15px 0;
+}
+
+.errorDescription {
+  font-size: 35px;
+  font-weight: 700;
+  color: $basicWhite;
+  text-transform: uppercase;
+}
+
+
+// MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+.wrapper {
+  min-height: calc(100vh - 160px);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 30px 21px;
+}
+
+.buttonBack {
+  border-radius: $radius-md;
+  background: $bgGreen;
+  color: $basicWhite;
+  padding: 10px;
+}
+
+.containerInner {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 250px auto;
+
+}
+
+.blockImage {
+  grid-column: 1/1;
+  grid-row: 1/2;
+  max-width: 333px;
+  max-height: 365px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.noImage {
+  grid-column: 1/1;
+  grid-row: 1/2;
+  max-width: 355px;
+  max-height: 370px;
+  margin: 0 auto;
+}
+
+.blockInfo {
+  grid-column: 1/1;
+  grid-row: 2/3;
+  display: flex;
+  flex-flow: column;
+  gap: 16px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.blockDescription {
+  grid-column: 1/1;
+  grid-row: 3/3;
+}
+
+.descriptionTitle {
+  letter-spacing: 1px;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+
+.descriptions {
+  line-height: 1.5em;
+  font-weight: 400;
+  max-height: 12em;
+  overflow: hidden;
+}
+
+.descriptionsFull {
+  line-height: 1.5em;
+  font-weight: 400;
+  max-height: none;
+  overflow: visible;
+}
+
+.buttonMore {
+  color: #44b26f;
+  font-size: 16px;
+  font-weight: 400;
+  background: transparent;
+  transition: linear .2s;
+  text-decoration: 1px transparent underline;
+  cursor: pointer;
+  text-align: left;
+}
+
+.buttonMore:hover {
+  text-decoration: 1px underline;
+}
+
+.spanTitle {
+  font-weight: 400;
+}
+
+.name {
+  font-size: 22px;
+  margin: 0 0 10px 0;
+  background: linear-gradient(90deg, #44b26f, #a22198 20%, #000000 57%);
+  color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
 
 .price {
   color: coral;
@@ -141,9 +293,7 @@
 }
 
 .error {
-  min-height: calc(100vh - 210px);
-  position: relative;
-  background-color: #44b26f;
+  min-height: calc(100vh - 160px);
 }
 
 .errorBox {
@@ -155,16 +305,11 @@
 }
 
 .errorLogo {
-  height: auto;
-  width: 350px;
-  margin: 0 0 15px 0;
+  width: 250px;
+  margin: 0 0 10px 0;
 }
 
 .errorDescription {
-  font-size: 35px;
-  font-weight: 700;
-  color: white;
+  font-size: 16px;
 }
-
-
-
+}

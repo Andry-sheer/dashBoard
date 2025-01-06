@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { IoChevronBack } from "react-icons/io5";
 import { API_URL } from "../../constants/constants";
 import { Skeleton } from "@mui/material";
+import styles from "../../styles/PreviewPage.module.scss";
 import Logo from "../../assets/pagesLogo.svg";
 import CardPreview from "./components/CardPreview/CardPreview";
 import MyButton from "../../components/MyButton/MyButton";
-import styles from "../../styles/PreviewPage.module.scss";
 
 const PreviewPage = () => {
   const navigate = useNavigate();
@@ -46,8 +46,10 @@ const getProducts = async () => {
   if (isError){
     return (
       <div className={styles.error}>
-        <img className={styles.errorLogo} alt="logo2" src={Logo} />
-        <p className={styles.errorDescriptions}>Oops! sorry we have a problem...</p>
+        <div className={styles.errorContainer}>
+          <img className={styles.errorLogo} alt="logo2" src={Logo} />
+          <p className={styles.errorDescriptions}>error: no loading data...</p>
+        </div>
     </div>
     )
   }

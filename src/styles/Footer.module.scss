@@ -9,8 +9,6 @@
   height: 107px;
 }
 
-.logo {}
-
 .link {
   text-decoration: none;
   color: #726969;
@@ -28,7 +26,7 @@
   text-shadow: white 1px 0 20px;
 }
 
-//? MOBILE ---------------------------------------------------------------
+// MOBILE ---------------------------------------------------------------
 @media (max-width: 425px) {
   .footer {
     padding: 20px 30px;

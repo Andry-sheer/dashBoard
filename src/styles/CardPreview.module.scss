@@ -67,3 +67,12 @@
   color: #bc0514;
   font-weight: 400;
 }
+
+
+// MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+.containerImage {
+  height: 300px;
+  max-width: 300px;
+}
+}

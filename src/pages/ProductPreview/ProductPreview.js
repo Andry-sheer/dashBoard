@@ -69,7 +69,7 @@ const ProductPreview = () => {
           <div className={styles.errorBox}>
           <img className={styles.errorLogo} src={Logo} alt="logo" />
           <p className={styles.errorDescription}>
-            Sorry this page is not found | 404
+            error: no loading data
           </p>
         </div>
       </div>

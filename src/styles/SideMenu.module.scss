@@ -9,8 +9,6 @@
   background: $basicWhite;
   transition: transform 0.4s ease;
   z-index: 1001;
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
   padding: 30px;
   display: flex;
   flex-flow: column;
@@ -73,7 +71,9 @@
 // MOBILE ---------------------------------------------------------------
 @media (max-width: 425px) {
   .sideMenu {
-    width: 230px;
+    width: 250px;
     border: solid 1px $basicBlack;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
   }
 }
