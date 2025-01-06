@@ -19,14 +19,14 @@
 }
 
 .containerImage {
-  height: auto;
+  height: 330px;
   max-width: 400px;
 }
 
 .image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .title {
@@ -48,8 +48,6 @@
   color: #FC5B00;
   font-weight: 600;
 }
-
-.quantity {}
 
 .containerInner {
   display: flex;

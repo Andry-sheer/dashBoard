@@ -55,7 +55,7 @@ const ModalEdit = ({
   }
 
   return (
-    <div>
+    <div className={editId ? "modalEdit" : "modalAdd"}>
       <Modal open={onOpen}>
         <Box sx={styles}>
           <div className="header" style={styles.header}>

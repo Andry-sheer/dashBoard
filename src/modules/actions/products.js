@@ -7,12 +7,13 @@ import {
   CHANGE_NAME,
   CHANGE_PRICE,
   CHANGE_QUANTITY,
-  CHANGE_IMAGE,
+  CHANGE_IMAGES,
   DELETE_PRODUCT,
   FETCH_PRODUCTS,
   SET_IS_LOADING,
   SET_EDIT,
   SET_RESET,
+  SET_IS_ERROR,
 } from "../actionTypes";
 
 export const fetchProducts = () => async (dispatch) => {
@@ -31,7 +32,9 @@ export const fetchProducts = () => async (dispatch) => {
       },
     });
   } catch (error) {
-    console.log("Error", error);
+    dispatch({
+      type: SET_IS_ERROR,
+    });
   }
 };
 
@@ -154,9 +157,9 @@ export const changeQuantity = (quantity) => ({
   },
 });
 
-export const changeImage = (image) => ({
-  type: CHANGE_IMAGE,
+export const changeImage = (images) => ({
+  type: CHANGE_IMAGES,
   payload: {
-    image,
+    images,
   }
 });

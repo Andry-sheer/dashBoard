@@ -69,3 +69,11 @@
     border-radius: $radius-md;
   }
 }
+
+// MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+  .sideMenu {
+    width: 230px;
+    border: solid 1px $basicBlack;
+  }
+}

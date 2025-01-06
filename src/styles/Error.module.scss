@@ -1,22 +1,32 @@
-@use "./vars";
+@use "./vars" as *;
 
 .Error {
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: calc(100vh - 210px);
-  background: vars.$bgGreen;
+  background: $bgGreen;
   align-items: center;
 
-  .image {
-    width: 300px;
-    margin: -80px 0 30px 0;
+  .logo {
+    margin: 0 0 20px 0;
   }
   
   .description {
     font-size: 35px;
     color:whitesmoke;
     font-weight: 700;
+  }
+}
+
+//? MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+  .Error {
+    min-height: calc(100vh - 160px);
+    
+    .description {
+      font-size: 28px;
+    }
   }
 }
 

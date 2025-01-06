@@ -94,7 +94,7 @@ const BasicTable = ({ products, deleteProduct, editId }) => {
   }
 
     return (
-        <>
+        <div className="customTable">
           <TableContainer style={style.container}>
             <Table style={style.table} aria-label="simple table">
               <TableHead style={style.body}>
@@ -142,9 +142,9 @@ const BasicTable = ({ products, deleteProduct, editId }) => {
               </TableBody>
             </Table>
           </TableContainer>
-          <ModalEdit onOpen={isOpenModalEdit} onClose={handleCloseEdit} />
-          <ModalDelete onOpen={isOpenModal} product={selectProductToDelete} onDelete={handleDelete} onClose={handleCloseModals} />
-      </>
+          {isOpenModalEdit && <ModalEdit onOpen={isOpenModalEdit} onClose={handleCloseEdit} />}
+          {isOpenModal && <ModalDelete onOpen={isOpenModal} product={selectProductToDelete} onDelete={handleDelete} onClose={handleCloseModals} />}
+      </div>
     );
 };
 

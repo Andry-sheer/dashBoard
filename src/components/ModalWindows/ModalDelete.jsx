@@ -76,7 +76,7 @@ const style = {
 const ModalDelete =({ onOpen, onClose, product, onDelete })=> {
 
   return (
-    <div>
+    <div className="modalDelete">
       <Modal open={onOpen}>
           <Box style={style.box}>
             <div style={style.header}>

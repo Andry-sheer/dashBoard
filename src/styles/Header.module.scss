@@ -1,7 +1,7 @@
-@use "./vars";
+@use "./vars" as *;
 
 .header {
-  background: vars.$bgGreen;
+  background: $bgGreen;
   padding: 30px;
   height: 103px;
   display: flex;

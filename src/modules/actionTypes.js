@@ -8,6 +8,8 @@ export const DELETE_PRODUCT = `${MAIN_PAGE}/DELETE_PRODUCT`;
 
 export const SET_IS_LOADING = `${MAIN_PAGE}/SET_IS_LOADING`;
 
+export const SET_IS_ERROR = `${MAIN_PAGE}/SET_IS_ERROR`;
+
 export const ADD_PRODUCT = `${MAIN_PAGE}/ADD_PRODUCT`;
 
 export const EDIT_PRODUCT = `${MAIN_PAGE}/EDIT_PRODUCT`;
@@ -21,7 +23,7 @@ export const CHANGE_CATEGORY = `${MAIN_PAGE}/CHANGE_CATEGORY`;
 export const CHANGE_PRICE = `${MAIN_PAGE}/CHANGE_PRICE`;
 export const CHANGE_QUANTITY = `${MAIN_PAGE}/CHANGE_QUANTITY`;
 export const CHANGE_DESCRIPTIONS = `${MAIN_PAGE}/CHANGE_DESCRIPTIONS`;
-export const CHANGE_IMAGE = `${MAIN_PAGE}/CHANGE_IMAGE`;
+export const CHANGE_IMAGES = `${MAIN_PAGE}/CHANGE_IMAGES`;
 
 // user auth + logic from CARD-LOGIN...
 export const SET_LOGIN = `${MAIN_PAGE}/SET_LOGIN`;
