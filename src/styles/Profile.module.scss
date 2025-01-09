@@ -1,0 +1,136 @@
+
+@use "vars" as *;
+
+// .user {
+//   background: $bgAlt;
+//   height: calc(100vh - 210px);
+
+//   &__container {
+//   }
+  
+//   &__photo {
+//   }
+
+//   &__image {
+
+//   }
+  
+//   &__name {
+//   }
+
+//   &__singOut {
+//     display: flex;
+//     align-items: center;
+//     gap: 12px;
+//     flex-direction: row-reverse;
+//     justify-content: center;
+//     padding: 10px 30px;
+//     font-size: 18px;
+//     color: $basicWhite;
+//     background: $redAccent;
+//     border-radius: $radius-md;
+//   }
+// }
+
+// MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+  .user {
+    background: $bgAlt;
+  
+    &__container {
+      height: calc(100vh - 160px);
+      padding: 30px;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-flow: column;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__containerInfo {
+      display: flex;
+      flex-flow: column;
+      gap: 12px;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    
+    &__photo {
+      width: 200px;
+      height: 200px;
+      border-radius: $radius-rounded;
+      border: $bgGreen 3px solid;
+    }
+  
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
+    &__name {
+      font-size: 30px;
+      font-weight: 600;
+      color: $bgGreen;
+    }
+
+    &__email {
+      font-size: 20px;
+      font-weight: 500;
+      color: $greyColor;
+    }
+
+    &__containerButtons {
+      display: flex;
+      flex-flow: column;
+      gap: 12px;
+      text-align: center;
+      align-items: start;
+      justify-content: center;
+      width: 100%;
+    }
+
+    &__editProfile, &__singOut {
+      background: transparent;
+      color: $greyColor;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: left;
+      padding: 10px 100px 10px 10px;
+      font-size: 18px;
+    }
+
+    &__edit, &__change {
+      width: 100%;
+      border-radius: $radius-md;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__rightIcon {
+      margin-right: 10px;
+      color: $greyColor;
+    }
+
+    &__divider {
+      width: 100%;
+      height: 4px;
+      background: #b3b3ba52;
+      border-radius: 4px;
+      margin: 24px 0;
+    }
+
+    &__singOut {
+      padding: 10px 30px;
+      color: rgb(190, 7, 7);
+      border-radius: $radius-md;
+      border: $redAccent solid 2px;
+    }
+  }
+}
