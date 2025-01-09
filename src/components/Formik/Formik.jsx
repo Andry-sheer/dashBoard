@@ -41,15 +41,17 @@ const ProductForm = ({
     return errorMessage;
   };
 
-  const validateImages = (value)=> {
+  const validateImages = (value) => {
     let errorMessage;
-
+  
     if (!value) {
       errorMessage = "обов'язкове поле!";
+    } else if (!value.trim()) {
+      errorMessage = "URL зображення не може містити лише пробіли!";
     }
-
+  
     return errorMessage;
-  }
+  };
 
   const closeAndReset = () => {
     onClose();
@@ -150,12 +152,14 @@ const ProductForm = ({
               {({ remove, push }) => (
                 <div className={styles.container}>
                   { values.images.map((image, index) => (
-                    <Field key={index} validate={values.images.length < 2 ? null : validateImages}
+                    <Field key={index} validate={validateImages}
                       name={`images.${index}`}
                       render={({ field, meta }) => (
                         <CustomTextField
                           {...field}
-                          label={`введіть URL Зображення ${index + 1}`}
+                          label={meta.touched && meta.error ? `URL Зображення ${index + 1}: ${meta.error}` : 
+                          values.images.length > 1 ? `введіть URL Зображення ${index + 1}` : 
+                          `Зображення по замовченню! введіть URL Зображення`}
                           variant="outlined"
                           error={Boolean(meta.error && meta.touched)}
                         />

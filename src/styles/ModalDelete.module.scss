@@ -1,0 +1,88 @@
+
+@use "vars" as *;
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 12px;
+  background: $separatorColor;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.25);
+  max-width: 500px;
+  font-family: "Inter";
+  text-align: center;
+  padding: 32px;
+  max-width: 600px;
+}
+
+.header {
+  position: relative;
+  margin: 0 0 16px 0;
+}
+
+.title {
+  color: $basicBlack;
+  font-weight: 600;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.close {
+  background: transparent;
+  position: absolute;
+  top: -20px;
+  right: -20px;
+}
+
+.name {
+  color: $greyColor;
+  font-size: 18px;
+  padding: 0 0 5px 0;
+  font-weight: 600;
+  display: inline-block;
+  margin: 0 0 24px 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.cancel, .delete {
+  color: $basicWhite;
+  font-weight: 600;
+  padding: 10px 50px;
+  background: silver;
+  border-radius: $radius-md;
+}
+
+.delete {
+  background: $redAccent;
+}
+
+
+// MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+  .modal {
+    padding: 21px 16px;
+  }
+  
+  .header {
+    margin: 0 0 16px 0;
+  }
+  
+  .close {
+    top: -15px;
+    right: -10px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+}

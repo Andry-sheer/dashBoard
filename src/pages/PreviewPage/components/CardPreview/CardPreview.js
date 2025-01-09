@@ -15,10 +15,21 @@ const CardPreview = ({ onClick, product }) => {
     }
   }, [product]);
 
+  const isValidImageFormat = (image) => {
+    return (
+      image &&
+      (image.endsWith(".webp") ||
+        image.endsWith(".jpg") ||
+        image.endsWith(".jpeg") ||
+        image.endsWith(".png") ||
+        image.endsWith(".gif"))
+    );
+  };
+
   return (
     <div onClick={onClick} className={styles.card} key={product.id}>
       <div className={styles.containerImage}>
-        <img className={styles.image} src={product.images[0].trim() ? product.images[0] : defaultImage } alt="cardImage" />
+        <img className={styles.image} src={product.images[0] && isValidImageFormat(product.images[0].trim()) ? product.images[0].trim() : defaultImage } alt="cardImage" />
       </div>
       <p className={styles.title}>{product.name}</p>
       <p className={styles.category}>Категорія: {product.category}</p>
