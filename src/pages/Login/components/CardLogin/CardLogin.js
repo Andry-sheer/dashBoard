@@ -9,7 +9,7 @@ import { PiWarningOctagonBold } from "react-icons/pi";
 import styles from "../../../../styles/CardLogin.module.scss";
 import loginLogo from "../../../../assets/loginLogo.svg";
 import Input from "../../../../components/Input/Input";
-import MyButton from "../../../../components/MyButton/MyButton";
+import MyButton from "../../../../components/MyButtons/MyButton";
 
 const CardLogin = ({
   login, 

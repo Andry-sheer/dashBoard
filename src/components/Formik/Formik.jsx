@@ -6,7 +6,7 @@ import { style } from "./components/CustomStyles";
 import { Button } from "@mui/material";
 import LoadingButton from '@mui/lab/LoadingButton';
 import styles from "../../styles/Form.module.scss";
-import MyButton from "../MyButton/MyButton";
+import MyButton from "../MyButtons/MyButton";
 
 const ProductForm = ({
   editId,

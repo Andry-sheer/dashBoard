@@ -1,0 +1,43 @@
+
+.scrollButton {
+  position: fixed;
+  bottom: 170px;
+  right: 80px;
+  border-radius: 50%;
+  background: transparent;
+  width: 60px;
+  height: 60px;
+  z-index: 10;
+  color: #44B26F;
+  transition: ease-out .2s;
+  cursor: pointer;
+
+  svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  &:hover {
+    box-shadow: #44B26F 0 0 20px;
+  }
+}
+
+// MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+  .scrollButton {
+    position: fixed;
+    bottom: 100px;
+    right: 21px;
+    border-radius: 50%;
+    background: transparent;
+    z-index: 10;
+    left: auto;
+    width: 48px;
+    height: 48px;
+
+    svg {
+      width: 48px;
+      height: 48px;
+    }
+  }
+}

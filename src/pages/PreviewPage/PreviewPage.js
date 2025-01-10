@@ -6,7 +6,7 @@ import { Skeleton } from "@mui/material";
 import styles from "../../styles/PreviewPage.module.scss";
 import Logo from "../../assets/pagesLogo.svg";
 import CardPreview from "./components/CardPreview/CardPreview";
-import MyButton from "../../components/MyButton/MyButton";
+import MyButton from "../../components/MyButtons/MyButton";
 
 const PreviewPage = () => {
   const navigate = useNavigate();

@@ -1,8 +1,7 @@
 
-import { connect } from 'react-redux';
 import { RiCloseFill } from "react-icons/ri";
 import Box from '@mui/material/Box';
-import MyButton from '../MyButton/MyButton';
+import MyButton from '../MyButtons/MyButton';
 import Modal from '@mui/material/Modal';
 import styles from "../../styles/ModalDelete.module.scss";
 
@@ -33,4 +32,4 @@ const ModalDelete =({ onOpen, onClose, product, onDelete })=> {
 }
 
 
-export default connect(null)(ModalDelete);
+export default ModalDelete;

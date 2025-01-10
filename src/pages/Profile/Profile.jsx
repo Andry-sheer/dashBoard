@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import Avatar from "../../assets/profile.png";
 import styles from "../../styles/Profile.module.scss";
-import MyButton from "../../components/MyButton/MyButton";
+import MyButton from "../../components/MyButtons/MyButton";
 import { FaSignOutAlt } from "react-icons/fa";
 import { RiEdit2Fill } from "react-icons/ri";
 import { FaLock } from "react-icons/fa";
@@ -68,9 +68,8 @@ const Profile = () => {
           <UniversalModal 
             isOpen={isOpen} 
             onClose={()=> onClose(!isOpen)}
-            title="Do you want Log Out?">
-          
-            <div className={styles.user__modal}>
+            title="Do you want exit?">
+
               <MyButton 
                 className={styles.user__logOut} 
                 onClick={singOut}
@@ -82,8 +81,7 @@ const Profile = () => {
                 onClick={()=> onClose(!isOpen)}
                 textButton="Cancel"
               />
-            </div>
-              
+
           </UniversalModal>
 
         </div>

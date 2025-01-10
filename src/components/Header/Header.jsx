@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { IoIosMenu } from "react-icons/io";
 import styles from "../../styles/Header.module.scss";
 import Logo from "../../assets/pagesLogo.svg";
-import MyButton from "../MyButton/MyButton";
+import MyButton from "../MyButtons/MyButton";
 import SideMenu from "../SideMenu/SideMenu";
 import { hideOverlay, showOverlay } from "../../modules/actions/overlay";
 

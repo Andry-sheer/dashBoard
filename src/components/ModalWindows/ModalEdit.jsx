@@ -4,7 +4,7 @@ import { RiCloseFill } from "react-icons/ri";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Form from "../Formik/Formik";
-import MyButton from "../MyButton/MyButton";
+import MyButton from "../MyButtons/MyButton";
 import styles from "../../styles/ModalEdit.module.scss";
 
 const ModalEdit = ({

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchProducts } from "../../modules/actions/products";
 import { FaCirclePlus, FaCircleCheck } from "react-icons/fa6";
-import MyButton from "../../components/MyButton/MyButton";
+import MyButton from "../../components/MyButtons/MyButton";
 import ProductsTable from "./components/ProductsTable/ProductsTable";
 import BasicSpinner from "../../components/Spinner/Spinner";
 import styles from "../../styles/ProductsPage.module.scss";

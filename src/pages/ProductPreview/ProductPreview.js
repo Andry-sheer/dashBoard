@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 import { API_URL } from "../../constants/constants";
 import { IoIosArrowBack } from "react-icons/io";
 import { FaHouseCircleCheck, FaHouseCircleXmark } from "react-icons/fa6";
-import MyButton from "../../components/MyButton/MyButton";
+import MyButton from "../../components/MyButtons/MyButton";
 import BasicSpinner from "../../components/Spinner/Spinner";
 import Logo from "../../assets/pagesLogo.svg";
 import styles from "../../styles/ProductPreview.module.scss";
 import Slider from "../../components/Slider/Slider";
+import ScrollButton from "../../components/MyButtons/ScrollButton";
 
 
 
@@ -94,12 +95,12 @@ const ProductPreview = () => {
                 <p className={styles.price}>{products.price} ₴</p>
                 <p className={isZero? styles.storageZero : styles.storage}>
                   {isZero ? (<FaHouseCircleXmark size={20} fill="#f42652"/>) : (<FaHouseCircleCheck size={20} fill="#44b26f"/> ) }{isZero ? "немає в наявності" : "в наявності:"} <span className={styles.quantity}>{isZero ? null : products.quantity}</span></p>
-                <p className={styles.descriptionTitle}>Опис:</p>
               </div>
               <div className={styles.blockDescription}>
-                <p className={isHidden ? styles.descriptionsFull : styles.descriptions}>
+                <div className={isHidden ? styles.descriptionsFull : styles.descriptions}>
+                  <p className={styles.descriptionTitle}>Опис:</p>
                   {products.descriptions}
-                </p>
+                </div>
                 {lengthText > 700 ?
                   <MyButton className={styles.buttonMore} 
                     onClick={toggleIsHidden} 
@@ -107,6 +108,8 @@ const ProductPreview = () => {
                   /> : null}
               </div>
             </div>
+
+            <ScrollButton />
           </div>
         )}
       </div>

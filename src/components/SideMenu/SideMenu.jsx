@@ -2,7 +2,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/SideMenu.module.scss";
 import Overlay from "../Overlay/Overlay";
-import MyButton from "../MyButton/MyButton";
+import MyButton from "../MyButtons/MyButton";
 import { FaSignOutAlt } from "react-icons/fa";
 
 const SideMenu = ({ isOpen, onClose }) => {

@@ -1,14 +1,16 @@
 import { RiCloseFill } from "react-icons/ri";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import MyButton from "../MyButton/MyButton";
+import MyButton from "../MyButtons/MyButton";
 import styles from "../../styles/ModalUniversal.module.scss";
 
-const UniversalModal = ({
+const ModalUniversal = ({
   isOpen,
   onClose,
   title,
-  children
+  children,
+  product,
+  onDelete
 }) => {
   return (
     <Modal open={isOpen} onClose={onClose}>
@@ -28,4 +30,4 @@ const UniversalModal = ({
   );
 };
 
-export default UniversalModal;
+export default ModalUniversal;
