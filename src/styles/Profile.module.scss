@@ -94,28 +94,23 @@
       width: 100%;
     }
 
-    &__editProfile, &__singOut {
+    &__editProfile, &__editPassword {
       background: transparent;
       color: $greyColor;
       display: flex;
       align-items: center;
       gap: 12px;
       justify-content: left;
-      padding: 10px 100px 10px 10px;
+      padding: 10px;
       font-size: 18px;
-    }
-
-    &__edit, &__change {
       width: 100%;
-      border-radius: $radius-md;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
     }
 
     &__rightIcon {
-      margin-right: 10px;
       color: $greyColor;
+      width: 20px;
+      height: 20px;
+      margin-left: auto;
     }
 
     &__divider {
@@ -127,9 +122,36 @@
     }
 
     &__singOut {
+      background: transparent;
       padding: 10px 30px;
       color: rgb(190, 7, 7);
       border-radius: $radius-md;
+      border: $redAccent solid 2px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: left;
+      font-size: 18px;
+    }
+
+    &__modal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    &__cancel, &__logOut {
+      padding: 10px 20px;
+      background: transparent;
+      color: $greyColor;
+      border-radius: $radius-md;
+      border: $greyColor solid 2px;
+      font-weight: 600;
+    }
+
+    &__logOut {
+      color: rgb(190, 7, 7);
       border: $redAccent solid 2px;
     }
   }

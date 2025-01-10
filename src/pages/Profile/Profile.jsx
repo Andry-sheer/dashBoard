@@ -1,5 +1,5 @@
 
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Avatar from "../../assets/profile.png";
 import styles from "../../styles/Profile.module.scss";
 import MyButton from "../../components/MyButton/MyButton";
@@ -7,10 +7,13 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { RiEdit2Fill } from "react-icons/ri";
 import { FaLock } from "react-icons/fa";
 import { RiArrowRightSLine } from "react-icons/ri";
+import UniversalModal from "../../components/ModalWindows/ModalUniversal";
+import { useState } from "react";
 
 
 
 const Profile = () => {
+  const [isOpen, onClose] = useState(false);
   const navigate = useNavigate();
   const user = localStorage.getItem("user");
   const jwt = localStorage.getItem("jwt");
@@ -35,37 +38,56 @@ const Profile = () => {
 
         <div className={styles.user__containerButtons}>
 
-        <div className={styles.user__edit} >
           <MyButton 
             className={styles.user__editProfile} 
             textButton="Edit profile"
             onClick={()=> ("")}
             icon={<RiEdit2Fill />}
+            styleRightIcon={styles.user__rightIcon}
+            rightIcon={<RiArrowRightSLine />}
           />
-          <RiArrowRightSLine size={25} className={styles.user__rightIcon} />
-        </div>
 
-        <div className={styles.user__edit}>
           <MyButton 
-            className={styles.user__editProfile} 
+            className={styles.user__editPassword} 
             textButton="Change password"
             onClick={()=> ("")}
             icon={<FaLock />}
+            styleRightIcon={styles.user__rightIcon}
+            rightIcon={<RiArrowRightSLine />}
           />
-          <RiArrowRightSLine size={25} className={styles.user__rightIcon} />
+
+          <span className={styles.user__divider}></span>
+
+          <MyButton 
+            className={styles.user__singOut} 
+            onClick={()=> onClose(!isOpen)}
+            textButton="Log out"
+            icon={<FaSignOutAlt />}
+          />
+
+          <UniversalModal 
+            isOpen={isOpen} 
+            onClose={()=> onClose(!isOpen)}
+            title="Do you want Log Out?">
+          
+            <div className={styles.user__modal}>
+              <MyButton 
+                className={styles.user__logOut} 
+                onClick={singOut}
+                textButton="Log out"
+              />
+
+              <MyButton 
+                className={styles.user__cancel} 
+                onClick={()=> onClose(!isOpen)}
+                textButton="Cancel"
+              />
+            </div>
+              
+          </UniversalModal>
+
         </div>
-
-        <span className={styles.user__divider}></span>
-
-        <MyButton 
-          className={styles.user__singOut} 
-          onClick={singOut}
-          textButton="Log out"
-          icon={<FaSignOutAlt />}
-        />
-
       </div>
-    </div>
     </div>
   )
 }
