@@ -16,16 +16,14 @@ const ScrollButton = () => {
   };
 
   const handleScroll = () => {
-      const scrollTop = window.scrollY; // Текущее положение скролла
-      const windowHeight = window.innerHeight; // Высота окна
-      const documentHeight = document.documentElement.scrollHeight; // Общая высота страницы
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
 
-      // Показываем кнопку при достижении конца страницы
       if (scrollTop + windowHeight >= documentHeight - 1) {
           setIsVisible(true);
       }
 
-      // Скрываем кнопку, если пользователь вернулся в начало страницы
       if (scrollTop === 0) {
           setIsVisible(false);
       }

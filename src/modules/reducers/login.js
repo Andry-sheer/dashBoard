@@ -15,10 +15,7 @@ const initialState = {
   isShowHidePassword: true,
   error: null,
   users: [],
-  user: {
-    name: "",
-    password: "",
-  },
+  user: "",
 }
 
 const singInReducer = (state = initialState, action) => {

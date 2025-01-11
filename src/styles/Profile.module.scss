@@ -31,6 +31,23 @@
     height: 200px;
     border-radius: $radius-rounded;
     border: $bgGreen 3px solid;
+    overflow: hidden;
+
+    &_admin {
+      width: 200px;
+      height: 200px;
+      border-radius: $radius-rounded;
+      border: $valueColor 3px solid;
+      overflow: hidden;
+    }
+
+    &_moderator {
+      width: 200px;
+      height: 200px;
+      border-radius: $radius-rounded;
+      border: $orangeApple 3px solid;
+      overflow: hidden;
+    }
   }
 
   &__image {
@@ -38,11 +55,41 @@
     height: 100%;
     object-fit: contain;
   }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
   
   &__name {
     font-size: 30px;
     font-weight: 600;
     color: $bgGreen;
+
+    &_admin {
+      font-size: 30px;
+      font-weight: 600;
+      color: $valueColor;
+    }
+
+    &_moderator {
+      font-size: 30px;
+      font-weight: 600;
+      color: $orangeApple;
+    }
+  }
+
+  &__slash {
+    font-size: 30px;
+    font-weight: 700;
+    color: $greyColor;
+  }
+
+  &__role {
+    color: $greyColor;
+    font-size: 30px;
+    font-weight: 500;
   }
 
   &__email {
@@ -71,6 +118,7 @@
     padding: 10px;
     font-size: 18px;
     width: 100%;
+    cursor: pointer;
   }
 
   &__rightIcon {
@@ -99,6 +147,12 @@
     gap: 12px;
     justify-content: left;
     font-size: 18px;
+    cursor: pointer;
+    transition: ease-out .2s;
+
+    &:hover {
+      box-shadow: $redAccent 0 0 10px;
+    }
   }
 
   &__cancel, &__logOut {
@@ -107,6 +161,7 @@
     padding: 10px 50px;
     background: silver;
     border-radius: $radius-md;
+    cursor: pointer;
   }
 
   &__logOut {
@@ -142,8 +197,8 @@
     }
     
     &__photo {
-      width: 200px;
-      height: 200px;
+      width: 160px;
+      height: 160px;
       border-radius: $radius-rounded;
       border: $bgGreen 3px solid;
     }

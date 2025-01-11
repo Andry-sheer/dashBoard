@@ -9,10 +9,6 @@
   background: $basicWhite;
   transition: transform 0.4s ease;
   z-index: 1001;
-  padding: 30px;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
 
   &__visible {
     transform: translateX(0);
@@ -25,20 +21,21 @@
   &__container {
     text-align: center;
     color: $greyColor;
+    padding: 30px;
+    text-align: center;
   }
 
   &__title {
     font-size: 30px;
     font-weight: 700;
     color: $bgGreen;
-    text-align: center;
+    margin: 0 0 50px 0;
   }
 
   &__list {
     display: flex;
     flex-flow: column;
-    gap: 15px;
-    margin: 30px 0;
+    gap: 5px;
   }
 
   &__item {
@@ -47,24 +44,28 @@
     font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
-    transition: ease .4s;
+    transition: ease-out .3s;
+    padding: 10px 0;
+    border-radius: $radius-md;
 
     &:hover {
-      color: $bgGreen;
+      background-color: #e1e8e388;
     }
   }
 
-  &__singOutButton {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-direction: row-reverse;
-    justify-content: center;
-    padding: 10px;
+  &__item_active {
+    color: $bgGreen;
+    text-decoration: none;
     font-size: 18px;
-    color: $basicWhite;
-    background: $redAccent;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: ease-out .3s;
+    padding: 10px 0;
     border-radius: $radius-md;
+
+    &:hover {
+      background-color: none;
+    }
   }
 }
 

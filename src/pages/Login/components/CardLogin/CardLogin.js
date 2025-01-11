@@ -21,19 +21,20 @@ const CardLogin = ({
   showHidePassword,
   clearError,
   setError,
-  setUser,
   fetchUsers,
+  setUser,
   users,
 }) => {
   
   const navigate = useNavigate();
+  const jwt = localStorage.getItem("jwt");
 
   useEffect(()=> {
-    if(localStorage.getItem('jwt') && localStorage.getItem('user')){
+    if(jwt){
       navigate("/product-page");
     }
 
-    if(!localStorage.getItem('jwt') || !localStorage.getItem('user')){
+    if(!jwt){
       fetchUsers();
     }
     // eslint-disable-next-line
@@ -63,15 +64,14 @@ const CardLogin = ({
 
     if(!user) {
       setError("user invalid!");
-      setUser("");
       return;
     }
 
-    setUser(user.name);
+    setUser(user);
 
+    localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("jwt", "3cwn4u9do92jsb0cg6v82e1");
-    localStorage.setItem("user", user.name);
-    navigate(0, "/product-page");
+    navigate(0 , "/product-page");
   };
 
 
@@ -124,7 +124,8 @@ const mapStateToProps = (state) => ({
   password: state.login.password,
   isShowHidePassword: state.login.isShowHidePassword,
   error: state.login.error,
-  users: state.login.users
+  users: state.login.users,
+  user: state.login.user
 })
 
 export default connect(mapStateToProps, { fetchUsers, setUser, clearError, setError, setLogin, setPassword, showHidePassword })(CardLogin);
