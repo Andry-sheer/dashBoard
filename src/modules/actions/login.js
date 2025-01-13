@@ -7,7 +7,7 @@ import {
   SET_ERROR,
   CLEAR_ERROR,
   SET_USER,
-  FETCH_USERS
+  FETCH_USERS,
 } from "../actionTypes";
 
 export const fetchUsers = () => async (dispatch) => {

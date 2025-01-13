@@ -11,6 +11,8 @@ import Avatar from "../../assets/profile.png";
 import styles from "../../styles/Profile.module.scss";
 import MyButton from "../../components/MyButtons/MyButton";
 import UniversalModal from "../../components/ModalWindows/ModalUniversal";
+import { BsPersonLinesFill } from "react-icons/bs";
+
 
 
 const Profile = ({ user, setUser }) => {
@@ -20,10 +22,10 @@ const Profile = ({ user, setUser }) => {
 
   useEffect(() => {
     if (!user && jwt) {
-      const saveUser = localStorage.getItem("user");
+      const saveUser = JSON.parse(localStorage.getItem("user"));
 
       if (saveUser){
-        setUser(JSON.parse(saveUser));
+        setUser({ ...saveUser, status: true });
       }
     } else if (!jwt) {
       navigate("/sing-in");
@@ -33,8 +35,10 @@ const Profile = ({ user, setUser }) => {
 
   const handleSingOut = () => {
     localStorage.removeItem("jwt");
-    localStorage.removeItem("user")
-    navigate(0 , "/sing-in");
+    setUser({ ...user, status: false });
+    localStorage.removeItem("user");
+    window.location.reload();
+    navigate("/sing-in");
   }
 
   return (
@@ -42,17 +46,21 @@ const Profile = ({ user, setUser }) => {
       <div className={styles.user__container}>
 
         <div className={styles.user__containerInfo}>
-          <div className={user.role === "Administrator" ? styles.user__photo_admin : null ||
-            user.role === "Moderator" ? styles.user__photo_moderator : null || user.role === "user" ? styles.user__photo : null
-          }>
-            <img className={styles.user__image} src={user.image ? user.image : Avatar} alt="profile avatar" />
+          <div className={styles.user__blockImage}>
+            <div className={user.role === "Administrator" ? styles.user__photo_admin : null ||
+              user.role === "Moderator" ? styles.user__photo_moderator : null || styles.user__photo }>
+              <img className={styles.user__image} src={user.image ? user.image : Avatar} alt="profile avatar" />
+            </div>
+            <div className={styles.user__status}>
+              <span className={user.status ? styles.user__dottedOnline : styles.user__dottedOffline}></span>
+            </div>
           </div>
             <div className={styles.user__info}>
               <span className={user.role === "Administrator" ? styles.user__name_admin : null || 
-                user.role === "Moderator" ? styles.user__name_moderator : null || user.role === "user" ? styles.user__name : null}>{user.name}</span>
+                user.role === "Moderator" ? styles.user__name_moderator : null || styles.user__name }>{user.name}</span>
               { user.role === "Administrator" || user.role === "Moderator" ? <span className={styles.user__slash}> | </span>  : null }
-              { user.role === "Administrator" || user.role === "Moderator" ? 
-                <span className={styles.user__role}>{user.role}</span> : null }
+              { user.role !== "Administrator" && user.role !== "Moderator" ? 
+                null : <span className={styles.user__role}>{user.role}</span>}
             </div>
           <p className={styles.user__email}>{user.email}</p>
         </div>
@@ -76,6 +84,17 @@ const Profile = ({ user, setUser }) => {
             styleRightIcon={styles.user__rightIcon}
             rightIcon={<RiArrowRightSLine />}
           />
+
+          {user.role !== "Administrator" && user.role !== "Moderator" ? null :
+              <MyButton 
+              className={styles.user__editUsers} 
+              textButton="User list"
+              onClick={()=> (console.log("click change user list"))}
+              icon={<BsPersonLinesFill />}
+              styleRightIcon={styles.user__rightIcon}
+              rightIcon={<RiArrowRightSLine />}
+            />
+          }
 
           <span className={styles.user__divider}></span>
 

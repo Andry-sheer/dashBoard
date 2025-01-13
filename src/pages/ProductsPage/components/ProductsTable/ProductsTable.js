@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { deleteProduct, editId } from "../../../../modules/actions/products";
+import { setUser } from "../../../../modules/actions/login";
 import { BiSolidEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import Table from "@mui/material/Table";
@@ -16,7 +17,7 @@ import ModalDelete from "../../../../components/ModalWindows/ModalDelete";
 import styles from "../../../../styles/ProductsTable.module.scss";
 import ModalEdit from "../../../../components/ModalWindows/ModalEdit";
 
-const BasicTable = ({ products, deleteProduct, editId }) => {
+const BasicTable = ({ products, deleteProduct, editId, user, setUser }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [selectProductToDelete, setSelectProductToDelete] = useState("");
   const navigate = useNavigate();
@@ -24,6 +25,20 @@ const BasicTable = ({ products, deleteProduct, editId }) => {
   // eslint-disable-next-line
   const [selectEdit, setSelectEdit] = useState(null);
 
+  const jwt = localStorage.getItem("jwt");
+
+  useEffect(() => {
+    if (!user && jwt) {
+      const saveUser = JSON.parse(localStorage.getItem("user"));
+
+      if (saveUser){
+        setUser({ ...saveUser, status: true });
+      }
+    } else if (!jwt) {
+      navigate("/sing-in");
+    }
+
+  }, [user, jwt, setUser, navigate]);
 
   const handleCloseEdit = () => {
     setIsOpenModalEdit(false);
@@ -104,7 +119,8 @@ const BasicTable = ({ products, deleteProduct, editId }) => {
                   <TableCell style={style.cellHead}>Ім'я</TableCell>
                   <TableCell style={style.cellHead}>Кількість</TableCell>
                   <TableCell style={style.cellHead}>Ціна(₴)</TableCell>
-                  <TableCell style={style.cellHead}></TableCell>
+                  {user.role === "Administrator" || user.role === "Moderator" ? 
+                    <TableCell style={style.cellHead}></TableCell> : null }
                 </TableRow>
               </TableHead>
 
@@ -120,7 +136,10 @@ const BasicTable = ({ products, deleteProduct, editId }) => {
                     </TableCell>
                     <TableCell className={styles.rows} style={style.cell}>{product.quantity}</TableCell>
                     <TableCell className={styles.rows} style={style.cell}>{product.price}</TableCell>
+                    
+                    {user.role === "Administrator" || user.role === "Moderator" ?
                     <TableCell className={styles.rows} style={style.cell}>
+
                       <Tooltip title="Edit">
                         <IconButton aria-label="edit"
                           onClick={()=> handleOpenEdit(product)}
@@ -129,14 +148,18 @@ const BasicTable = ({ products, deleteProduct, editId }) => {
                         </IconButton>
                       </Tooltip>
 
+                    
                       <Tooltip title="Delete">
                         <IconButton aria-label="delete"
                           onClick={()=> handleOpenModals(product)}
+                          disabled={user.role !== "Administrator"}
                         >
-                          <MdDelete className={styles.deleteButton} />
+                          <MdDelete className={user.role === "Administrator" ? styles.deleteButton : styles.deleteButtonDisable} />
                         </IconButton>
                       </Tooltip>
-                    </TableCell>
+
+                    </TableCell> : null }
+                    
                   </TableRow>
                 ))}
               </TableBody>
@@ -151,7 +174,8 @@ const BasicTable = ({ products, deleteProduct, editId }) => {
 const mapStateToProps = (state) => ({
   products: state.products.productsData,
   isLoadProducts: state.products.isLoadProducts,
-  isLoading: state.products.isLoading
+  isLoading: state.products.isLoading,
+  user: state.login.user
 });
 
-export default connect(mapStateToProps, { deleteProduct, editId } )(BasicTable);
+export default connect(mapStateToProps, { deleteProduct, setUser, editId } )(BasicTable);

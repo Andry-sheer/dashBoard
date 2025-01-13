@@ -23,23 +23,22 @@ const CardLogin = ({
   setError,
   fetchUsers,
   setUser,
-  users,
+  users
 }) => {
   
   const navigate = useNavigate();
   const jwt = localStorage.getItem("jwt");
 
   useEffect(()=> {
-    if(jwt){
-      navigate("/product-page");
-    }
-
     if(!jwt){
       fetchUsers();
     }
-    // eslint-disable-next-line
-  }, [])
 
+    if(jwt){
+      navigate("/preview-page");
+    }
+    // eslint-disable-next-line
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -60,18 +59,27 @@ const CardLogin = ({
       return;
     }
 
-    const user = users.find(user => user.name === login && user.password === password);
+    const user = users.find(
+      (u) => u.name === login && u.password === password
+    );
 
     if(!user) {
       setError("user invalid!");
       return;
     }
 
-    setUser(user);
+    setUser({ ...user, status: true });
 
-    localStorage.setItem("user", JSON.stringify(user));
+    
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ ...user, status: true })
+    );
+    
     localStorage.setItem("jwt", "3cwn4u9do92jsb0cg6v82e1");
-    navigate(0 , "/product-page");
+    
+    navigate("/preview-page");
+    window.location.reload();
   };
 
 
@@ -124,8 +132,7 @@ const mapStateToProps = (state) => ({
   password: state.login.password,
   isShowHidePassword: state.login.isShowHidePassword,
   error: state.login.error,
-  users: state.login.users,
-  user: state.login.user
+  users: state.login.users
 })
 
 export default connect(mapStateToProps, { fetchUsers, setUser, clearError, setError, setLogin, setPassword, showHidePassword })(CardLogin);

@@ -8,20 +8,24 @@ import Logo from "../../assets/pagesLogo.svg";
 import MyButton from "../MyButtons/MyButton";
 import SideMenu from "../SideMenu/SideMenu";
 
+
 const Header = ({ isVisible, hideOverlay, showOverlay }) => {
-  const jwt = localStorage.getItem("jwt");  
+  const jwt = localStorage.getItem("jwt");
 
   return (
     <>
-  <header className={styles.header}>
-    <Link  to={jwt ? "/product-page" : null}>
-      <img className={styles.logo} src={Logo} alt="Logo" />
-    </Link>
+    <header className={styles.header}>
+      <Link  to={jwt ? "/product-page" : null}>
+        <img className={styles.logo} src={Logo} alt="Logo" />
+      </Link>
 
-    <MyButton className={styles.navButton} 
-      onClick={jwt ? showOverlay : null} 
+    {jwt ? 
+      <MyButton className={styles.navButton} 
+      onClick={showOverlay} 
       icon={<IoIosMenu fill="white" size={40} />}
-    />
+    /> : null
+    }
+
   </header>
 
     <SideMenu isOpen={isVisible} onClose={hideOverlay} />

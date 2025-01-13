@@ -26,6 +26,10 @@
   color: #F0145A;
 }
 
+.deleteButtonDisable {
+  color: silver;
+}
+
 .tableRow:last-child .rows, .tableRow:last-child .name {
   border-bottom: 0 !important;
 }

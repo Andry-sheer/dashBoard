@@ -6,7 +6,9 @@ import {
   SET_ERROR,
   CLEAR_ERROR,
   SET_USER,
-  FETCH_USERS
+  FETCH_USERS,
+  SET_JWT,
+  CLEAR_JWT
 } from "../actionTypes";
 
 const initialState = {
@@ -16,6 +18,8 @@ const initialState = {
   error: null,
   users: [],
   user: "",
+  jwt: null,
+
 }
 
 const singInReducer = (state = initialState, action) => {
