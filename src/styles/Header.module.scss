@@ -3,7 +3,6 @@
 .header {
   background: $bgGreen;
   padding: 30px;
-  height: 103px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,8 +17,7 @@
 // MOBILE ---------------------------------------------------------------
 @media (max-width: 425px) {
   .header {
-    padding: 20px 30px;
-    height: 80px;
+    padding: 21px;
     border-bottom: 1px solid $basicWhite;
   }
   

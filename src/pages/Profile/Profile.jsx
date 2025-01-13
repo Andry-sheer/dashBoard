@@ -18,24 +18,10 @@ import { BsPersonLinesFill } from "react-icons/bs";
 const Profile = ({ user, setUser }) => {
   const navigate = useNavigate();
   const [isOpen, onClose] = useState(false);
-  const jwt = localStorage.getItem("jwt");
-
-  useEffect(() => {
-    if (!user && jwt) {
-      const saveUser = JSON.parse(localStorage.getItem("user"));
-
-      if (saveUser){
-        setUser({ ...saveUser, status: true });
-      }
-    } else if (!jwt) {
-      navigate("/sing-in");
-    }
-
-  }, [user, jwt, setUser, navigate]);
 
   const handleSingOut = () => {
     localStorage.removeItem("jwt");
-    setUser({ ...user, status: false });
+    setUser("");
     localStorage.removeItem("user");
     window.location.reload();
     navigate("/sing-in");

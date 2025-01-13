@@ -10,7 +10,7 @@
 
 .preview {
   background: $bgGreen;
-  min-height: calc(100vh - 210px);
+  min-height: 100vh;
 }
 
 .container {
@@ -90,10 +90,7 @@
 
 // MOBILE ---------------------------------------------------------------
 @media (max-width: 425px) {
-  .preview {
-    min-height: calc(100vh - 160px);
-  }
-  
+
   .buttonBack {
     padding: 10px;
     background: $basicWhite;

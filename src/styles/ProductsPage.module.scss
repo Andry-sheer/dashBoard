@@ -11,7 +11,7 @@
 }
 
 .products {
-  min-height: calc(100vh - 210px);
+  min-height: 100vh;
   padding: 30px;
   max-width: 1536px;
   margin: 0 auto;
@@ -76,10 +76,7 @@
 // MOBILE ---------------------------------------------------------------
 @media (max-width: 425px) {
   .products {
-    min-height: calc(100vh - 160px);
     padding: 30px 5px;
-    max-width: 1536px;
-    margin: 0 auto;
   }
   
   .title {
@@ -88,8 +85,6 @@
   }
   
   .buttonContainer {
-    display: flex;
-    align-items: center;
     gap: 10px;
   }
   
@@ -102,6 +97,5 @@
   .errorTitle {
     font-weight: 600;
     font-size: 16px;
-    color: white;
   }
 }

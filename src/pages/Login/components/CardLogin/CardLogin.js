@@ -32,10 +32,14 @@ const CardLogin = ({
   useEffect(()=> {
     if(!jwt){
       fetchUsers();
-    }
-
-    if(jwt){
-      navigate("/preview-page");
+    } else {
+      const saveUser = JSON.parse(localStorage.getItem("user"));
+      if (saveUser) {
+        setUser( { ...saveUser, status: true } );
+        navigate("/preview-page");
+      } else {
+        localStorage.removeItem("jwt");
+      }
     }
     // eslint-disable-next-line
   }, []);
@@ -78,8 +82,8 @@ const CardLogin = ({
     
     localStorage.setItem("jwt", "3cwn4u9do92jsb0cg6v82e1");
     
-    navigate("/preview-page");
     window.location.reload();
+    navigate("/preview-page");
   };
 
 
