@@ -15,7 +15,6 @@ import Tooltip from "@mui/material/Tooltip";
 import ModalDelete from "../../../../components/ModalWindows/ModalDelete";
 import styles from "../../../../styles/ProductsTable.module.scss";
 import ModalEdit from "../../../../components/ModalWindows/ModalEdit";
-import { colors } from "@mui/material";
 
 const BasicTable = ({ products, deleteProduct, editId, user }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);

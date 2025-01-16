@@ -117,8 +117,8 @@ const CardLogin = ({
         />
 
           <MyButton type='button' className={styles.buttonEye} onClick={showHidePassword}
-            icon={ isShowHidePassword ? <IoMdEye size="30px" title="Show password" color="green" />
-              : <IoMdEyeOff size="30px" title="Hide password" color="green" /> }
+            icon={ isShowHidePassword ? <IoMdEye className={styles.iconEye} title="Show password" />
+              : <IoMdEyeOff className={styles.iconEye} title="Hide password" /> }
           />
         </div>
         <MyButton type='submit' textButton='Login' className={styles.buttonLogin}/>
