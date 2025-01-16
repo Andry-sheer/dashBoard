@@ -62,7 +62,7 @@
     transition: ease-out .3s;
     padding: 10px 0;
     border-radius: $radius-md;
-    text-shadow: $bgGreen 0 0 5px;
+    text-decoration: 2px underline;
 
     &:hover {
       background-color: none;

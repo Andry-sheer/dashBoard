@@ -40,7 +40,7 @@
     grid-column: 1/1;
     grid-row: 1/2;
     background: $basicWhite;
-    padding: 10px 30px;
+    padding: 10px;
     border-top-left-radius: $radius-md;
     border-top-right-radius: $radius-md;
   }
@@ -48,7 +48,7 @@
   &__image {
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: contain;
   }
 
   //-----------------------------
@@ -144,3 +144,120 @@
   }
 }
 
+// MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+  .card {
+    display: grid;
+    grid-template-rows: 250px auto;
+    border-radius: $radius-md;
+    background: $metal;
+    color: $basicWhite;
+    font-weight: 500;
+    transition: all 0.4s ease-in-out;
+    max-width: 350px;
+    cursor: pointer;
+    position: relative;
+    
+    // &__wrapper {
+    //   padding: 10px;
+    // }
+  
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  
+    //-----------------------------
+  
+    &__info {
+      grid-column: 1/1;
+      grid-row: 2/2;
+      padding: 16px 24px 24px;
+      overflow: hidden;
+    }
+  
+    &__title, &__title2 {
+      font-size: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 5px;
+    }
+  
+    &__category {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+  
+    &__priceWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    &__priceOn, &__priceOff {
+      font-size: 24px;
+      font-weight: 600;
+      color: $basicWhite;
+    }
+  
+    &__priceOff {
+      color: $cardDisable;
+    }
+  
+    &__wrapperDelivery {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  
+    &__quantityOn, &__quantityOff {
+      font-size: 16px;
+      color: $cardGreen;
+    }
+  
+    &__quantityOff {
+      color: $cardRed;
+    }
+  
+    &__deliveryOn, &__deliveryOff {
+      width: 24px;
+      height: 24px;
+      fill: $cardGreen;
+    }
+  
+    &__deliveryOff {
+      fill: $cardRed;
+    }
+  
+    //-----------------------------
+    &__hidden {
+      opacity: 0;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px 24px 24px;
+      border-bottom-left-radius: $radius-md;
+      border-bottom-right-radius: $radius-md;
+      background: $metal;
+  
+    }
+  
+    &__buy, &__buyOff {
+      border-radius: $radius-md;
+      background: $cardBuy;
+      padding: 10px;
+      width: 100%;
+      font-size: 20px;
+      cursor: pointer;
+      color: $basicWhite;
+    }
+  
+    &__buyOff {
+      background: transparent;
+      border: 1px solid $basicWhite;
+    }
+  }
+}

@@ -109,7 +109,7 @@ const ProductPreview = () => {
               </div>
             </div>
 
-            <ScrollButton />
+            <ScrollButton isHidden={isHidden} />
           </div>
         )}
       </div>
