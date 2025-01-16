@@ -1,11 +1,12 @@
 
-import styles from '../../styles/Error.module.css'
-import logo from '../../assets/pagesLogo.svg'
+import styles from '../../styles/Error.module.scss';
+import { IoIosWarning } from "react-icons/io";
+
 
 const Error = () => (
-  <div className={styles.ErrorContainer}>
-    <img className={styles.ErrorImage} src={logo} alt='logo' />
-    <p className={styles.ErrorDescription}>Sorry this page is not found | 404</p>
+  <div className={styles.Error}>
+    <img className={styles.logo} src={<IoIosWarning />} alt='logo' />
+    <p className={styles.description}>Page is not found | 404</p>
   </div>
   
 )

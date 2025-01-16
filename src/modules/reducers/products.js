@@ -9,16 +9,18 @@ import {
   CHANGE_DESCRIPTIONS,
   CHANGE_PRICE,
   CHANGE_QUANTITY,
-  CHANGE_IMAGE,
+  CHANGE_IMAGES,
   EDIT_PRODUCT,
   SET_EDIT,
   SET_RESET,
+  SET_IS_ERROR,
 } from "../actionTypes";
 
 const initialState = {
   productsData: [],
   isLoadProducts: false,
   isLoading: false,
+  isError: false,
   name: "",
   category: "",
   price: "",
@@ -47,6 +49,13 @@ const products = (state = initialState, action) => {
         ...state,
         isLoading: true,
       };
+    }
+
+    case SET_IS_ERROR: {
+      return {
+        ...state,
+        isError: true,
+      }
     }
 
     case SET_RESET: {
@@ -150,7 +159,7 @@ const products = (state = initialState, action) => {
       }
     }
 
-    case CHANGE_IMAGE: {
+    case CHANGE_IMAGES: {
       const { index, newImage} = action.payload;
       const updatedImages = [...state.images];
       updatedImages[index] = newImage;

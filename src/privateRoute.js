@@ -2,7 +2,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateRoute = ({ redirectPath = '/' }) => {
-  if ( !localStorage.getItem("jwt") || !localStorage.getItem("user") ) {
+  if (!localStorage.getItem("jwt")) {
     return <Navigate to={redirectPath} replace={true} />
   }
 

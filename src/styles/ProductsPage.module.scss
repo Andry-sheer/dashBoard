@@ -1,3 +1,4 @@
+@use "vars" as *;
 
 .spinner {
   position: absolute;
@@ -7,24 +8,25 @@
 }
 
 .wrapper {
-  background: #44B26F;
+  background: $bgGreen;
 }
 
 .products {
-  min-height: calc(100vh - 210px);
+  min-height: 100vh;
   padding: 30px;
-  max-width: 1536px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
 .title {
   font-size: 50px;
-  color: white;
+  color: $basicWhite;
   font-weight: 700;
   text-align: left;
 }
 
 .container {
+  color: $basicWhite;
 }
 
 .containerTitle {
@@ -41,8 +43,8 @@
 }
 
 .buttonPreview, .buttonAdd {
-  color: #05BC52;
-  background: white;
+  color: $bgGreen;
+  background: $basicWhite;
   font-size: 18px;
   border: none;
   padding: 10px 30px;
@@ -54,26 +56,47 @@
   cursor: pointer;
 }
 
-.error {
-  background: #44B26F;
-  min-height: calc(100vh - 210px);
-  padding: 30px;
-  position: relative;
-}
-
-.errorTitle {
-  font-weight: 700;
-  font-size: 30px;
-  color: white;
-}
-
 .errorContainer {
   display: flex;
   flex-flow: column;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+}
+
+.errorTitle {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 30px;
+  color: $basicWhite;
+}
+
+// MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+  .products {
+    padding: 30px 5px;
+  }
+  
+  .title {
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+  
+  .buttonContainer {
+    gap: 10px;
+  }
+  
+  .buttonPreview, .buttonAdd {
+    font-size: 12px;
+    padding: 10px;
+    gap: 5px;
+  }
+  
+  .errorTitle {
+    font-weight: 600;
+    font-size: 16px;
+  }
 }

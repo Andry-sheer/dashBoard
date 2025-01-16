@@ -4,41 +4,8 @@ import { RiCloseFill } from "react-icons/ri";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Form from "../Formik/Formik";
-import MyButton from "../MyButton/MyButton";
-
-const styles = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  background: "#F5F5FA",
-  borderRadius: 4,
-  boxShadow: 24,
-  padding: 2,
-  width: 500,
-
-  header: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginBottom: "20px"
-  },
-
-  title: {
-    fontSize: '20px',
-    fontFamily: 'Inter',
-    fontWeight: 600,
-    color: '#726969',
-  },
-
-  buttonClose: {
-    background: "transparent",
-    border: 0,
-    cursor: "pointer",
-    padding: 0,
-  }
-
-};
+import MyButton from "../MyButtons/MyButton";
+import styles from "../../styles/ModalEdit.module.scss";
 
 const ModalEdit = ({
   onOpen,
@@ -55,14 +22,13 @@ const ModalEdit = ({
   }
 
   return (
-    <div>
+    <div className={editId ? "modalEdit" : "modalAdd"}>
       <Modal open={onOpen}>
-        <Box sx={styles}>
-          <div className="header" style={styles.header}>
-            <span className="title" style={styles.title}>{editId ? "EDIT PRODUCT" : "ADD PRODUCT"}</span>
+        <Box className={styles.modal}>
+          <div className={styles.header}>
+            <span className={styles.title}>{editId ? "EDIT PRODUCT" : "ADD PRODUCT"}</span>
               <MyButton
-                className="buttonClose"
-                style={styles.buttonClose}
+                className={styles.buttonClose}
                 onClick={closeModal}
                 icon={<RiCloseFill size={30} />}
               />

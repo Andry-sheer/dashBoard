@@ -1,0 +1,78 @@
+@use "./vars" as *;
+
+.footer {
+  background: $basicBlack;  
+}
+
+.container {
+  margin: 0 auto;
+  padding: 30px;
+  max-width: 1440px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logoContainer {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-rounded;
+  overflow: hidden;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logoSpan {
+  font-weight: 700;
+  font-size: 20px;
+  color: $separatorColor;
+}
+
+.link {
+  text-decoration: none;
+  color: $greyColor;
+  transition: linear .2s;
+}
+
+.author {
+  font-size: 20px;
+  color: $basicWhite;
+  transition: linear .2s;
+}
+
+.link:hover > .author {
+  color: $bgGreens;
+  text-shadow: $basicWhite 0 0 20px;
+}
+
+// MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+  .container {
+    padding: 21px;
+  }
+  
+  .logoContainer {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .logoSpan {
+    font-weight: 700;
+    font-size: 16px;
+  }
+  
+  .author {
+    font-size: 16px;
+  }
+}

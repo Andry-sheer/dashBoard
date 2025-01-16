@@ -13,17 +13,17 @@ import TableRow from "@mui/material/TableRow";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import ModalDelete from "../../../../components/ModalWindows/ModalDelete";
-import styles from "../../../../styles/ProductsTable.module.css";
+import styles from "../../../../styles/ProductsTable.module.scss";
 import ModalEdit from "../../../../components/ModalWindows/ModalEdit";
+import { colors } from "@mui/material";
 
-const BasicTable = ({ products, deleteProduct, editId }) => {
+const BasicTable = ({ products, deleteProduct, editId, user }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [selectProductToDelete, setSelectProductToDelete] = useState("");
   const navigate = useNavigate();
   const [isOpenModalEdit, setIsOpenModalEdit] = useState(false);
   // eslint-disable-next-line
   const [selectEdit, setSelectEdit] = useState(null);
-
 
   const handleCloseEdit = () => {
     setIsOpenModalEdit(false);
@@ -72,6 +72,8 @@ const BasicTable = ({ products, deleteProduct, editId }) => {
       background: "white",
     },
 
+
+
     table: {
       minWidth: 400,
       padding: 0,
@@ -79,13 +81,14 @@ const BasicTable = ({ products, deleteProduct, editId }) => {
     },
 
     row: {
-      background: "#0EC86F",
+      background: "#1A2A44",
     },
 
     cellHead: {
       fontWeight: 600,
       textAlign: "center",
-      borderBottom: 0
+      borderBottom: 0,
+      color: "white"
     },
 
     cell: {
@@ -94,7 +97,7 @@ const BasicTable = ({ products, deleteProduct, editId }) => {
   }
 
     return (
-        <>
+        <div className="customTable">
           <TableContainer style={style.container}>
             <Table style={style.table} aria-label="simple table">
               <TableHead style={style.body}>
@@ -104,7 +107,8 @@ const BasicTable = ({ products, deleteProduct, editId }) => {
                   <TableCell style={style.cellHead}>Ім'я</TableCell>
                   <TableCell style={style.cellHead}>Кількість</TableCell>
                   <TableCell style={style.cellHead}>Ціна(₴)</TableCell>
-                  <TableCell style={style.cellHead}></TableCell>
+                  {user.role === "Administrator" || user.role === "Moderator" ? 
+                    <TableCell style={style.cellHead}></TableCell> : null }
                 </TableRow>
               </TableHead>
 
@@ -120,7 +124,10 @@ const BasicTable = ({ products, deleteProduct, editId }) => {
                     </TableCell>
                     <TableCell className={styles.rows} style={style.cell}>{product.quantity}</TableCell>
                     <TableCell className={styles.rows} style={style.cell}>{product.price}</TableCell>
+                    
+                    {user.role === "Administrator" || user.role === "Moderator" ?
                     <TableCell className={styles.rows} style={style.cell}>
+
                       <Tooltip title="Edit">
                         <IconButton aria-label="edit"
                           onClick={()=> handleOpenEdit(product)}
@@ -129,29 +136,32 @@ const BasicTable = ({ products, deleteProduct, editId }) => {
                         </IconButton>
                       </Tooltip>
 
+                    
                       <Tooltip title="Delete">
                         <IconButton aria-label="delete"
                           onClick={()=> handleOpenModals(product)}
+                          disabled={user.role !== "Administrator"}
                         >
-                          <MdDelete className={styles.deleteButton} />
+                          <MdDelete className={user.role === "Administrator" ? styles.deleteButton : styles.deleteButtonDisable} />
                         </IconButton>
                       </Tooltip>
-                    </TableCell>
+
+                    </TableCell> : null }
+                    
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
           </TableContainer>
-          <ModalEdit onOpen={isOpenModalEdit} onClose={handleCloseEdit} />
-          <ModalDelete onOpen={isOpenModal} product={selectProductToDelete} onDelete={handleDelete} onClose={handleCloseModals} />
-      </>
+          {isOpenModalEdit && <ModalEdit onOpen={isOpenModalEdit} onClose={handleCloseEdit} />}
+          {isOpenModal && <ModalDelete onOpen={isOpenModal} product={selectProductToDelete} onDelete={handleDelete} onClose={handleCloseModals} />}
+      </div>
     );
 };
 
 const mapStateToProps = (state) => ({
   products: state.products.productsData,
-  isLoadProducts: state.products.isLoadProducts,
-  isLoading: state.products.isLoading
+  user: state.login.user
 });
 
 export default connect(mapStateToProps, { deleteProduct, editId } )(BasicTable);

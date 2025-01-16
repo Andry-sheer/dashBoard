@@ -6,10 +6,9 @@ import { fetchUsers, setUser, clearError, setError, setLogin, setPassword, showH
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 import { PiWarningOctagonBold } from "react-icons/pi";
-import styles from "../../../../styles/CardLogin.module.css";
-import loginLogo from "../../../../assets/loginLogo.svg";
+import styles from "../../../../styles/CardLogin.module.scss";
 import Input from "../../../../components/Input/Input";
-import MyButton from "../../../../components/MyButton/MyButton";
+import MyButton from "../../../../components/MyButtons/MyButton";
 
 const CardLogin = ({
   login, 
@@ -21,24 +20,28 @@ const CardLogin = ({
   showHidePassword,
   clearError,
   setError,
-  setUser,
   fetchUsers,
-  users,
+  setUser,
+  users
 }) => {
   
   const navigate = useNavigate();
+  const jwt = localStorage.getItem("jwt");
 
   useEffect(()=> {
-    if(localStorage.getItem('jwt') && localStorage.getItem('user')){
-      navigate("/product-page");
-    }
-
-    if(!localStorage.getItem('jwt') || !localStorage.getItem('user')){
+    if(!jwt){
       fetchUsers();
+    } else {
+      const saveUser = JSON.parse(localStorage.getItem("user"));
+      if (saveUser) {
+        setUser( { ...saveUser, status: true } );
+        navigate("/home");
+      } else {
+        localStorage.removeItem("jwt");
+      }
     }
     // eslint-disable-next-line
-  }, [])
-
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -59,26 +62,34 @@ const CardLogin = ({
       return;
     }
 
-    const user = users.find(user => user.name === login && user.password === password);
+    const user = users.find(
+      (u) => u.name === login && u.password === password
+    );
 
     if(!user) {
       setError("user invalid!");
-      setUser("");
       return;
     }
 
-    setUser(user.name);
+    setUser({ ...user, status: true });
 
+    
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ ...user, status: true })
+    );
+    
     localStorage.setItem("jwt", "3cwn4u9do92jsb0cg6v82e1");
-    localStorage.setItem("user", user.name);
-    navigate("/product-page");
+    
+    window.location.reload();
+    navigate("/home");
   };
 
 
   return (
     <div className={styles.CardLoginContainer}>
     <div className={styles.CardLogin}>
-      <img className={styles.loginLogo} src={loginLogo} alt="loginLogo" />
+        <span className={styles.logoSpan}>Welcome</span>
       <form className={styles.formLoginPage} onSubmit={handleSubmit}>
         <Input
           className={styles.loginInput}

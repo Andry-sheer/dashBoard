@@ -1,0 +1,30 @@
+@use "./vars" as *;
+
+.Error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  background: $bgGreen;
+  align-items: center;
+
+  .logo {
+    margin: 0 0 20px 0;
+  }
+  
+  .description {
+    font-size: 35px;
+    color:whitesmoke;
+    font-weight: 700;
+  }
+}
+
+// MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+  .Error {
+    .description {
+      font-size: 28px;
+    }
+  }
+}
+

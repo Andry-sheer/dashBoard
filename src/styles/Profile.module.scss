@@ -1,0 +1,226 @@
+
+@use "vars" as *;
+
+.user {
+  background: $bgAlt;
+
+  &__container {
+    min-height: 100vh;
+    padding: 50px 30px 30px;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column;
+    gap: 40px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__containerInfo {
+    display: flex;
+    flex-flow: column;
+    gap: 12px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__blockImage {
+    position: relative;
+  }
+
+  &__status {
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      border-radius: $radius-rounded;
+      background: $bgAlt;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  &__dottedOnline, &__dottedOffline {
+    width: 30px;
+    height: 30px;
+    border-radius: $radius-rounded;
+    background: $bgGreens;
+  }
+
+  &__dottedOffline {
+    background: $redAccent;
+  }
+  
+  &__photo, &__photo_admin, &__photo_moderator {
+    width: 200px;
+    height: 200px;
+    border-radius: $radius-rounded;
+    border: $bgGreens 3px solid;
+    box-shadow: 0 0 20px $bgGreens;
+    overflow: hidden;
+  }
+
+  &__photo_admin {
+    border: $valueColor 3px solid;
+    box-shadow: 0 0 20px $valueColor;
+  }
+
+  &__photo_moderator {
+    border: $orangeApple 3px solid;
+    box-shadow: 0 0 20px $orangeApple;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  &__name, &__name_admin, &__name_moderator {
+    font-size: 30px;
+    font-weight: 600;
+    color: $bgGreens;
+  }
+
+  &__name_admin {
+    color: $valueColor;
+  }
+
+  &__name_moderator {
+    color: $orangeApple;
+  }
+
+  &__slash {
+    font-size: 30px;
+    font-weight: 700;
+    color: $greyColor;
+  }
+
+  &__role {
+    color: $greyColor;
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  &__email {
+    font-size: 20px;
+    font-weight: 500;
+    color: $greyColor;
+  }
+
+  &__containerButtons {
+    display: flex;
+    flex-flow: column;
+    gap: 12px;
+    text-align: center;
+    align-items: start;
+    justify-content: center;
+    width: 500px;
+  }
+
+  &__editProfile, &__editPassword, &__editUsers {
+    background: transparent;
+    color: $greyColor;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: left;
+    padding: 10px;
+    font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  &__rightIcon {
+    color: $greyColor;
+    width: 20px;
+    height: 20px;
+    margin-left: auto;
+  }
+
+  &__divider {
+    width: 100%;
+    height: 4px;
+    background: #b3b3ba52;
+    border-radius: 4px;
+    margin: 24px 0;
+  }
+
+  &__singOut {
+    background: transparent;
+    padding: 10px 30px;
+    color: $redAccent;
+    font-weight: 500;
+    border-radius: $radius-md;
+    border: $redAccent solid 2px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: left;
+    font-size: 18px;
+    cursor: pointer;
+    transition: ease-out .2s;
+
+    &:hover {
+      box-shadow: $redAccent 0 0 10px;
+    }
+  }
+
+  &__cancel, &__logOut {
+    color: $basicWhite;
+    font-weight: 600;
+    padding: 10px 50px;
+    background: silver;
+    border-radius: $radius-md;
+    cursor: pointer;
+  }
+
+  &__logOut {
+    background: $redAccent;
+  }
+}
+
+// MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+  .user {
+
+    &__container {
+      padding: 50px 21px 30px;
+    }
+
+    &__containerInfo {
+      width: 100%;
+    }
+
+    &__status {
+      bottom: 5px;
+      right: 10px;
+    }
+    
+    &__photo, &__photo_admin, &__photo_moderator {
+      width: 160px;
+      height: 160px;
+    }
+    
+    &__name, &__name_admin, &__name_moderator, &__slash, &__role {
+      font-size: 25px;
+    }
+
+    &__containerButtons {
+      width: 100%;
+    }
+
+    &__cancel, &__logOut {
+      padding: 10px 20px;
+    }
+  }
+}

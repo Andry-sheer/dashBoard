@@ -1,0 +1,79 @@
+@use "vars" as *;
+
+.sideMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 350px;
+  background: $basicWhite;
+  transition: transform 0.4s ease;
+  z-index: 1001;
+
+  &__visible {
+    transform: translateX(0);
+  }
+
+  &__hidden {
+    transform: translateX(100%);
+  }
+
+  &__container {
+    text-align: center;
+    color: $greyColor;
+    padding: 30px;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 30px;
+    font-weight: 700;
+    color: $bgGreen;
+    margin: 0 0 50px 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+  }
+
+  &__item {
+    color: $greyColor;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: ease-out .3s;
+    padding: 10px 0;
+    border-radius: $radius-md;
+
+    &:hover {
+      background-color: #e1e8e388;
+    }
+  }
+
+  &__item_active {
+    color: #2b6096;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: ease-out .3s;
+    padding: 10px 0;
+    border-radius: $radius-md;
+    text-shadow: $bgGreen 0 0 5px;
+
+    &:hover {
+      background-color: none;
+    }
+  }
+}
+
+// MOBILE ---------------------------------------------------------------
+@media (max-width: 425px) {
+  .sideMenu {
+    width: 250px;
+    border: solid 1px $basicBlack;
+  }
+}
