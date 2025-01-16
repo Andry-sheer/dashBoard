@@ -1,8 +1,7 @@
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { deleteProduct, editId } from "../../../../modules/actions/products";
-import { setUser } from "../../../../modules/actions/login";
 import { BiSolidEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import Table from "@mui/material/Table";
@@ -16,29 +15,15 @@ import Tooltip from "@mui/material/Tooltip";
 import ModalDelete from "../../../../components/ModalWindows/ModalDelete";
 import styles from "../../../../styles/ProductsTable.module.scss";
 import ModalEdit from "../../../../components/ModalWindows/ModalEdit";
+import { colors } from "@mui/material";
 
-const BasicTable = ({ products, deleteProduct, editId, user, setUser }) => {
+const BasicTable = ({ products, deleteProduct, editId, user }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [selectProductToDelete, setSelectProductToDelete] = useState("");
   const navigate = useNavigate();
   const [isOpenModalEdit, setIsOpenModalEdit] = useState(false);
   // eslint-disable-next-line
   const [selectEdit, setSelectEdit] = useState(null);
-
-  const jwt = localStorage.getItem("jwt");
-
-  useEffect(() => {
-    if (!user && jwt) {
-      const saveUser = JSON.parse(localStorage.getItem("user"));
-
-      if (saveUser){
-        setUser({ ...saveUser, status: true });
-      }
-    } else if (!jwt) {
-      navigate("/sing-in");
-    }
-
-  }, [user, jwt, setUser, navigate]);
 
   const handleCloseEdit = () => {
     setIsOpenModalEdit(false);
@@ -87,6 +72,8 @@ const BasicTable = ({ products, deleteProduct, editId, user, setUser }) => {
       background: "white",
     },
 
+
+
     table: {
       minWidth: 400,
       padding: 0,
@@ -94,13 +81,14 @@ const BasicTable = ({ products, deleteProduct, editId, user, setUser }) => {
     },
 
     row: {
-      background: "#0EC86F",
+      background: "#1A2A44",
     },
 
     cellHead: {
       fontWeight: 600,
       textAlign: "center",
-      borderBottom: 0
+      borderBottom: 0,
+      color: "white"
     },
 
     cell: {
@@ -173,9 +161,7 @@ const BasicTable = ({ products, deleteProduct, editId, user, setUser }) => {
 
 const mapStateToProps = (state) => ({
   products: state.products.productsData,
-  isLoadProducts: state.products.isLoadProducts,
-  isLoading: state.products.isLoading,
   user: state.login.user
 });
 
-export default connect(mapStateToProps, { deleteProduct, setUser, editId } )(BasicTable);
+export default connect(mapStateToProps, { deleteProduct, editId } )(BasicTable);

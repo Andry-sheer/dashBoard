@@ -7,7 +7,6 @@ import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 import { PiWarningOctagonBold } from "react-icons/pi";
 import styles from "../../../../styles/CardLogin.module.scss";
-import loginLogo from "../../../../assets/loginLogo.svg";
 import Input from "../../../../components/Input/Input";
 import MyButton from "../../../../components/MyButtons/MyButton";
 
@@ -36,7 +35,7 @@ const CardLogin = ({
       const saveUser = JSON.parse(localStorage.getItem("user"));
       if (saveUser) {
         setUser( { ...saveUser, status: true } );
-        navigate("/preview-page");
+        navigate("/home");
       } else {
         localStorage.removeItem("jwt");
       }
@@ -83,14 +82,14 @@ const CardLogin = ({
     localStorage.setItem("jwt", "3cwn4u9do92jsb0cg6v82e1");
     
     window.location.reload();
-    navigate("/preview-page");
+    navigate("/home");
   };
 
 
   return (
     <div className={styles.CardLoginContainer}>
     <div className={styles.CardLogin}>
-      <img className={styles.loginLogo} src={loginLogo} alt="loginLogo" />
+        <span className={styles.logoSpan}>Welcome</span>
       <form className={styles.formLoginPage} onSubmit={handleSubmit}>
         <Input
           className={styles.loginInput}

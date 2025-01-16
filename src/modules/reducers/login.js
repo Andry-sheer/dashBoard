@@ -6,9 +6,8 @@ import {
   SET_ERROR,
   CLEAR_ERROR,
   SET_USER,
+  CLEAR_USER,
   FETCH_USERS,
-  SET_JWT,
-  CLEAR_JWT
 } from "../actionTypes";
 
 const initialState = {
@@ -17,9 +16,7 @@ const initialState = {
   isShowHidePassword: true,
   error: null,
   users: [],
-  user: "",
-  jwt: null,
-
+  user: JSON.parse(localStorage.getItem("user")) || null,
 }
 
 const singInReducer = (state = initialState, action) => {
@@ -35,6 +32,12 @@ const singInReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload
+      }
+
+    case CLEAR_USER:
+      return {
+        ...state,
+        user: null
       }
 
     case CLEAR_ERROR:

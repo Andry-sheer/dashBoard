@@ -26,7 +26,7 @@ const AppRouter = () => {
             <Route element={<PrivateRoute />}>
               <Route path="/profile" element={<Profile />} />
               <Route path="/product-page" element={<ProductsPage />} />
-              <Route path="/preview-page" element={<PreviewPage />} />
+              <Route path="/home" element={<PreviewPage />} />
               <Route path="/product-preview/:id" element={<ProductPreview />} />
             </Route>
           </Routes>

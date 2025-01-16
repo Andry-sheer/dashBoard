@@ -7,7 +7,7 @@
   &__container {
     min-height: 100vh;
     padding: 50px 30px 30px;
-    max-width: 1280px;
+    max-width: 1440px;
     margin: 0 auto;
     display: flex;
     flex-flow: column;
@@ -47,7 +47,7 @@
     width: 30px;
     height: 30px;
     border-radius: $radius-rounded;
-    background: $bgGreen;
+    background: $bgGreens;
   }
 
   &__dottedOffline {
@@ -58,8 +58,8 @@
     width: 200px;
     height: 200px;
     border-radius: $radius-rounded;
-    border: $bgGreen 3px solid;
-    box-shadow: 0 0 20px $bgGreen;
+    border: $bgGreens 3px solid;
+    box-shadow: 0 0 20px $bgGreens;
     overflow: hidden;
   }
 
@@ -88,7 +88,7 @@
   &__name, &__name_admin, &__name_moderator {
     font-size: 30px;
     font-weight: 600;
-    color: $bgGreen;
+    color: $bgGreens;
   }
 
   &__name_admin {

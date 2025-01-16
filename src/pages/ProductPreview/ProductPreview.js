@@ -5,7 +5,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { FaHouseCircleCheck, FaHouseCircleXmark } from "react-icons/fa6";
 import MyButton from "../../components/MyButtons/MyButton";
 import BasicSpinner from "../../components/Spinner/Spinner";
-import Logo from "../../assets/pagesLogo.svg";
+import Logo from "../../assets/logo.png";
 import styles from "../../styles/ProductPreview.module.scss";
 import Slider from "../../components/Slider/Slider";
 import ScrollButton from "../../components/MyButtons/ScrollButton";
@@ -61,7 +61,7 @@ const ProductPreview = () => {
   }, [products])
 
   const handleButtonBack = () => {
-    navigateBack("/preview-page");
+    navigateBack("/home");
   };
 
   if (isError) {
@@ -84,7 +84,7 @@ const ProductPreview = () => {
           </div>
         ) : (
           <div className={styles.container}>
-            <MyButton className={styles.buttonBack} icon={<IoIosArrowBack className={styles.iconButton} size={20} />} textButton="PREVIEW PAGE" onClick={handleButtonBack} />
+            <MyButton className={styles.buttonBack} icon={<IoIosArrowBack className={styles.iconButton} size={20} />} textButton="HOME" onClick={handleButtonBack} />
             <div className={styles.containerInner}>
               <div className={products.images[0].trim() ? styles.blockImage : styles.noImage}>
                 <Slider images={products.images} name={products.name}/>

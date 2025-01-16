@@ -1,3 +1,4 @@
+@use "vars" as *;
 
 .spinner {
   position: absolute;
@@ -7,25 +8,25 @@
 }
 
 .wrapper {
-  background: #44B26F;
+  background: $bgGreen;
 }
 
 .products {
   min-height: 100vh;
   padding: 30px;
-  max-width: 1536px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
 .title {
   font-size: 50px;
-  color: white;
+  color: $basicWhite;
   font-weight: 700;
   text-align: left;
 }
 
 .container {
-  color: white;
+  color: $basicWhite;
 }
 
 .containerTitle {
@@ -42,8 +43,8 @@
 }
 
 .buttonPreview, .buttonAdd {
-  color: #05BC52;
-  background: white;
+  color: $bgGreen;
+  background: $basicWhite;
   font-size: 18px;
   border: none;
   padding: 10px 30px;
@@ -70,7 +71,7 @@
   text-transform: uppercase;
   font-weight: 700;
   font-size: 30px;
-  color: white;
+  color: $basicWhite;
 }
 
 // MOBILE ---------------------------------------------------------------

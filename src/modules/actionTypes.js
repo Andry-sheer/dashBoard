@@ -32,8 +32,7 @@ export const SHOW_HIDE_PASSWORD = `${MAIN_PAGE}/SHOW_HIDE_PASSWORD`;
 export const SET_ERROR = `${MAIN_PAGE}/SET_ERROR`;
 export const CLEAR_ERROR = `${MAIN_PAGE}/CLEAR_ERROR`;
 export const SET_USER = `${MAIN_PAGE}/SET_USER`;
-export const SET_JWT = `${MAIN_PAGE}/SET_JWT`;
-export const CLEAR_JWT = `${MAIN_PAGE}/CLEAR_JWT`;
+export const CLEAR_USER = `${MAIN_PAGE}/CLEAR_USER`;
 
 export const FETCH_USERS = `${MAIN_PAGE}/FETCH_USERS`;
 

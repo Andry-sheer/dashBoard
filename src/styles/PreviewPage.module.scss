@@ -14,9 +14,9 @@
 }
 
 .container {
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 30px 30px 0;
+  padding: 50px 50px 70px;
 }
 
 .buttonBack {
@@ -31,16 +31,15 @@
 }
 
 .cards {
-  padding: 40px 0 50px;
-  gap: 60px;
+  gap: 20px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
 }
 
 .error {
   background: $bgGreen;
-  min-height: calc(100vh - 210px);
+  min-height: 100vh;
   position: relative;
 }
 
@@ -75,12 +74,6 @@
   grid-template-rows: repeat(2, 1fr);
 }
 
-.buttonSkull {
-  width: 150px;
-  height: 25px;
-  border-radius: 8px;
-}
-
 .skull {
   border-radius: 12px;
   height: 350px !important;
@@ -90,13 +83,6 @@
 
 // MOBILE ---------------------------------------------------------------
 @media (max-width: 425px) {
-
-  .buttonBack {
-    padding: 10px;
-    background: $basicWhite;
-    color: $greyColor;
-    border-radius: $radius-md;
-  }
   
   .cards {
     padding: 30px 0;
@@ -104,10 +90,6 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-  }
-
-  .error {
-    min-height: calc(100vh - 160px);
   }
   
   .errorDescriptions {

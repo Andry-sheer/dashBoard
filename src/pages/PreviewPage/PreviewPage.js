@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { IoChevronBack } from "react-icons/io5";
 import { API_URL } from "../../constants/constants";
 import { Skeleton } from "@mui/material";
 import styles from "../../styles/PreviewPage.module.scss";
-import Logo from "../../assets/pagesLogo.svg";
+import Logo from "../../assets/logo.png";
 import CardPreview from "./components/CardPreview/CardPreview";
-import MyButton from "../../components/MyButtons/MyButton";
 
 const PreviewPage = () => {
   const navigate = useNavigate();
@@ -39,10 +37,6 @@ const getProducts = async () => {
     navigate(`/product-preview/${id}`);
   };
 
-  const handleClickBack = () => {
-    navigate("/product-page");
-  };
-
   if (isError){
     return (
       <div className={styles.error}>
@@ -57,7 +51,6 @@ const getProducts = async () => {
       return (
     <div className={styles.preview}>
       {isLoading ? ( <div className={styles.wrapperSkull}>
-        <Skeleton className={styles.buttonSkull} variant="rectangular" />
         <div className={styles.containerSkull}>
           <Skeleton className={styles.skull} variant="rectangular" />
           <Skeleton className={styles.skull} variant="rectangular" />
@@ -69,12 +62,6 @@ const getProducts = async () => {
       </div> )
         : 
       ( <div className={styles.container}>
-        <MyButton className={styles.buttonBack} type="button" 
-        icon={<IoChevronBack size={20} />} 
-        textButton={<p className="backButtonProductPageTitle">Product Page</p>} 
-        onClick={handleClickBack} 
-        />
-
       <div className={styles.cards}>
         {products.map((product) => (
           <CardPreview
@@ -89,5 +76,6 @@ const getProducts = async () => {
   );
   }
 };
+
 
 export default PreviewPage;

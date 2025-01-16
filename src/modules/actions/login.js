@@ -7,6 +7,7 @@ import {
   SET_ERROR,
   CLEAR_ERROR,
   SET_USER,
+  CLEAR_USER,
   FETCH_USERS,
 } from "../actionTypes";
 
@@ -23,10 +24,20 @@ export const fetchUsers = () => async (dispatch) => {
   }
 };
 
-export const setUser = (user) => ({
-  type: SET_USER,
-  payload: user,
-});
+export const setUser = (user) => {
+  localStorage.setItem("user", JSON.stringify(user));
+    return {
+      type: SET_USER,
+      payload: user,
+    }
+};
+
+export const clearUser = () => {
+  localStorage.removeItem("user");
+    return {
+      type: CLEAR_USER,
+    }
+};
 
 export const clearError = () => ({
   type: CLEAR_ERROR,

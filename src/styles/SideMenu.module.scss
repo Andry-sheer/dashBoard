@@ -39,7 +39,7 @@
   }
 
   &__item {
-    color: inherit;
+    color: $greyColor;
     text-decoration: none;
     font-size: 18px;
     font-weight: 600;
@@ -54,7 +54,7 @@
   }
 
   &__item_active {
-    color: $bgGreen;
+    color: #2b6096;
     text-decoration: none;
     font-size: 18px;
     font-weight: 600;
@@ -62,6 +62,7 @@
     transition: ease-out .3s;
     padding: 10px 0;
     border-radius: $radius-md;
+    text-shadow: $bgGreen 0 0 5px;
 
     &:hover {
       background-color: none;

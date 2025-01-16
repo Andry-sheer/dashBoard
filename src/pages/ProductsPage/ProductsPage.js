@@ -8,14 +8,14 @@ import ProductsTable from "./components/ProductsTable/ProductsTable";
 import BasicSpinner from "../../components/Spinner/Spinner";
 import styles from "../../styles/ProductsPage.module.scss";
 import ModalEdit from "../../components/ModalWindows/ModalEdit";
-import logo from "../../assets/pagesLogo.svg";
+import logo from "../../assets/graphics.svg";
 
 const ProductsPage = ({ fetchProducts, isLoading, isLoadProducts, isError }) => {
   const navigatePreview = useNavigate();
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const handleButtonPreview = () => {
-    navigatePreview("/preview-page");
+    navigatePreview("/home");
   };
 
   useEffect(() => {

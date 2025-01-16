@@ -1,17 +1,17 @@
 
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { setUser } from "../../modules/actions/login";
 import { FaSignOutAlt } from "react-icons/fa";
 import { RiEdit2Fill } from "react-icons/ri";
 import { FaLock } from "react-icons/fa";
 import { RiArrowRightSLine } from "react-icons/ri";
+import { BsPersonLinesFill } from "react-icons/bs";
 import Avatar from "../../assets/profile.png";
 import styles from "../../styles/Profile.module.scss";
 import MyButton from "../../components/MyButtons/MyButton";
 import UniversalModal from "../../components/ModalWindows/ModalUniversal";
-import { BsPersonLinesFill } from "react-icons/bs";
 
 
 
@@ -20,11 +20,16 @@ const Profile = ({ user, setUser }) => {
   const [isOpen, onClose] = useState(false);
 
   const handleSingOut = () => {
+    setUser(null);
     localStorage.removeItem("jwt");
-    setUser("");
     localStorage.removeItem("user");
-    window.location.reload();
     navigate("/sing-in");
+    window.location.reload();
+  }
+
+  if (!user) {
+    navigate("/sing-in");
+    return null;
   }
 
   return (
@@ -120,8 +125,4 @@ const mapStateToProps = (state) => ({
   user: state.login.user,
 });
 
-const mapDispatchToProps = {
-  setUser,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, { setUser })(Profile);
