@@ -7,29 +7,58 @@ import {
   SET_ERROR,
   CLEAR_ERROR,
   SET_USER,
+  SET_USERS,
   CLEAR_USER,
   FETCH_USERS,
+  SET_IS_LOADING,
 } from "../actionTypes";
 
 export const fetchUsers = () => async (dispatch) => {
+    dispatch({
+      type: SET_IS_LOADING,
+    });
 
   try {
     const response = await fetch(`${API_URL}/users`);
-    const data = await response.json();
-    const users = Array.isArray(data) ? data : Object.values(data);
-    dispatch({ type: FETCH_USERS,
-      payload: users });
+    const users = await response.json();
+
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    const updatedUsers = users.map((user) => {
+      const storedUser = storedUsers.find((u) => u.id === user.id);
+      return storedUser ? { ...user, status: storedUser.status } : user;
+    });
+
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+    dispatch({
+      type: FETCH_USERS,
+      payload: { users: updatedUsers },
+    });
+
   } catch (error) {
     console.log("Error", error);
   }
 };
 
-export const setUser = (user) => {
+export const setUser = (user) => (dispatch, getState) => {
+  const { users } = getState().login;
+
+  const updatedUsers = users.map((u) =>
+    u.id === user.id ? { ...u, status: user.status } : u
+  );
+  
   localStorage.setItem("user", JSON.stringify(user));
-    return {
-      type: SET_USER,
-      payload: user,
-    }
+  localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+    dispatch({
+    type: SET_USER,
+    payload: user,
+  });
+
+  dispatch({
+    type: SET_USERS,
+    payload: updatedUsers,
+  });
 };
 
 export const clearUser = () => {

@@ -27,8 +27,7 @@ const Header = ({ isVisible, hideOverlay, showOverlay, user }) => {
         {jwt ?
           <div className={styles.profileContainer}>
             <Link className={styles.profileLink}  to="/profile">
-              {/* <span className={styles.profileName}>{user ? user.name : "user"}</span> */}
-              <img className={styles.profilePicture} src={user ? user.image : Avatar} alt="avatar" />
+              <img className={styles.profilePicture} src={user.image ? user.image : Avatar} alt="avatar" />
             </Link>
             
             { jwt ? 

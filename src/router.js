@@ -10,6 +10,8 @@ import PreviewPage from "./pages/PreviewPage/PreviewPage";
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer";
 import Profile from "./pages/Profile/Profile";
+import UsersPage from "./pages/UsersPage/UsersPage";
+import Profiles from "./pages/Profile/components/Profiles";
 
 const AppRouter = () => {
   return (
@@ -24,6 +26,8 @@ const AppRouter = () => {
             <Route path="/sing-in" element={<Login />} />
 
             <Route element={<PrivateRoute />}>
+              <Route path="/profiles/:id" element={<Profiles />} />
+              <Route path="/users" element={<UsersPage />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/product-page" element={<ProductsPage />} />
               <Route path="/home" element={<PreviewPage />} />

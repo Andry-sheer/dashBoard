@@ -5,7 +5,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { FaHouseCircleCheck, FaHouseCircleXmark } from "react-icons/fa6";
 import MyButton from "../../components/MyButtons/MyButton";
 import BasicSpinner from "../../components/Spinner/Spinner";
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/graphics.svg";
 import styles from "../../styles/ProductPreview.module.scss";
 import Slider from "../../components/Slider/Slider";
 import ScrollButton from "../../components/MyButtons/ScrollButton";
