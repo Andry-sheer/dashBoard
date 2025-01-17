@@ -24,24 +24,59 @@ const CardLogin = ({
   setUser,
   users
 }) => {
-  
-  const navigate = useNavigate();
-  const jwt = localStorage.getItem("jwt");
 
-  useEffect(()=> {
-    if(!jwt){
-      fetchUsers();
-    } else {
-      const saveUser = JSON.parse(localStorage.getItem("user"));
-      if (saveUser) {
-        setUser( { ...saveUser, status: true } );
-        navigate("/home");
-      } else {
+  const navigate = useNavigate();
+
+  const generateUUID = () => {
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+      const r = (Math.random() * 16) | 0;
+      const v = c === "x" ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
+  };
+  
+
+  const generateToken = () => {
+    const uuid = crypto?.randomUUID ? crypto.randomUUID() : generateUUID();
+
+    const payload = {
+      id: uuid,
+      timestamp: Date.now(),
+    };
+    return btoa(JSON.stringify(payload));
+  };
+  
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+
+    fetchUsers();
+  
+    if (token && savedUser) {
+      try {
+        const decodedPayload = JSON.parse(atob(token));
+        console.log("Token payload:", decodedPayload);
+  
+        if (Date.now() - decodedPayload.timestamp < 3600000) {
+          setUser({ ...savedUser, status: true });
+          navigate("/home");
+        } else {
+          console.warn("Token expired");
+          localStorage.removeItem("jwt");
+          localStorage.removeItem("user");
+          localStorage.removeItem("users");
+        }
+      } catch (err) {
+        console.error("Invalid token:", err);
         localStorage.removeItem("jwt");
+        localStorage.removeItem("users");
       }
     }
+
     // eslint-disable-next-line
   }, []);
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -71,15 +106,14 @@ const CardLogin = ({
       return;
     }
 
-    setUser({ ...user, status: true });
+    const updatedUser = { ...user, status: true };
 
-    
-    localStorage.setItem(
-      "user",
-      JSON.stringify({ ...user, status: true })
-    );
-    
-    localStorage.setItem("jwt", "3cwn4u9do92jsb0cg6v82e1");
+    setUser(updatedUser);
+
+    const token = generateToken();
+
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+    localStorage.setItem("jwt", token);
     
     window.location.reload();
     navigate("/home");

@@ -15,22 +15,27 @@ import UniversalModal from "../../components/ModalWindows/ModalUniversal";
 
 
 
-const Profile = ({ user, setUser }) => {
+const Profile = ({ user }) => {
   const navigate = useNavigate();
   const [isOpen, onClose] = useState(false);
 
   const handleSingOut = () => {
-    setUser(null);
-    localStorage.removeItem("jwt");
-    localStorage.removeItem("user");
-    navigate("/sing-in");
-    window.location.reload();
-  }
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+    if (savedUser) {
+      const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+      storedUsers.map((u) =>
+        u.id === savedUser.id ? { ...u, status: false } : u
+      );
+  
+      localStorage.removeItem("user");
+      localStorage.removeItem("jwt");
+      localStorage.removeItem("users");
+    }
 
-  if (!user) {
+    window.location.reload();
     navigate("/sing-in");
-    return null;
-  }
+  };
+  
 
   return (
     <div className={styles.user}>
@@ -80,7 +85,9 @@ const Profile = ({ user, setUser }) => {
               <MyButton 
               className={styles.user__editUsers} 
               textButton="User list"
-              onClick={()=> (console.log("click change user list"))}
+              onClick={()=> {
+                navigate("/users");
+              }}
               icon={<BsPersonLinesFill />}
               styleRightIcon={styles.user__rightIcon}
               rightIcon={<RiArrowRightSLine />}

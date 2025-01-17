@@ -3,50 +3,60 @@ import { TfiArrowCircleUp } from "react-icons/tfi";
 import styles from "../../styles/ScrollButton.module.scss";
 import MyButton from "./MyButton";
 
-const ScrollButton = () => {
+const ScrollButton = ({ isHidden }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const scrollToTop = () => {
-      window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-      });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
 
-      setIsVisible(false);
+    setIsVisible(false);
   };
 
   const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
 
-      if (scrollTop + windowHeight >= documentHeight - 1) {
-          setIsVisible(true);
-      }
+    const scrollPercentage = (scrollTop + windowHeight) / documentHeight;
 
-      if (scrollTop === 0) {
-          setIsVisible(false);
-      }
+    if (scrollPercentage <= 0.9) {
+      setIsVisible(false);
+    } else if(scrollPercentage >= 1.0) {
+      setIsVisible(true);
+    }
+
+    if (scrollTop === 0) {
+      setIsVisible(false);
+    }
   };
 
   useEffect(() => {
-      window.addEventListener("scroll", handleScroll);
-      return () => {
-          window.removeEventListener("scroll", handleScroll);
-      };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-    return (
-      <>
-          {isVisible && (
-            <MyButton
-              className={styles.scrollButton}
-              onClick={scrollToTop}
-              icon={<TfiArrowCircleUp />}
-            />
-        )}
-      </>
-    );
+  return (
+    <>
+    {isHidden ? 
+      (isVisible && (
+        <MyButton
+          className={styles.scrollButton}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            scrollToTop();
+          }}
+          icon={<TfiArrowCircleUp />}
+        />
+      ))
+    : null}
+    </>
+  );
 };
 
 export default ScrollButton;
