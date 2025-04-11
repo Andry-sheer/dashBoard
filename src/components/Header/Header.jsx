@@ -13,6 +13,20 @@ import logo from "../../assets/graphics.svg";
 const Header = ({ isVisible, hideOverlay, showOverlay, user }) => {
   const jwt = localStorage.getItem("jwt");
 
+  const borderRole = () => {
+    const classes = [styles.profilePicture]
+    
+    if (user.role === 'Administrator'){
+        classes.push(styles.profilePicture__admin);
+    }
+
+    if (user.role === 'Moderator'){
+      classes.push(styles.profilePicture__moderator) 
+    }
+
+    return classes.join(' ')
+  }
+
   return (
     <>
     <header className={styles.header}>
@@ -24,17 +38,16 @@ const Header = ({ isVisible, hideOverlay, showOverlay, user }) => {
           <span className={styles.logoSpan}>{jwt ? "Admin panel" : "welcome to site"}</span>
         </Link>
 
-        {jwt ?
+        {user?.status ?
           <div className={styles.profileContainer}>
             <Link className={styles.profileLink}  to="/profile">
-              <img className={styles.profilePicture} src={user.image ? user.image : Avatar} alt="avatar" />
+              <img className={borderRole(user.role)} src={user?.image ? user.image : Avatar} alt="avatar" />
             </Link>
             
-            { jwt ? 
-              <MyButton className={styles.navButton} 
-                onClick={showOverlay} 
-                icon={<IoIosMenu fill="white" size={40} />} /> : null }
-          </div> : null }
+            <MyButton className={styles.navButton} 
+              onClick={showOverlay} 
+              icon={<IoIosMenu fill="white" size={40} />} />
+          </div> : null}
     </div>
   </header>
 
@@ -45,7 +58,8 @@ const Header = ({ isVisible, hideOverlay, showOverlay, user }) => {
 
 const mapStateToProps = (state) => ({
   isVisible: state.overlay.isVisible,
-  user: state.login.user
+  user: state.login.user,
+  out: state.login.out
 });
 
 export default connect(mapStateToProps, { hideOverlay, showOverlay })(Header);
