@@ -57,6 +57,8 @@
   text-decoration: none;
 }
 
+
+
 .profileName {
   font-weight: 700;
   font-size: 20px;
@@ -69,7 +71,18 @@
   border-radius: $radius-rounded;
   overflow: hidden;
   background: $bgAltWhite;
+  border: 2px solid $bgGreens;
+
+  &__admin {
+    border: 2px solid $valueColor;
+  }
+
+  &__moderator {
+    border: 2px solid $orangeApple;
+  }
 }
+
+
 
 // MOBILE ---------------------------------------------------------------
 @media (max-width: 425px) {

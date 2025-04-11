@@ -45,6 +45,12 @@ const CardLogin = ({
     };
     return btoa(JSON.stringify(payload));
   };
+
+  const getTransfer = () => {
+    setLogin('')
+    setPassword('')
+    navigate("/home");
+  }
   
 
   useEffect(() => {
@@ -115,8 +121,7 @@ const CardLogin = ({
     localStorage.setItem("user", JSON.stringify(updatedUser));
     localStorage.setItem("jwt", token);
     
-    window.location.reload();
-    navigate("/home");
+    getTransfer();
   };
 
 

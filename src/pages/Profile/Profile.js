@@ -19,6 +19,7 @@ const Profile = ({ user }) => {
   const navigate = useNavigate();
   const [isOpen, onClose] = useState(false);
 
+
   const handleSingOut = () => {
     const savedUser = JSON.parse(localStorage.getItem("user"));
     if (savedUser) {
@@ -32,7 +33,7 @@ const Profile = ({ user }) => {
       localStorage.removeItem("users");
     }
 
-    window.location.reload();
+    user.status = false;
     navigate("/sing-in");
   };
   
@@ -129,7 +130,7 @@ const Profile = ({ user }) => {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.login.user,
+  user: state.login.user
 });
 
 export default connect(mapStateToProps, { setUser })(Profile);

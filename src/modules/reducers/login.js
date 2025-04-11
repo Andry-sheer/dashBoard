@@ -10,6 +10,7 @@ import {
   CLEAR_USER,
   FETCH_USERS,
   SET_IS_LOADING,
+  IN_OUT_USER,
 } from "../actionTypes";
 
 
@@ -22,6 +23,7 @@ const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || null,
   isLoading: false,
   isLoadUsers: false,
+  out: false,
 };
 
 const singInReducer = (state = initialState, action) => {
@@ -49,7 +51,8 @@ const singInReducer = (state = initialState, action) => {
     case SET_USER:
       return {
         ...state,
-        user: action.payload
+        user: action.payload,
+        out: !state.out
       }
 
     case SET_USERS:
@@ -92,6 +95,12 @@ const singInReducer = (state = initialState, action) => {
       return {
         ...state,
         isShowHidePassword: !state.isShowHidePassword
+      }
+
+    case IN_OUT_USER:
+      return {
+        ...state,
+        out: !state.out
       }
 
 

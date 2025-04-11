@@ -11,12 +11,18 @@ import {
   CLEAR_USER,
   FETCH_USERS,
   SET_IS_LOADING,
+  IN_OUT_USER,
 } from "../actionTypes";
+
 
 export const fetchUsers = () => async (dispatch) => {
     dispatch({
       type: SET_IS_LOADING,
     });
+
+    dispatch({
+      type: IN_OUT_USER,
+    })
 
   try {
     const response = await fetch(`${API_URL}/users`);
@@ -90,4 +96,3 @@ export const setPassword = (password) => ({
 export const showHidePassword = () => ({
   type: SHOW_HIDE_PASSWORD,
 });
-
